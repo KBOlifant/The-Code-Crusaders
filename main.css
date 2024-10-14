@@ -18,7 +18,7 @@
     object-fit: cover; /* Ensures the image fills the container */
    }
    
-   /* Navbar Styles */
+/* Navbar Styles */
 .navbar {
     background-color: #000000;
     padding: 1rem;
@@ -27,13 +27,22 @@
     justify-content: space-between;
 }
 
+/* logo */
 .navbar-brand img {
-    width: 120px;
-    height: auto;
+    height: 42px;
+    width: 30px;
+    max-width: 100%;
+    display: block;
+    object-fit: contain;
 }
 
 /* Search Bar Styling */
+.search-container {
+    flex: 1;
+}
+
 .search-form {
+    position: relative;
     display: flex;
     align-items: center;
     margin-left: 1rem;
@@ -45,7 +54,7 @@
     border: 1px solid #9A9A9A;
     color: #9A9A9A;
     padding: 0.6rem 1rem;
-    border-radius: 30px 0 0 30px;
+    border-radius: 30px;
     font-family: 'Nunito Sans', sans-serif;
     width: 300px;
     height: 42px;
@@ -63,27 +72,22 @@
 }
 
 .search-btn {
-    background-color: #9A9A9A;
-    border: 1px solid #9A9A9A;
-    padding: 0.6rem;
-    border-radius: 0 30px 30px 0;
+    position: absolute;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 42px;
-    cursor: pointer;
 }
 
 .search-btn img {
     width: 20px;
     height: 20px;
     filter: invert(100%);
-}
-
-.search-btn:hover {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    transition: all 0.3s ease;
 }
 
 /* Navigation Links */
@@ -100,6 +104,7 @@
     margin-right: 0.5rem;
     width: 20px;
     height: 20px;
+    filter: invert(100%);
 }
 
 .navbar-nav .nav-link:hover {
@@ -142,6 +147,11 @@
     background-color: #ffffff;
     color: #9A9A9A;
     transition: all 0.3s ease;
+}
+
+/* Mobile Search Bar */
+.search-form-mobile {
+    flex: 1;
 }
    
    
