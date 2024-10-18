@@ -205,72 +205,106 @@ h6 {
 .btn-sign-up:hover {
     background-color: #ffffff;
     color: #9A9A9A;
-    padding: 0.6rem 1rem; /* Slight increase in padding for consistency with button */
-    border-radius: 30px 0 0 30px; /* Rounded corners for the left side */
+    padding: 0.6rem 1rem;
+    border-radius: 30px;
     font-family: 'Nunito Sans', sans-serif;
-    width: 300px; /* Width of the search bar */
-    height: 42px; /* Ensure input height matches button */
-   }
-   
-   
-   .search-input::placeholder {
+    width: 300px;
+    height: 42px;
+}
+
+.search-input::placeholder {
     color: #9A9A9A;
-   }
-   
-   
-   .search-input:focus {
+}
+
+.search-input:focus {
     background-color: #000000;
     border-color: #ffffff;
     outline: none;
     color: #ffffff;
-   }
-   
-   
-   .search-btn {
-    background-color: #9A9A9A;
-    border: 1px solid #9A9A9A;
-    padding: 0.6rem;
-    border-radius: 0 30px 30px 0;
+}
+
+.search-btn {
+    position: absolute;
+    right: 5px;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 42px;
-    cursor: pointer;
-   }
-   
-   
-   .search-btn img {
+}
+
+.search-btn img {
     width: 20px;
     height: 20px;
-    filter: invert(100%); /* Make icon white */
-   }
-   
-   
-   .search-btn:hover {
-    background-color: #ffffff;
-    border-color: #ffffff;
-    transition: all 0.3s ease;
-   }
-   
-   
-   /* Button Styling */
-   .navbar .btn-outline-success {
+    filter: invert(100%);
+}
+
+/* Navigation Links */
+.navbar-nav .nav-link {
     color: #9A9A9A;
-    border-color: #9A9A9A;
-    background-color: transparent;
-    padding: 0.5rem 1rem;
-    border-radius: 30px;
     font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-   }
-   
-   
-   .navbar .btn-outline-success:hover {
+    font-weight: 400;
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-nav .nav-link img {
+    margin-right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+}
+
+.navbar-nav .nav-link:hover {
     color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link.active {
+    color: #ffffff;
+}
+
+/* Cast & User Profile Icons */
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons .icon {
+    margin-right: 1rem;
+}
+
+.navbar-icons .icon img {
+    width: 24px;
+    height: 24px;
+    filter: invert(100%);
+}
+
+/* Sign Up Button */
+.btn-sign-up {
     background-color: #9A9A9A;
-    border-color: #ffffff;
+    color: #ffffff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 30px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.btn-sign-up:hover {
+    background-color: #ffffff;
+    color: #9A9A9A;
     transition: all 0.3s ease;
-   }
+}
+
+/* Mobile Search Bar */
+.search-form-mobile {
+    flex: 1;
+}
    
    
    /* Card Body */
