@@ -373,7 +373,7 @@ h6 {
     text-align: center;
 }
 
-/* Carousel Section */
+/* Carousel Section on home screen */
 .carouselSection {
     background-color: #343434;
     height: auto;
@@ -469,16 +469,214 @@ h6 {
 }
 
 /* Responsive Grid for Watchlist Section */
+.movieLibrary .rowGap,
 .movieWatchlist .rowGap {
     margin-bottom: 20px;
 }
 
+.movieLibrary .card,
 .movieWatchlist .card {
     width: 100%;
     max-width: 280px;
     margin: auto;
 }
 
+/* Ensure the row display is working correctly */
+.movieLibrary .row,
+.movieWatchlist .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    /* Adjust gap for better spacing */
+}
+
+/* Individual movie page */
+/* Hero Banner */
+.heroBannerInd {
+    background-color: #343434;
+    padding: 40px 0;
+}
+
+.heroBannerInd h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+}
+
+.heroBannerInd p.lead {
+    font-size: 20px;
+    color: #9A9A9A;
+}
+
+.heroBannerInd .btn-primary {
+    background-color: #FF7038;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 10px 40px;
+    border-radius: 7px;
+}
+
+.heroBannerInd .btn-primary:hover {
+    background-color: #ff8959;
+}
+
+.heroBannerInd .img-fluid {
+    border-radius: 8px;
+}
+
+/* Synopsis Section */
+.synopsis {
+    background-color: #f8f8f8;
+    padding: 40px 0;
+}
+
+.synopsis h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.synopsis p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Cast Section */
+.cast {
+    background-color: #1a1a1a;
+    padding: 40px 0;
+}
+
+.cast h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cast .cast-member {
+    text-align: center;
+}
+
+.cast-member img {
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+}
+
+.cast-member h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 15px;
+}
+
+.cast-member p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #9A9A9A;
+    margin-top: 5px;
+}
+
+.cast .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Review Card Section */
+.reviewCardInd {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 8px;
+    color: #000000;
+    width: 288px;
+    padding: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+}
+
+.reviewCardInd .review-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.reviewCardInd .review-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #d9d9d9;
+}
+
+.reviewCardInd .review-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewCardInd .review-info h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.reviewCardInd .review-info p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+/* Star Ratings */
+.reviewCardInd .stars {
+    margin-top: 5px;
+    display: flex;
+    gap: 4px;
+    justify-content: left;
+}
+
+.reviewCardInd .star {
+    width: 14px;
+    height: 14px;
+    background-size: cover;
+    display: inline-block;
+}
+
+/* Filled star */
+.reviewCardInd .star-filled {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN0YXIiPjxwb2x5Z29uIHBvaW50cz0iMTIgMiAxNS4wOSA4LjI2IDIyIDkuMjcgMTcgMTQuMTQgMTguMTggMjEuMDIgMTIgMTcuNzcgNS44MiAyMS4wMiA3IDE0LjE0IDIgOS4yNyA4LjkxIDguMjYgMTIgMiIvPjwvc3ZnPg==');
+    background-color: #FF7038;
+    background-repeat: no-repeat;
+}
+
+/* Empty star */
+.reviewCardInd .star-empty {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXN0YXIiPjxwb2x5Z29uIHBvaW50cz0iMTIgMiAxNS4wOSA4LjI2IDIyIDkuMjcgMTcgMTQuMTQgMTguMTggMjEuMDIgMTIgMTcuNzcgNS44MiAyMS4wMiA3IDE0LjE0IDIgOS4yNyA4LjkxIDguMjYgMTIgMiIvPjwvc3ZnPg==');
+    background-color: #D3D3D3;
+    background-repeat: no-repeat;
+}
+
+/* Review Text */
+.reviewCardInd p.review-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 14px;
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.5;
+}
 
 /* Footer Styles */
 .footer {

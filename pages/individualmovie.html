@@ -92,32 +92,92 @@
         </nav>
     </header>
 
-    <section class="HeroBanner">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col">
-                    <div id="" class="card heroCard">
-                        <img src="../assets/moviePosterPlaceholder.png" width="20%" class="cover" >
-                        <div class="body">
-                            <h5 class="title">Title</h5>
-                            <h6 class="subtitle">Sub title</h6>
-                        </div>
-                    </div>
+     <section class="heroBannerInd py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <img src="../assets/moviePosterPlaceholder.png" class="img-fluid cover" alt="Movie Poster">
                 </div>
-
-                <div class="col">
-                    <div id="" class="card heroCard">
-                        <img src="../assets/moviePosterPlaceholder.png" width="20%" class="cover" >
-                        <div class="body">
-                            <h5 class="title">Title</h5>
-                            <h6 class="subtitle">Sub title</h6>
-                        </div>
+                <div class="col-md-8">
+                    <h1 class="display-4">Movie Title</h1>
+                    <p class="lead">Genre | Year | Duration | Age Rating</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra pharetra nulla, non viverra massa. Ut bibendum non metus sed consectetur.</p>
+                    <div class="d-flex align-items-center">
+                        <button type="button" class="btn btn-primary me-2">Watch Now</button>
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoYXJlIj48cGF0aCBkPSJNNCAxMnY4YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMnYtOCIvPjxwb2x5bGluZSBwb2ludHM9IjE2IDYgMTIgMiA4IDYiLz48bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjIiIHkyPSIxNSIvPjwvc3ZnPg==" alt="Share Icon" class="me-2">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2ttYXJrIj48cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiLz48L3N2Zz4=" alt="Bookmark Icon">
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="synopsis py-5 bg-light">
+        <div class="container">
+            <h2>Synopsis</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ac purus non mauris ullamcorper tincidunt. Nam at augue a ante tincidunt suscipit.</p>
+        </div>
+    </section>
+
+    <section class="cast py-5">
+    <div class="container">
+        <h2>Cast</h2>
+        <div class="row text-center">
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="cast-member">
+                    <img src="../assets/placeholder-actor.jpg" class="rounded-circle" alt="Actor Name" width="150" height="150">
+                    <h5 class="mt-3">Evan Rachel Wood</h5>
+                    <p class="text-muted">as Daisy</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="cast-member">
+                    <img src="../assets/placeholder-actor.jpg" class="rounded-circle" alt="Actor Name" width="150" height="150">
+                    <h5 class="mt-3">Scott Speedman</h5>
+                    <p class="text-muted">as Jay Wheeler</p>
+                </div>
+            </div>
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="cast-member">
+                    <img src="../assets/placeholder-actor.jpg" class="rounded-circle" alt="Actor Name" width="150" height="150">
+                    <h5 class="mt-3">J.K. Simmons</h5>
+                    <p class="text-muted">as Dr. Bertleman</p>
+                </div>
+            </div>
+            <!-- Add more cast here -->
+        </div>
+    </div>
+</section>
+
+<section class="reviews py-5">
+    <div class="container">
+        <h2 class="text-center">Reviews</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="reviewCardInd">
+                    <div class="review-header">
+                        <img src="path-to-logo.png" alt="Company Logo" class="review-logo">
+                        <div class="review-info">
+                            <h5>Company Name</h5>
+                            <p>John Doe</p>
+                        </div>
+                    </div>
+                    <div class="stars">
+                        <span class="star star-filled"></span>
+                        <span class="star star-filled"></span>
+                        <span class="star star-filled"></span>
+                        <span class="star star-empty"></span>
+                        <span class="star star-empty"></span>
+                    </div>
+                    <p class="review-text">
+                        This is the review text that goes underneath the star rating. It's concise and reflects the reviewer's opinion.
+                    </p>
+                </div>
+            </div>
+            <!-- Add more review cards here -->
+        </div>
+    </div>
+</section>
             
 <footer class="footer bg-dark text-light py-4">
     <div class="container d-flex justify-content-between align-items-center">
