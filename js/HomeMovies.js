@@ -22,7 +22,7 @@ let movieList;
       
     
     //GetMovieNames(Movie){
-async function movieName() {
+async function GetNewMovies() {
   // try{
   //     let result;
 
@@ -31,26 +31,37 @@ async function movieName() {
         .then((response) => {
         console.log(response);
         movieList = response;
-        SortMovies(movieList);
+        SortMovies(movieList, "New");
     }).catch((err) => console.error(err));
 }
 
-movieName();
+async function UpdateMovies(keyword){
+    fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=53', options)
+        .then((response) => response.json())
+        .then((response) => {
+        console.log(response);
+        movieList = response;
+        SortMovies(movieList, keyword);
+    }).catch((err) => console.error(err));
+}
 
-function SortMovies(_movieList) {
-    moviesToLoad = document.getElementsByClassName("New_HomeIMG").length;
+GetNewMovies();
+UpdateMovies("Thriller")
+
+function SortMovies(_movieList, keyword) {
+    moviesToLoad = document.getElementsByClassName(keyword+"_HomeIMG").length;
     if(moviesToLoad < _movieList.results.length){
         for (let index = 0; index < moviesToLoad; index++) {
-            document.getElementsByClassName("New_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-            document.getElementsByClassName("New_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
+            document.getElementsByClassName(keyword+"_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
+            document.getElementsByClassName(keyword+"_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
             _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
-            document.getElementsByClassName("New_Home_subTitle")[index].innerHTML = `${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}`;
+            document.getElementsByClassName(keyword+"_Home_subTitle")[index].innerHTML = `${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}`;
         }
     } else{
         for (let index = 0; index < _movieList.results.length; index++) {
-            document.getElementsByClassName("New_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-            document.getElementsByClassName("New_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
-            document.getElementsByClassName("New_Home_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
+            document.getElementsByClassName(keyword+"_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
+            document.getElementsByClassName(keyword+"_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
+            document.getElementsByClassName(keyword+"_Home_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
         }
     }
 }

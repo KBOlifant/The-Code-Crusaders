@@ -205,6 +205,10 @@ h6 {
   margin-right: 24px;
 }
 
+.card{
+  border: none;
+}
+
 .navbar-icons .icon img {
   width: 24px;
   height: 24px;
@@ -418,6 +422,10 @@ h6 {
   padding: 0 24px;
 }
 
+.heroCard{
+  background-color: #2f2f2f;
+}
+
 .footer ul {
   list-style: none;
   padding-left: 0;
@@ -463,6 +471,11 @@ h6 {
 
 .heart {
   color: #2f2f2f;
+}
+
+.HeroBanner{
+  background-color: #2f2f2f;
+  height: 500px;
 }
 
 @media screen and (min-width: 390px) {
