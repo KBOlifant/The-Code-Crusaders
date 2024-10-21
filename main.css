@@ -421,77 +421,104 @@ h6 {
     max-width: 600px;
 }
 
+/* Moviewatchlist page */
+/* Card Styling */
+.card {
+    background-color: #1a1a1a;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #ffffff;
+}
+
+.card img.cover {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 1px solid #343434;
+}
+
+.card .body {
+    padding: 15px;
+}
+
+.card h5.title,
+.card h6.subtitle {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+}
+
+.card h5.title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 10px 0 5px;
+}
+
+.card h6.subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    color: #9A9A9A;
+}
+
+/* Hover Effects */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Grid for Watchlist Section */
+.movieWatchlist .rowGap {
+    margin-bottom: 20px;
+}
+
+.movieWatchlist .card {
+    width: 100%;
+    max-width: 280px;
+    margin: auto;
+}
+
+
 /* Footer Styles */
 .footer {
-    display: flex;
-    flex-flow: row wrap;
-    padding: 30px 30px 20px;
-    color: #2f2f2f;
-    background-color: #fff;
-    border-top: 1px solid #e5e5e5;
-}
-
-.footer>* {
-    flex: 1 100%;
-}
-
-.footer__addr {
-    margin-right: 1.25em;
-    margin-bottom: 2em;
-}
-
-.footer__logo {
-    font-family: 'Pacifico', cursive;
-    font-weight: 400;
-    text-transform: lowercase;
-    font-size: 1.5rem;
-}
-
-.footer__addr h2,
-.nav__title {
-    font-size: 15px;
-    font-weight: 400;
-}
-
-.footer address {
-    font-style: normal;
-    color: #999;
-}
-
-.footer__btn {
+    background-color: #000000;
+    padding: 1.5rem 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 36px;
-    max-width: max-content;
-    background-color: rgba(33, 33, 33, 0.07);
-    border-radius: 100px;
-    color: #2f2f2f;
-    font-size: 16px;
-    padding: 0 1.3em;
+    justify-content: space-between;
 }
 
-.footer ul {
-    list-style: none;
-    padding-left: 0;
+.footer-logo img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
 }
 
-.footer li {
-    line-height: 2em;
-}
-
-.footer a {
-    text-decoration: none;
-}
-
-.footer__nav {
+.footer .navbar-nav .nav-link {
+    color: #9A9A9A;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    margin-right: 1rem;
+    text-transform: capitalize;
     display: flex;
-    flex-flow: row wrap;
+    align-items: center;
 }
 
-.footer__nav>* {
-    flex: 1 50%;
-    margin-right: 1.25em;
+.footer .navbar-nav .nav-link:hover {
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+.footer .navbar-nav .nav-link.active {
+    color: #ffffff;
+}
+
+.footer .legal {
+    color: #9A9A9A;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    margin-left: auto;
 }
 
 .nav__ul a {
