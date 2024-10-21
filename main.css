@@ -491,7 +491,7 @@ h6 {
     /* Adjust gap for better spacing */
 }
 
-/* Individual movie page */
+/* Individual Movie Page */
 /* Hero Banner */
 .heroBannerInd {
     background-color: #343434;
@@ -676,6 +676,79 @@ h6 {
     color: #666;
     margin-top: 10px;
     line-height: 1.5;
+}
+
+/* Scrollable Section */
+.scrollableSection {
+    background-color: #9A9A9A;
+    padding: 40px 0;
+}
+
+.scrollable-row {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 20px;
+    /* Adds some padding to the bottom for better spacing */
+}
+
+.scrollable-row .card {
+    display: inline-block;
+    width: 220px;
+    margin-right: 1rem;
+    border: none;
+    border-radius: 10px;
+    /* Added corner radius for movie poster cards */
+    overflow: hidden;
+    background-color: #1a1a1a;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #ffffff;
+}
+
+.scrollable-row .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.scrollable-row .card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 1px solid #343434;
+    border-radius: 10px 10px 0 0;
+    /* Corner radius on the top side */
+}
+
+.scrollable-row .body {
+    padding: 15px;
+}
+
+.scrollable-row .title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+
+.scrollable-row .New_Home_subTitle {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #9A9A9A;
+}
+
+.scrollable-row .New_HomeIMG {
+    border-radius: 10px 10px 0 0;
+}
+
+.scrollable-row .recommendedRowAnchor {
+    text-decoration: none;
+    color: inherit;
+}
+
+.scrollable-row .recommendedRowAnchor:hover .New_HomeTitle {
+    color: #FF7038;
+    transition: color 0.3s ease;
 }
 
 /* Footer Styles */
