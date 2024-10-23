@@ -43,8 +43,15 @@ async function ShowRelated(ID){
 }
 
 function RecommendMovies(_movieList){
+    var anchors = document.querySelectorAll('.recommendedRowAnchor');
+
     for (let index = 0; index < document.getElementsByClassName("Recommended_IMG").length; index++) {
         document.getElementsByClassName("Recommended_IMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
+        document.getElementsByClassName("Recommended_Title")[index].innerHTML = _movieList.results[index].title;
+        document.getElementsByClassName("Recommended_subTitle")[index].innerHTML = _movieList.results[index].release_date.substring(0, 4);
+        document.getElementsByClassName("recommendedRowAnchor")[index].href = '../pages/individualmovie.html';
+        document.getElementsByClassName("recommendedRowAnchor")[index].title = _movieList.results[index].id;
+        anchors[index].addEventListener('click', handler, false);
     }
 }
 
@@ -86,4 +93,9 @@ function WatchMovie(_movie){
     if(ID != null){
         window.open(`https://www.imdb.com/title/${_movie.imdb_id}/`);
     }
+}
+
+function handler(){
+    let att = this.getAttribute("title");
+    localStorage.setItem("IndividualMovieCode", att);
 }

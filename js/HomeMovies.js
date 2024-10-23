@@ -1,5 +1,6 @@
 pageNumber = 1;
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+let GenreList = [];
 
 class Movies{
     constructor(name, row, genre, poster){
@@ -36,17 +37,32 @@ async function GetNewMovies() {
 }
 
 async function UpdateMovies(keyword){
-    fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=53', options)
+    for (let index = 0; index < GenreList.length; index++) {
+        if(keyword == GenreList[index][0]){
+            fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${GenreList[index][1]}`, options)
         .then((response) => response.json())
         .then((response) => {
         console.log(response);
         movieList = response;
         SortMovies(movieList, keyword);
-    }).catch((err) => console.error(err));
+            }).catch((err) => console.error(err));
+        }
+    }
+}
+
+async function InitializeMovieGenres(_genreList){
+    fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
+    .then((response) => response.json())
+    .then((response) => {
+    SortGenres(response, _genreList);
+    console.log(GenreList);
+    UpdateMovies("Animation")
+}).catch((err) => console.error(err));
 }
 
 GetNewMovies();
-UpdateMovies("Thriller")
+InitializeMovieGenres(GenreList);
+
 
 function SortMovies(_movieList, keyword) {
     moviesToLoad = document.getElementsByClassName(keyword+"_HomeIMG").length;
@@ -63,6 +79,12 @@ function SortMovies(_movieList, keyword) {
             document.getElementsByClassName(keyword+"_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
             document.getElementsByClassName(keyword+"_Home_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
         }
+    }
+}
+
+function SortGenres(_genreCodeList, _GenreArray){
+    for (let index = 0; index < _genreCodeList.genres.length; index++) {
+        _GenreArray.push([_genreCodeList.genres[index].name, _genreCodeList.genres[index].id]);
     }
 }
 
