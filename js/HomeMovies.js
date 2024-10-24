@@ -56,7 +56,11 @@ async function InitializeMovieGenres(_genreList){
     .then((response) => {
     SortGenres(response, _genreList);
     console.log(GenreList);
-    UpdateMovies("Animation")
+    UpdateMovies("Animation");
+    UpdateMovies("Thriller");
+    UpdateMovies("Fantasy");
+    UpdateMovies("Family");
+    UpdateMovies("Documentary")
 }).catch((err) => console.error(err));
 }
 
@@ -66,12 +70,16 @@ InitializeMovieGenres(GenreList);
 
 function SortMovies(_movieList, keyword) {
     moviesToLoad = document.getElementsByClassName(keyword+"_HomeIMG").length;
+    var anchors = document.querySelectorAll(`.${keyword}RowAnchor`);
     if(moviesToLoad < _movieList.results.length){
         for (let index = 0; index < moviesToLoad; index++) {
             document.getElementsByClassName(keyword+"_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
             document.getElementsByClassName(keyword+"_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
             _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
             document.getElementsByClassName(keyword+"_Home_subTitle")[index].innerHTML = `${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}`;
+            document.getElementsByClassName(`${keyword}RowAnchor`)[index].title = _movieList.results[index].id;
+            document.getElementsByClassName(`${keyword}RowAnchor`)[index].href = '../pages/individualmovie.html';
+            anchors[index].addEventListener('click', handler, false);
         }
     } else{
         for (let index = 0; index < _movieList.results.length; index++) {
@@ -86,6 +94,12 @@ function SortGenres(_genreCodeList, _GenreArray){
     for (let index = 0; index < _genreCodeList.genres.length; index++) {
         _GenreArray.push([_genreCodeList.genres[index].name, _genreCodeList.genres[index].id]);
     }
+}
+
+function handler(){
+    let att = this.getAttribute("title");
+    console.log(att);
+    localStorage.setItem("IndividualMovieCode", att);
 }
 
             // class Horror extends Movies{
