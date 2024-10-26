@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up </title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+       
+        @keyframes scrollBackground {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: -2000px 0; 
+            }
+        }
+
+        body {
+            background: url(/assets/BackgorundPls.png) repeat-x; 
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+            color: #b3b3b3;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            animation: scrollBackground 60s linear infinite; 
+        }
+
+        .signup-container {
+            background-color: #3e3e41;
+            width: 700px;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 6px 40px rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .signup-info {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .signup-info h2 {
+            font-size: 2.5rem;
+            font-family: 'Poppins', sans-serif;
+            background: url('/assets/fire.webp');
+            background-size: cover;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .signup-form {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        label {
+            margin: 0.5rem 0 0.2rem;
+            text-align: left;
+            color: #b3b3b3;
+            font-size: 1.1rem;
+        }
+
+        input {
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: background 0.3s;
+            width: 100%;
+        }
+
+        input:focus {
+            background: rgb(255, 255, 255);
+            outline: none;
+        }
+
+        button {
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #FF7038;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            font-size: 1.2rem;
+        }
+
+        button:hover {
+            background: #a64924;
+            transform: scale(1.05);
+        }
+
+        p {
+            margin-top: 1.5rem;
+            color: #b3b3b3;
+            font-size: 1.1rem;
+        }
+
+        a {
+            color: #FF7038;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-info">
+            <h2>Create Your Account</h2>
+            
+        </div>
+
+        <form class="signup-form">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Create a password">
+
+            <button type="submit">Sign Up</button>
+            <p>Already have an account? <a href="login.html">Log in here</a></p>
+        </form>
+    </div>
+</body>
+</html>
