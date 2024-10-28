@@ -93,14 +93,18 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-4">
-                    <img src="../assets/moviePosterPlaceholder.png" class="img-fluid cover" alt="Movie Poster">
+                    <a id="imdb_movie">
+                        <img src="../assets/moviePosterPlaceholder.png" class="img-fluid cover" alt="Movie Poster" id="IndividualCover">
+                    </a>
                 </div>
                 <div class="col-md-8">
-                    <h1 class="display-4" id="movietitle">Movie Title</h1> 
-                    <p class="lead">Genre | Year | Duration | Age Rating</p> 
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra pharetra nulla, non viverra massa. Ut bibendum non metus sed consectetur.</p>
+                    <h1 class="display-4" id="IndividualTitle">Movie Title</h1>
+                    <p class="lead" id="IndividualInfoLine">Genre | Year | Duration | Age Rating</p>
+                    <p id="Individual_Desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In viverra pharetra nulla, non viverra massa. Ut bibendum non metus sed consectetur.</p>
                     <div class="d-flex align-items-center">
-                        <button type="button" class="btn btn-primary me-2">Watch Now</button>
+                        <a id="watchButton">
+                            <button type="button" class="btn btn-primary me-2">Watch Now</button>
+                        </a>
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoYXJlIj48cGF0aCBkPSJNNCAxMnY4YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMnYtOCIvPjxwb2x5bGluZSBwb2ludHM9IjE2IDYgMTIgMiA4IDYiLz48bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjIiIHkyPSIxNSIvPjwvc3ZnPg==" alt="Share Icon" class="me-2">
                         <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2ttYXJrIj48cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiLz48L3N2Zz4=" alt="Bookmark Icon">
                     </div>
@@ -117,41 +121,41 @@
             <div class="scrollable-row pt-2">
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Movie Title</h6>
-                        <p class="New_Home_subTitle">Sub title</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Movie Title</h6>
-                        <p class="New_Home_subTitle">Sub title</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Movie Title</h6>
-                        <p class="New_Home_subTitle">Sub title</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Movie Title</h6>
-                        <p class="New_Home_subTitle">Sub title</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
             </div>
@@ -168,99 +172,99 @@
                 <!-- Movie 1 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 1</h6>
-                        <p class="New_Home_subTitle">Sub title 1</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- Movie 2 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 2</h6>
-                        <p class="New_Home_subTitle">Sub title 2</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- Movie 3 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 3</h6>
-                        <p class="New_Home_subTitle">Sub title 3</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- Movie 4 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 4</h6>
-                        <p class="New_Home_subTitle">Sub title 4</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- Movie 5 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 5</h6>
-                        <p class="New_Home_subTitle">Sub title 5</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- Movie 6 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 6</h6>
-                        <p class="New_Home_subTitle">Sub title 6</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- New Movie 7 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 7</h6>
-                        <p class="New_Home_subTitle">Sub title 7</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- New Movie 8 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 8</h6>
-                        <p class="New_Home_subTitle">Sub title 8</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
 
                 <!-- New Movie 9 -->
                 <div class="card">
                     <a class="recommendedRowAnchor">
-                        <img class="card-img-top New_HomeIMG" src="../assets/whatsOnNew.png" alt="Thumbnail">
+                        <img class="card-img-top Recommended_IMG" src="../assets/moviePosterPlaceholder.png" alt="Thumbnail">
                     </a>
                     <div class="body">
-                        <h6 class="title New_HomeTitle">Title 9</h6>
-                        <p class="New_Home_subTitle">Sub title 9</p>
+                        <h6 class="title Recommended_Title">Movie Title</h6>
+                        <p class="Recommended_subTitle">Sub title</p>
                     </div>
                 </div>
             </div>
@@ -276,7 +280,9 @@
                 <div class="col-md-4">
                     <div class="reviewCardInd">
                         <div class="review-header">
-                            <img src="../assets/companyLogo.png" alt="Company Logo" class="review-logo">
+                            <a class="navbar-brand">
+                                <img src="/assets/VELV Navbar logo.png" alt="Velv Movies Logo" height="50px">
+                            </a>
                             <div class="review-info">
                                 <h5>Company Name</h5>
                                 <p>John Doe</p>
@@ -347,6 +353,6 @@
             </div>
         </div>
     </footer>
-
+    <script src="../js/IndividualMovie.js"></script>
 </body>
 </html>

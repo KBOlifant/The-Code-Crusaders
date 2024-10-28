@@ -20,6 +20,11 @@ const options = {
 };
     
 let movieList;
+
+function NextPage(){
+    pageNumber++;
+    movieName();
+}
       
     
     //GetMovieNames(Movie){
@@ -27,7 +32,7 @@ async function movieName() {
   // try{
   //     let result;
 
-  fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",options)
+    fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${pageNumber}`,options)
     .then((response) => response.json())
     .then((response) => {
     console.log(response);
@@ -37,21 +42,23 @@ async function movieName() {
     }).catch((err) => console.error(err));
 }
 
-movieName();
-
 function SortMovies(_movieList) {
-    moviesToLoad = document.getElementsByClassName("movieLib_IMG").length;
-    if(moviesToLoad < _movieList.results.length){
-        for (let index = 0; index < moviesToLoad; index++) {
-            document.getElementsByClassName("movieLib_IMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-            document.getElementsByClassName("movieLib_Title")[index].innerHTML = _movieList.results[index].original_title;
-            document.getElementsByClassName("movieLib_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
-        }
-    } else{
-        for (let index = 0; index < _movieList.results.length; index++) {
-            document.getElementsByClassName("movieLib_IMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-            document.getElementsByClassName("movieLib_Title")[index].innerHTML = _movieList.results[index].original_title;
-            document.getElementsByClassName("movieLib_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
-        }
+    var anchors = document.querySelectorAll('.MovieRowAnchor');
+
+    for (let index = 0; index < document.getElementsByClassName("movieLib_IMG").length; index++) {
+        document.getElementsByClassName("movieLib_IMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
+        document.getElementsByClassName("movieLib_Title")[index].innerHTML = _movieList.results[index].original_title;
+        document.getElementsByClassName("movieLib_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
+        document.getElementsByClassName("MovieRowAnchor")[index].href = '../pages/individualmovie.html';
+        document.getElementsByClassName("MovieRowAnchor")[index].title = _movieList.results[index].id;
+        console.log(document.getElementsByClassName("MovieRowAnchor")[index].title)
+        anchors[index].addEventListener('click', handler, false);
     }
 }
+
+function handler(){
+    let att = this.getAttribute("title");
+    localStorage.setItem("IndividualMovieCode", att);
+}
+
+movieName();

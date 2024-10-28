@@ -207,6 +207,18 @@ h6 {
 
 .card{
   border: none;
+  background-color: #1d1d1d;
+  color: white;
+}
+
+.heroBannerInd{
+  background-color : #000000;
+  color: white;
+}
+
+.scrollableSection{
+  background-color: #1d1d1d;
+  color: white;
 }
 
 .navbar-icons .icon img {
@@ -476,6 +488,10 @@ h6 {
 .HeroBanner{
   background-color: #2f2f2f;
   height: 500px;
+}
+
+.movieLibrary{
+  background-color: #1a1a1a;
 }
 
 @media screen and (min-width: 390px) {
