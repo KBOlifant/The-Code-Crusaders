@@ -3,6 +3,34 @@ function RetrieveMovie(){
     return MovieID;
 }
 
+//localStorage.clear();
+function AddToLocalStorage(movie){
+    if(typeof movie != "string"){
+        movie = JSON.stringify(movie);
+    }
+    return movie;
+}
+
+function GetFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
+function AddToWatchList(movie){
+    currentMovie = [];
+    currentMovie = GetFromLocalStorage("watchList");
+    if(currentMovie != null){
+        currentMovie.push(movie);
+        localStorage.setItem("watchList", AddToLocalStorage(currentMovie));
+        console.log(currentMovie);
+    }else{
+        currentMovie = [];
+        currentMovie.push(movie);
+        localStorage.setItem("watchList", AddToLocalStorage(currentMovie));
+        console.log(currentMovie);
+    }
+    
+}
+
 const options = {
     method: 'GET',
     headers: {
@@ -17,6 +45,7 @@ async function ShowCurrentMovie(ID){
         .then((response) => {
         console.log(response);
         UpdateHero(response);
+        AddToWatchList(response);
     }).catch((err) => console.error(err));
 }
 
@@ -31,17 +60,6 @@ async function ShowRecommended(ID){
     }).catch((err) => console.error(err));
 }
 
-async function ShowRelated(ID){
-    fetch(`https://api.themoviedb.org/3/movie/${ID}/alternative_titles`, options)
-    .then((response) => response.json())
-    .then((response) => {
-    console.log(response);
-    movieList = response;
-    RelateMovie(movieList);
-
-    }).catch((err) => console.error(err));
-}
-
 function RecommendMovies(_movieList){
     var anchors = document.querySelectorAll('.recommendedRowAnchor');
 
@@ -51,17 +69,12 @@ function RecommendMovies(_movieList){
         document.getElementsByClassName("Recommended_subTitle")[index].innerHTML = _movieList.results[index].release_date.substring(0, 4);
         document.getElementsByClassName("recommendedRowAnchor")[index].href = '../pages/individualmovie.html';
         document.getElementsByClassName("recommendedRowAnchor")[index].title = _movieList.results[index].id;
-        anchors[index].addEventListener('click', handler, false);
+        anchors[index].addEventListener('click', LoadToNextPage, false);
     }
-}
-
-function RelateMovie(_movieList){
-
 }
 
 ShowCurrentMovie(RetrieveMovie());
 ShowRecommended(RetrieveMovie());
-//ShowRelated(RetrieveMovie());
 
 function UpdateHero(_movie){
     document.getElementById("IndividualCover").src = `https://image.tmdb.org/t/p/original/${_movie.poster_path}`;
@@ -95,7 +108,7 @@ function WatchMovie(_movie){
     }
 }
 
-function handler(){
+function LoadToNextPage(){
     let att = this.getAttribute("title");
     localStorage.setItem("IndividualMovieCode", att);
 }

@@ -52,13 +52,31 @@ function SortMovies(_movieList) {
         document.getElementsByClassName("MovieRowAnchor")[index].href = '../pages/individualmovie.html';
         document.getElementsByClassName("MovieRowAnchor")[index].title = _movieList.results[index].id;
         console.log(document.getElementsByClassName("MovieRowAnchor")[index].title)
-        anchors[index].addEventListener('click', handler, false);
+        anchors[index].addEventListener('click', LoadToNextPage, false);
     }
 }
 
-function handler(){
+function LoadToNextPage(){
     let att = this.getAttribute("title");
     localStorage.setItem("IndividualMovieCode", att);
+}
+
+function KeywordConverter(keyword){
+    fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
+    .then((response) => response.json())
+    .then((response) => {
+    console.log(response);
+
+    }).catch((err) => console.error(err));
+}
+
+function storeInput(){
+    _userInput = document.getElementById("userInput").value;
+    if(_userInput != undefined){
+        currentInput = sessionStorage.setItem("Input", _userInput);
+        alert(currentInput);
+        console.log(currentInput);
+    }
 }
 
 movieName();
