@@ -25,6 +25,15 @@ function NextPage(){
     pageNumber++;
     movieName();
 }
+
+function PreviousPage() {
+  if (pageNumber > 1) {
+    pageNumber--;
+    movieName();
+  } else {
+    console.log("You are on the first page.");
+  }
+}
       
     
     //GetMovieNames(Movie){
