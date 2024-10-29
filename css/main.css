@@ -492,7 +492,7 @@ body {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 15px;
-  padding-left: 10px;
+  padding-left: 20px;
   text-align: left;
 }
 
@@ -517,6 +517,7 @@ body {
   */background-color: #272727;
   border-radius: 8px;
   padding: 10px;
+
 }
 
 .scrollableSection {
@@ -532,7 +533,7 @@ body {
 .Animation_HomeTitle,
 .Documentary_HomeTitle,
 .Fantasy_HomeTitle,
-.Family_HomeTitle, .movieLib_Title, .Recommended_Title {
+.Family_HomeTitle, .movieLib_Title, .Recommended_Title, .movieWatch_Title {
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
   font-weight: 700;
@@ -557,7 +558,7 @@ body {
 .Animation_Home_subTitle,
 .Documentary_Home_subTitle,
 .Fantasy_Home_subTitle,
-.Family_Home_subTitle, .movieLib_subTitle, .Recommended_subTitle {
+.Family_Home_subTitle, .movieLib_subTitle, .Recommended_subTitle, .movieWatch_subTitle {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -670,7 +671,9 @@ body {
 
 .card .card-img-top,
 .card .movieLibrary .card .card-img-top,
-.movieLibrary .card img {
+.movieLibrary .card img,
+.movieWatchlist .card .card-img-top,
+.movieWatchlist .card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -697,16 +700,6 @@ body {
   background-color: #ff8959;
 }
 
-.rowGap,
-.scrollable-row,
-.movieWatchlist .row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-
 .movieLibrary .card,
 .movieWatchlist .card,
 .scrollable-row .card {
@@ -721,19 +714,23 @@ body {
   overflow: hidden;
 }
 
+
+/* Center-align all cards within containers */
 .scrollable-row,
-.movieLibrary .row {
+.movieLibrary .row,
+.scrollableSection .row,
+.movieWatchlist .row {
   display: flex;
   justify-content: center;
-  padding: 0 5px;
-  max-width: 1200px;
-  margin-top: 10px;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 0 10px;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-.movieLibrary .btn-primary {
+.movieLibrary .movieWatchlist .btn-primary {
   width: 200px;
   padding: 10px;
   font-family: 'Nunito Sans', sans-serif;
