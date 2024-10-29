@@ -1,5 +1,4 @@
-/* Universal Styles hi*/
-* {
+* Universal Styles hi*/ * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -9,7 +8,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@400;600&display=swap');
 
 /* Headings and Paragraphs */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -70,12 +74,11 @@ h6 {
   color: #fff;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  /* Semi Bold */
   font-size: 16px;
   border: none;
   border-radius: 7px;
   height: 50px;
-  width: 146px; /* Width can vary according to style guide */
+  width: 146px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -87,7 +90,12 @@ h6 {
   background-color: #ff8959;
   color: #fff;
   transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
 }
+
 /* Navbar Styles */
 .navbar {
   background-color: #000000;
@@ -205,18 +213,12 @@ h6 {
   margin-right: 24px;
 }
 
-.card{
-  border: none;
-  background-color: #1d1d1d;
+.heroBannerInd {
+  background-color: #000000;
   color: white;
 }
 
-.heroBannerInd{
-  background-color : #000000;
-  color: white;
-}
-
-.scrollableSection{
+.scrollableSection {
   background-color: #1d1d1d;
   color: white;
 }
@@ -298,91 +300,6 @@ h6 {
   }
 }
 
-/* Card Body */
-.card-body {
-  background-color: rgba(161, 161, 161, 0.34);
-}
-
-/* Carousel Section */
-.carouselSection {
-  background-color: #343434;
-  height: auto;
-}
-
-.carousel-caption {
-  position: relative;
-  padding-left: 30px;
-}
-
-.carousel-item img {
-  object-fit: cover;
-  height: 100%;
-  padding: 20px;
-  padding-left: 50px;
-}
-
-/* Section Titles */
-.section-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  font-weight: bold;
-}
-
-/* Scrollable Section */
-.scrollable-row {
-  overflow-x: auto;
-  white-space: nowrap;
-}
-
-.scrollable-row .card {
-  display: inline-block;
-  min-width: 200px;
-  margin-right: 16px;
-}
-
-.card-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.card-subtitle {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  color: #6c757d;
-}
-
-/* Scrollable Section Styling */
-.scrollabeSection {
-  background-color: #9A9A9A;
-  height: auto;
-}
-
-/* Carousel Control Styling */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 100px;
-}
-
-/* Find Out More Section */
-.findOutMore {
-  background-image: url("../assets/placeholder.jpg");
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.findOutMoreText {
-  width: 500px;
-  font-family: 'Nunito Sans', sans-serif;
-}
-
-.centerFindMoreText {
-  text-align: center;
-  align-content: center;
-}
-
 /* Footer Styles */
 .footer {
   display: flex;
@@ -434,7 +351,7 @@ h6 {
   padding: 0 24px;
 }
 
-.heroCard{
+.heroCard {
   background-color: #2f2f2f;
 }
 
@@ -485,12 +402,12 @@ h6 {
   color: #2f2f2f;
 }
 
-.HeroBanner{
+.HeroBanner {
   background-color: #2f2f2f;
   height: 500px;
 }
 
-.movieLibrary{
+.movieLibrary {
   background-color: #1a1a1a;
 }
 
@@ -518,7 +435,358 @@ h6 {
   }
 }
 
-/* Specific image ID */
-#ClassicComedyHome {
-  height: 600px;
+
+/* Section headers - "What's New" and "Top Movies" on home page */
+.section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* "What's New" in home */
+.scrollable-row {
+  overflow-x: auto;
+  white-space: nowrap;
+  display: flex;
+  gap: 12px;
+  padding: 0 10px;
+}
+
+/* Cards within scrollable sections of "What's New" */
+.scrollable-row .card {
+  display: inline-block;
+  min-width: 200px;
+  margin-right: 16px;
+}
+
+/* Background color for scrollable sections in home and watchlist */
+.scrollableSection {
+  background-color: #9A9A9A;
+  height: auto;
+}
+
+.card-title,
+.New_HomeTitle,
+.top3Title,
+.Thriller_HomeTitle,
+.Animation_HomeTitle,
+.Documentary_HomeTitle,
+.Fantasy_HomeTitle,
+.Family_HomeTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #ffffff;
+  margin-top: 15px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  height: 3em;
+  display: flex;
+  align-items: flex-start;
+}
+
+/* All subheadings within movie cards */
+.card-subtitle,
+.New_Home_subTitle,
+.top3Subtitle,
+.Thriller_Home_subTitle,
+.Animation_Home_subTitle,
+.Documentary_Home_subTitle,
+.Fantasy_Home_subTitle,
+.Family_Home_subTitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+
+
+/* Previous and next controls for the carousel in homepage */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+}
+
+/* Background styling for "Find Out More" section in individual movie page */
+.findOutMore {
+  background-image: url("../assets/placeholder.jpg");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* "Find Out More" section in individual movie page */
+.findOutMoreText {
+  width: 500px;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+/* "Find Out More" section in individual movie page */
+.centerFindMoreText {
+  text-align: center;
+  align-content: center;
+}
+
+/* Individual movie hero banner */
+.heroBannerInd {
+  background-color: #343434;
+  padding: 40px 0;
+}
+
+.heroBannerInd h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.heroBannerInd p.lead {
+  font-size: 20px;
+  color: #9A9A9A;
+}
+
+.heroBannerInd .btn-primary {
+  background-color: #FF7038;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 40px;
+  border-radius: 7px;
+}
+
+.heroBannerInd .btn-primary:hover {
+  background-color: #ff8959;
+}
+
+.heroBannerInd .img-fluid {
+  border-radius: 8px;
+}
+
+.synopsis {
+  background-color: #f8f8f8;
+  padding: 40px 0;
+}
+
+/* Title styling for the synopsis section individual movie page */
+.synopsis h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.synopsis p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Card Container Background for the container around cards, used in homepage */
+.container {
+  background-color: #343434;
+  padding: 20px;
+  border-radius: 7px;
+  margin-bottom: 30px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+
+/* General Card Styling across all pages */
+.card {
+  width: 100%;
+  max-width: 280px;
+  position: relative;
+  background-color: #1d1d1d;
+  height: auto;
+  overflow: hidden;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Card Images */
+.card .card-img-top,
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 2px solid #ff7038;
+}
+
+.card-text {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* Primary button styling within cards */
+.card .btn-primary {
+  width: 100%;
+  padding: 10px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #ffffff;
+  background-color: #FF7038;
+  border: none;
+  border-radius: 7px;
+  text-align: center;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn-primary:hover {
+  background-color: #ff8959;
+}
+
+/* Responsive Grid for Card Sections */
+.rowGap,
+.scrollable-row,
+.movieLibrary .row,
+.movieWatchlist .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Card Centering */
+.movieLibrary .card,
+.movieWatchlist .card,
+.scrollable-row .card {
+  margin: auto;
+}
+
+/* top 3 movies section on home page */
+.scrollable-row {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 0 5px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card styles with adjusted max-width to ensure they fit side-by-side */
+#top3card {
+  flex: 1;
+  max-width: 280px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #1d1d1d;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #ffffff;
+}
+
+#top3card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Image styling within the card */
+#top3card .card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 2px solid #ff7038;
+}
+
+/* Card body for title and subtitle */
+#top3card .body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+/* Title styling */
+#top3card .top3Title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 5px 0;
+}
+
+/* Subtitle styling */
+#top3card .top3Subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .scrollable-row {
+    gap: 8px;
+  }
+
+  #top3card,
+  .scrollable-row .card,
+  .movieLibrary .card,
+  .movieWatchlist .card {
+    max-width: 240px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Enable horizontal scrolling and adjust card size on smaller screens */
+  .scrollable-row,
+  .movieLibrary .row,
+  .movieWatchlist .row {
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px;
+    padding: 0 5px;
+  }
+
+  #top3card,
+  .scrollable-row .card,
+  .movieLibrary .card,
+  .movieWatchlist .card {
+    max-width: 200px;
+    min-width: 200px;
+    height: auto;
+  }
+}
+
+@media (max-width: 576px) {
+  .scrollable-row {
+    gap: 8px;
+  }
+
+  #top3card,
+  .scrollable-row .card,
+  .movieLibrary .card,
+  .movieWatchlist .card {
+    min-width: 160px;
+    max-width: 160px;
+  }
 }

@@ -88,7 +88,7 @@
             background: rgb(0, 0, 0);
             outline: none;
         }
-
+/* 
         button {
             padding: 1rem;
             border: none;
@@ -103,7 +103,7 @@
         button:hover {
             background: #a64924;
             transform: scale(1.05);
-        }
+        } */
 
         p {
             margin-top: 1.5rem;
@@ -139,7 +139,10 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required placeholder="Create a password">
 
-            <button type="submit"><a href="home.html">Sign Up</a></button>
+<button type="submit"
+    style="padding: 1rem; border: none; border-radius: 7px; background: #FF7038; color: #ffffff; cursor: pointer; transition: background 0.3s, transform 0.2s; font-size: 16px; width: 100%; margin-top: 10px;"
+    onmouseover="this.style.background='#ff8959';" onmouseout="this.style.background='#FF7038';">Sign Up</button>
+    
             <p>Already have an account? <a href="home.html">Log in here</a></p>
         </form>
     </div>
