@@ -61,6 +61,14 @@ h6 {
   line-height: 28px;
 }
 
+body {
+  background-color: #1E1E1E;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
 /* Image Styles */
 .card-img-top {
   width: 200px;
@@ -305,18 +313,21 @@ h6 {
   display: flex;
   flex-flow: row wrap;
   padding: 30px 30px 20px;
-  color: #2f2f2f;
-  background-color: #fff;
-  border-top: 1px solid #e5e5e5;
+  color: #9A9A9A;
+  /* Text color aligned with navbar */
+  background-color: #000000;
+  /* Background color to match navbar */
+  border-top: 1px solid #333;
+  /* Adjusted for darker theme */
 }
 
-.footer>* {
-  flex: 1 100%;
-}
-
-.footer__addr {
-  margin-right: 20px;
-  margin-bottom: 32px;
+.footer__addr,
+.nav__title,
+.nav__ul a,
+.legal,
+.legal__links,
+.heart {
+  color: #9A9A9A;
 }
 
 .footer__logo {
@@ -324,91 +335,29 @@ h6 {
   font-weight: 400;
   text-transform: lowercase;
   font-size: 24px;
-}
-
-.footer__addr h2,
-.nav__title {
-  font-size: 15px;
-}
-
-.footer address {
-  font-style: normal;
-  color: #999;
+  color: #ffffff;
+  /* Footer logo color aligned with navbar */
 }
 
 .footer__btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 36px;
-  max-width: max-content;
-  background-color: rgba(33, 33, 33, 0.07);
+  background-color: rgba(255, 255, 255, 0.15);
+  /* Adjusted to match navbar theme */
+  color: #ffffff;
   border-radius: 100px;
-  color: #2f2f2f;
-  line-height: 0;
-  margin: 10px 0;
-  font-size: 16px;
-  padding: 0 24px;
 }
 
-.heroCard {
-  background-color: #2f2f2f;
+.nav__ul a:hover {
+  color: #ffffff;
+  /* Hover color aligned with navbar */
 }
 
-.footer ul {
-  list-style: none;
-  padding-left: 0;
+.legal__links a {
+  color: #9A9A9A;
 }
 
-.footer li {
-  line-height: 32px;
-}
-
-.footer a {
-  text-decoration: none;
-}
-
-.footer__nav {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.footer__nav>* {
-  flex: 1 50%;
-  margin-right: 20px;
-}
-
-.nav__ul a {
-  color: #999;
-}
-
-.nav__ul--extra {
-  column-count: 2;
-  column-gap: 20px;
-}
-
-.legal {
-  display: flex;
-  flex-wrap: wrap;
-  color: #999;
-}
-
-.legal__links {
-  display: flex;
-  align-items: center;
-}
-
-.heart {
-  color: #2f2f2f;
-}
-
-.HeroBanner {
-  background-color: #2f2f2f;
-  height: 500px;
-}
-
-.movieLibrary {
-  background-color: #1a1a1a;
+.legal__links a:hover {
+  color: #ffffff;
+  /* Hover color for legal links */
 }
 
 @media screen and (min-width: 390px) {
@@ -436,6 +385,105 @@ h6 {
 }
 
 
+
+/* Filter Bar Container */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  color: #9A9A9A;
+  font-size: 17px;
+  border-bottom: 1px solid #9A9A9A;
+}
+
+/* Filter Option */
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #9A9A9A;
+}
+
+.filter-text {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.icon-filter {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%);
+}
+
+/* View Icons */
+.icon-view-list,
+.icon-grid {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  filter: invert(100%);
+  margin-right: 10px;
+}
+
+/* Divider and Showing Results */
+.divider-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  color: #9A9A9A;
+}
+
+.divider {
+  width: 2px;
+  height: 30px;
+  background-color: #9A9A9A;
+}
+
+.showing-results {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+/* Display and Sort Options */
+.display-option,
+.sort-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.display-text,
+.sort-text {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 36px;
+  background-color: #1a1a1a;
+  border: 1px solid #9A9A9A;
+  border-radius: 4px;
+  color: #9A9A9A;
+  font-family: 'Montserrat', sans-serif;
+  cursor: pointer;
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
 /* Section headers - "What's New" and "Top Movies" on home page */
 .section-title {
   font-family: 'Montserrat', sans-serif;
@@ -443,16 +491,25 @@ h6 {
   font-weight: 700;
   color: #ffffff;
   margin-bottom: 15px;
-  text-align: center;
+  padding-left: 10px;
+  text-align: left;
 }
 
-/* "What's New" in home */
+/* Scrollable row for "What's New" */
 .scrollable-row {
+  display: flex;
   overflow-x: auto;
   white-space: nowrap;
-  display: flex;
   gap: 12px;
-  padding: 0 10px;
+  padding-left: 0;
+  /* Align with the section title on the left */
+  margin-left: 10px;
+  /* Offset to align with title */
+  margin-right: -50vw;
+  /* Make row scroll off-screen on the right */
+  width: calc(100vw + 40px);
+  /* Allow scrolling off-screen */
+  box-sizing: border-box;
 }
 
 /* Cards within scrollable sections of "What's New" */
@@ -460,12 +517,15 @@ h6 {
   display: inline-block;
   min-width: 200px;
   margin-right: 16px;
+  background-color: #272727;
+  border-radius: 8px;
+  padding: 10px;
 }
 
-/* Background color for scrollable sections in home and watchlist */
 .scrollableSection {
-  background-color: #9A9A9A;
+  background-color: #1E1E1E;
   height: auto;
+  padding-left: 10px;
 }
 
 .card-title,
@@ -508,8 +568,6 @@ h6 {
   padding-left: 10px;
 }
 
-
-/* Previous and next controls for the carousel in homepage */
 .carousel-control-prev,
 .carousel-control-next {
   width: 50px;
@@ -530,13 +588,11 @@ h6 {
   font-family: 'Nunito Sans', sans-serif;
 }
 
-/* "Find Out More" section in individual movie page */
 .centerFindMoreText {
   text-align: center;
   align-content: center;
 }
 
-/* Individual movie hero banner */
 .heroBannerInd {
   background-color: #343434;
   padding: 40px 0;
@@ -576,7 +632,6 @@ h6 {
   padding: 40px 0;
 }
 
-/* Title styling for the synopsis section individual movie page */
 .synopsis h2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 30px;
@@ -589,19 +644,13 @@ h6 {
   line-height: 1.6;
 }
 
-/* Card Container Background for the container around cards, used in homepage */
 .container {
-  background-color: #343434;
+  width: 100%;
   padding: 20px;
-  border-radius: 7px;
-  margin-bottom: 30px;
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  -ms-border-radius: 7px;
-  -o-border-radius: 7px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* General Card Styling across all pages */
 .card {
   width: 100%;
   max-width: 280px;
@@ -619,7 +668,6 @@ h6 {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
-/* Card Images */
 .card .card-img-top,
 .card img {
   width: 100%;
@@ -636,7 +684,6 @@ h6 {
   margin-top: 10px;
 }
 
-/* Primary button styling within cards */
 .card .btn-primary {
   width: 100%;
   padding: 10px;
@@ -657,7 +704,6 @@ h6 {
   background-color: #ff8959;
 }
 
-/* Responsive Grid for Card Sections */
 .rowGap,
 .scrollable-row,
 .movieLibrary .row,
@@ -668,14 +714,12 @@ h6 {
   justify-content: center;
 }
 
-/* Card Centering */
 .movieLibrary .card,
 .movieWatchlist .card,
 .scrollable-row .card {
   margin: auto;
 }
 
-/* top 3 movies section on home page */
 .scrollable-row {
   display: flex;
   gap: 6px;
@@ -685,7 +729,6 @@ h6 {
   margin: 0 auto;
 }
 
-/* Card styles with adjusted max-width to ensure they fit side-by-side */
 #top3card {
   flex: 1;
   max-width: 280px;
@@ -704,7 +747,6 @@ h6 {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
-/* Image styling within the card */
 #top3card .card-img-top {
   width: 100%;
   height: 180px;
@@ -712,7 +754,6 @@ h6 {
   border-bottom: 2px solid #ff7038;
 }
 
-/* Card body for title and subtitle */
 #top3card .body {
   padding: 10px;
   display: flex;
@@ -723,7 +764,6 @@ h6 {
   flex: 1;
 }
 
-/* Title styling */
 #top3card .top3Title {
   font-family: 'Montserrat', sans-serif;
   font-size: 18px;
@@ -732,7 +772,6 @@ h6 {
   margin: 5px 0;
 }
 
-/* Subtitle styling */
 #top3card .top3Subtitle {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
@@ -740,7 +779,6 @@ h6 {
   margin-bottom: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
   .scrollable-row {
     gap: 8px;
@@ -756,7 +794,7 @@ h6 {
 }
 
 @media (max-width: 768px) {
-  /* Enable horizontal scrolling and adjust card size on smaller screens */
+
   .scrollable-row,
   .movieLibrary .row,
   .movieWatchlist .row {
