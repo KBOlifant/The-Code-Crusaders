@@ -1,16 +1,5 @@
 pageNumber = 1;
 
-image_Buffer = [];
-
-class Movies{
-    constructor(name, row, genre, poster){
-        this.name = name;
-        this.row = document.getElementsByClassName(this.name).length;
-        this.genre = genre;
-        this.poster = poster;
-    }
-}
-
 const options = {
     method: 'GET',
     headers: {
