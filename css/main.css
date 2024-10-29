@@ -76,7 +76,7 @@ body {
   object-fit: cover;
 }
 
-/*  Button Styles */
+/* General Button Styles */
 .btn-primary {
   background-color: #FF7038;
   color: #fff;
@@ -84,24 +84,77 @@ body {
   font-weight: 600;
   font-size: 16px;
   border: none;
-  border-radius: 7px;
+  border-radius: 30px;
   height: 50px;
-  width: 146px;
+  width: 180px;
   text-transform: uppercase;
   display: flex;
   align-items: center;
   justify-content: center;
   text-wrap: nowrap;
+  padding: 10px 24px;
+  transition: all 0.3s ease;
 }
 
+/* Hover Effect */
 .btn-primary:hover {
   background-color: #ff8959;
+  color: #ffffff;
+}
+
+/* Pressed (Active) Effect */
+.btn-primary:active {
+  background-color: #ffffff5e !important;
+  color: #ffffff !important;
+}
+
+/* Specific Carousel Button Styling */
+.carousel-caption .btn-primary {
+  background-color: #FF7038;
   color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  width: 180px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-wrap: nowrap;
+  padding: 10px 24px;
   transition: all 0.3s ease;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
+}
+
+/* Hover Effect for Carousel Button */
+.carousel-caption .btn-primary:hover {
+  background-color: #ff8959;
+  color: #ffffff;
+}
+
+/* Pressed (Active) Effect for Carousel Button */
+.carousel-caption .btn-primary:active {
+  background-color: #ffffff5e !important;
+  color: #ffffff !important;
+}
+
+/* Button container on Discover page */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.movieLibrary .btn-primary {
+  /* width: 250px; */
+  min-width: 180px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
 }
 
 /* Navbar Styles */
@@ -730,24 +783,6 @@ body {
   margin: 0 auto;
 }
 
-.movieLibrary .movieWatchlist .btn-primary {
-  width: 200px;
-  padding: 10px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: #FF7038;
-  border: none;
-  border-radius: 7px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.movieLibrary .btn-primary:hover {
-  background-color: #ff8959;
-}
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
@@ -799,4 +834,93 @@ body {
     min-width: 160px;
     max-width: 160px;
   }
+}
+
+/* Carousel on Home Page */
+
+/* Carousel Section */
+.carouselSection {
+  background-color: #000000;
+  /* Set carousel background to black */
+  padding: 50px 0;
+  /* Increase height with padding */
+  height: auto;
+}
+
+/* Carousel Item Styling */
+.carousel-item {
+  height: 500px;
+  /* Increase the height of the carousel items */
+}
+
+/* Carousel Control Styling */
+.carousel-control-prev,
+.carousel-control-next {
+  width: 100px;
+}
+
+/* Carousel Caption Styling */
+.carousel-caption {
+  position: relative;
+  padding-left: 30px;
+  color: #ffffff;
+  /* White text color for captions */
+}
+
+/* Carousel Headings */
+.carousel-caption h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  /* Adjust heading size as needed */
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+/* Carousel Subheadings */
+.carousel-caption p {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  /* Adjust subheading size as needed */
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+/* Carousel Button Styling
+.carousel-caption .btn-primary {
+    background-color: #FF7038;
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      height: 50px;
+      width: 180px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-wrap: nowrap;
+      padding: 10px 24px;
+      transition: all 0.3s ease;-
+}
+
+.carousel-caption .btn-primary:hover {
+background-color: #ff8959;
+  color: #ffffff;
+}
+
+.carousel-caption .btn-primary:active {
+  background-color: #ffffff5e !important;
+  color: #ffffff !important;
+} */
+
+/* Carousel Image Styling */
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  padding-left: 50px;
 }
