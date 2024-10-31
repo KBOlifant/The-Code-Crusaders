@@ -1,3 +1,5 @@
+let currentMovie_JSON;
+
 function RetrieveMovie(){
     let MovieID = localStorage.getItem("IndividualMovieCode");
     return MovieID;
@@ -18,7 +20,15 @@ function GetFromLocalStorage(key) {
 function AddToWatchList(movie){
     currentMovie = [];
     currentMovie = GetFromLocalStorage("watchList");
+
     if(currentMovie != null){
+        
+        for (let index = 0; index < currentMovie.length; index++) {
+            if(currentMovie[index].id == movie.id){
+                return
+            }
+        }
+        
         currentMovie.push(movie);
         localStorage.setItem("watchList", AddToLocalStorage(currentMovie));
         console.log(currentMovie);
@@ -29,6 +39,10 @@ function AddToWatchList(movie){
         console.log(currentMovie);
     }
     
+}
+
+function StoreMovieToWatchList(){
+    AddToWatchList(currentMovie_JSON)
 }
 
 const options = {
@@ -45,7 +59,7 @@ async function ShowCurrentMovie(ID){
         .then((response) => {
         console.log(response);
         UpdateHero(response);
-        AddToWatchList(response);
+        currentMovie_JSON = response;
     }).catch((err) => console.error(err));
 }
 
@@ -67,7 +81,7 @@ function RecommendMovies(_movieList){
         document.getElementsByClassName("Recommended_IMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
         document.getElementsByClassName("Recommended_Title")[index].innerHTML = _movieList.results[index].title;
         document.getElementsByClassName("Recommended_subTitle")[index].innerHTML = _movieList.results[index].release_date.substring(0, 4);
-        document.getElementsByClassName("recommendedRowAnchor")[index].href = '../pages/individualmovie.html';
+        document.getElementsByClassName("recommendedRowAnchor")[index].href = "../pages/individualmovie.html";
         document.getElementsByClassName("recommendedRowAnchor")[index].title = _movieList.results[index].id;
         anchors[index].addEventListener('click', LoadToNextPage, false);
     }

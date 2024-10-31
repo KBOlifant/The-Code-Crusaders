@@ -1,11 +1,13 @@
 pageNumber = 1;
+
+//needed for when we need to display month of movie release
 months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 //to store list of genres available by API
 let GenreList = [];
+
 //movie List from API
 let movieList;
-
-pageNumber = 1;
 
 //API Key
 const options = {
@@ -22,7 +24,6 @@ async function GetNewMovies() {
     fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
         .then((response) => response.json())
         .then((response) => {
-        console.log(response);
         movieList = response;
         SortMovies(movieList, "New");
     }).catch((err) => console.error(err));

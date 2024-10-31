@@ -52,6 +52,7 @@ async function InitializeMovieGenres(_genreList){
     UpdateMovies("Fantasy");
     UpdateMovies("Family");
     UpdateMovies("Documentary")
+    UpdateMovies("Adventure")
 }).catch((err) => console.error(err));
 }
 
@@ -63,24 +64,30 @@ InitializeMovieGenres(GenreList);
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
     moviesToLoad = document.getElementsByClassName(keyword+"_HomeIMG").length;
-    var anchors = document.querySelectorAll(`.${keyword}RowAnchor`);
+    let out = '';
     if(moviesToLoad < _movieList.results.length){
+        
+        let temp = '';
         for (let index = 0; index < moviesToLoad; index++) {
-            document.getElementsByClassName(keyword+"_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-            document.getElementsByClassName(keyword+"_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
             _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
-            document.getElementsByClassName(keyword+"_Home_subTitle")[index].innerHTML = `${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}`;
-            document.getElementsByClassName(`${keyword}RowAnchor`)[index].title = _movieList.results[index].id;
-            document.getElementsByClassName(`${keyword}RowAnchor`)[index].href = '../pages/individualmovie.html';
-            anchors[index].addEventListener('click', LoadToNextPage, false);
-        }
-    } else{
-        for (let index = 0; index < _movieList.results.length; index++) {
-            document.getElementsByClassName(keyword+"_HomeIMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-            document.getElementsByClassName(keyword+"_HomeTitle")[index].innerHTML = _movieList.results[index].original_title;
-            document.getElementsByClassName(keyword+"_Home_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
+
+            temp =  `
+                <div class="card">
+                    <a class="${keyword}RowAnchor" href='../pages/individualmovie.html' title='${_movieList.results[index].id}' onclick="LoadToNextPage(${_movieList.results[index].id})">
+                        <img class="card-img-top ${keyword}_HomeIMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title ${keyword}_HomeTitle">${_movieList.results[index].original_title}</h6>
+                        <p class="${keyword}_Home_subTitle">${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}</p>
+                    </div>
+                </div>
+            `
+            out += temp;
         }
     }
+
+    document.getElementById(`${keyword}_Row`).innerHTML = out;
+    //console.log(out);
 }
 
 //Getting the genre list from the API
@@ -91,8 +98,7 @@ function SortGenres(_genreCodeList, _GenreArray){
 }
 
 //saving the movie code into local storage
-function LoadToNextPage(){
-    let att = this.getAttribute("title");
-    console.log(att);
-    localStorage.setItem("IndividualMovieCode", att);
+function LoadToNextPage(movie_API_Id){
+    console.log(movie_API_Id);
+    localStorage.setItem("IndividualMovieCode", movie_API_Id);
 }
