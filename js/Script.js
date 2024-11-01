@@ -100,6 +100,46 @@ async function DiscoverMovies(Section) {
     }).catch((err) => console.error(err));
 }
 
+async function ApplyFilters(Section, rating_Filter, year_Filter){
+    console.log();
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc&vote_average.lte=${document.getElementById(rating_Filter).value}`, options)
+    .then((response) => response.json())
+    .then((response) => {
+    console.log(response);
+    movieList = response;
+    SortMovies(movieList, Section);
+
+    }).catch((err) => console.error(err));
+}
+
+async function IndividualBanner(tag_ID, ID)
+    {
+        for (let index = 0; index < tag_ID.length; index++) {
+            let _movie;
+            let out = "";
+            fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
+            .then((response) => response.json())
+            .then((response) => {
+                _movie = response;
+    
+                out = `
+                    <div class="centerFindMoreText">
+                        <div class="text-center middleText">
+                            <h2>${_movie.title}</h2>
+                            <p>${_movie.tagline}</p>
+                            <button type="button" class="btn btn-primary">Find out more</button>
+                        </div>
+                    </div>
+                `;
+    
+                document.getElementById(tag_ID[index]).innerHTML = out;
+                document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
+                
+    
+        }).catch((err) => console.error(err));
+        }
+}
+
 async function LoadByID(ID){
     for (let index = 0; index < ID.length; index++) {
         let _movie;
