@@ -131,12 +131,17 @@
     </div>
   </section>
 
-
+//create a row, feed 4 movies into it, then create another row. 
 <section class="movieWatchlist">
   <div class="container py-4">
-    <div class="rowGap mb-4">
-      <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4 watchListDynamic">
+    <div id="movieWatchlist"> 
+      //all the cards get written in here
+      //for loop that runs the lenght of the favorites array, first create a counter, set it to 4, then if the counter is 0, set counter to 4 (so it must create a new row when the row if full) -  if counter is 4, and then it will create a div, with the class row, so line 142. and then also add the html for the actual card. Then it goes to counter -1. First else will be when the counter is 3, 2 or 1, it is going to just create a card and have counter -1 again. (so dont create a new rew) The else for when it is 0 (the first if), after we closed if, it will reset the counter back to 4 (create a new row again)
 
+    </div>
+    
+    <!-- <div class="rowGap mb-4">
+      <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
         <div class="card" id="cardGap">
           <a class="MovieRowAnchor">
             <img class="card-img-top movieWatch_IMG" alt="Thumbnail">
@@ -146,10 +151,13 @@
             <h6 class="movieWatch_subTitle">Sub title</h6>
           </div>
         </div>
-
-      </div>
-      <a href="#" class="btn btn-primary" onclick="clearWatchList()">Clear Watchlist</a>
-    </div>
+  
+            <div class="button-container">
+              <a href="#" class="btn btn-primary" onclick="PreviousPage()">Previous Page</a>
+              <a href="#" class="btn btn-primary" onclick="NextPage()">Next Page</a>
+            </div>
+            
+</div> -->
   </div>
 </section>
 
