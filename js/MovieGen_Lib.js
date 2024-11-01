@@ -51,6 +51,8 @@ async function movieName() {
     }).catch((err) => console.error(err));
 }
 
+//use _movieList for the search bar, run if statement in a for / for each loop for movie title, if it finds it, it will open 
+
 function SortMovies(_movieList) {
     var anchors = document.querySelectorAll('.MovieRowAnchor');
 
@@ -71,3 +73,6 @@ function handler(){
 }
 
 movieName();
+
+
+// for the bookmarks - create an empty array at the start, when the user clicks the save button on ind movie page, that object then gets pushed into the favourites array. Then, the same way you fed the info in library page, you will fav array into the watchlist page. You need to dynamically create the objects. Forloop runs the leght of the fav array and it will write the HTML and the info it will get is with the ${}. x

@@ -774,7 +774,7 @@ body {
 .scrollableSection .row,
 .movieWatchlist .row {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
