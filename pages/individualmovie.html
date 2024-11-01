@@ -1,14 +1,15 @@
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Featured Movie</title>
-  <meta name="description" content="Your ultimate destination for cinematic experiences.">
-  <meta name="keywords"
-    content="movies, streaming, cinema, thrillers, comedies, documentaries, fantasy, action, drama, online movies, film collection">
-  <meta name="Code Crusaders" content="Movie Hub Team">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Individual Movie</title>
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, Bootstrap, Template"
+    />
+    <meta name="author" content="Name, Surname, Student Number" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
@@ -75,7 +76,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="home.html">
+                <a class="nav-link" aria-current="page" href="home.html">
                   <img
                     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhvdXNlIj48cGF0aCBkPSJNMTUgMjF2LThhMSAxIDAgMCAwLTEtMWgtNGExIDEgMCAwIDAtMSAxdjgiLz48cGF0aCBkPSJNMyAxMGEyIDIgMCAwIDEgLjcwOS0xLjUyOGw3LTUuOTk5YTIgMiAwIDAgMSAyLjU4MiAwbDcgNS45OTlBMiAyIDAgMCAxIDIxIDEwdjlhMiAyIDAgMCAxLTIgMkg1YTIgMiAwIDAgMS0yLTJ6Ii8+PC9zdmc+"
                     alt="Home Icon"
@@ -143,19 +144,16 @@
     </header>
 
     <!-- Hero Section with individ movie info -->
-    <section class="heroBannerInd py-5">
-      <div class="container">
-        <div class="row align-items-center">
+    <section class="heroBannerInd py-5" id="heroBanID">
+      <div class="container" id="heroCover">
+        <div class="row align-items-center" id="Hero_Info">
+
           <div class="col-md-4">
             <a id="imdb_movie">
-              <img
-                src="../assets/moviePosterPlaceholder.png"
-                class="img-fluid cover"
-                alt="Movie Poster"
-                id="IndividualCover"
-              />
+              <img src="../assets/moviePosterPlaceholder.png" class="img-fluid cover" alt="Movie Poster" id="IndividualCover">
             </a>
           </div>
+          
           <div class="col-md-8">
             <h1 class="display-4" id="IndividualTitle">Movie Title</h1>
             <p class="lead" id="IndividualInfoLine">
@@ -166,15 +164,21 @@
               viverra pharetra nulla, non viverra massa. Ut bibendum non metus
               sed consectetur.
             </p>
-              <div class="buttonContainerIndMovie">
-                <a id="watchButton" href="#">
-                  <button type="button" class="btn-primary">Watch Now</button>
-                </a>
-                <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                  <button type="button" class="btn-primary">Add to Watchlist</button>
-                </a>
-              </div>
+
+            <div class="buttonContainerIndMovie">
+              <a id="watchButton" href="#">
+                <button type="button" class="btn-primary">Watch Now</button>
+              </a>
+              <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
+                <button type="button" class="btn-primary">Add to Watchlist</button>
+              </a>
+            </div>
           </div>
+
+          <div class="d-flex align-items-center">
+            
+          </div>
+
         </div>
       </div>
     </section>
@@ -184,7 +188,120 @@
       <div class="container py-4">
         <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4"></div>
           <h2 class="section-title">Related Movies</h2>
-          <div class="scrollable-row pt-2">
+          <div class="scrollable-row pt-2" id="Recommended_Row">
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
             <div class="card">
               <a class="recommendedRowAnchor">
                 <img
@@ -245,7 +362,7 @@
       </div>
     </section>
 
-    <!-- recommended movies section -->
+    <!-- recommended movies section 
     <section class="scrollableSection">
       <div class="container py-4">
         <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4"></div>
@@ -345,7 +462,7 @@
         </div>
       </div>
     </section>
-
+    -->
     <!-- Review Section -->
     <section class="reviews py-5 bg-light">
       <div class="container">
@@ -439,6 +556,8 @@
       </div>
     </footer>
 
-    <script src="../js/Script.js"></script>
+  <script src="../js/Script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../jq_plugins/average-color-image/average-color-image/psColor.js"></script>
   </body>
 </html>
