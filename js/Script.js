@@ -329,7 +329,7 @@ function UpdateHero(_movie){
             <h1 class="display-4" id="IndividualTitle">${_movie.title}</h1>
             
             <p class="lead" id="IndividualInfoLine">
-                ${_genre} | ${_year} | ${_duration} mins | ${_age_rating}
+                ${_genre} | ${_year} | ${_duration} mins | ${_movie.vote_average}
             </p>
 
             <p id="Individual_Desc">
