@@ -69,6 +69,12 @@ body {
   color: #ffffff;
 }
 
+/* Style for making bookmark and share icons white */
+img.lucide-share,
+img.lucide-bookmark {
+  filter: invert(100%);
+}
+
 /* Image Styles */
 .card-img-top {
   width: 200px;
