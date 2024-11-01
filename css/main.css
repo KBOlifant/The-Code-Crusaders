@@ -1032,3 +1032,23 @@ background-color: #ff8959;
   padding-left: 15px;
   padding-right: 15px;
 }
+
+/* movie watchlist cards x button */
+
+.card {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.close-btn img {
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+  text-decoration: none;
+}
