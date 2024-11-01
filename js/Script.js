@@ -150,6 +150,8 @@ function SortMovies(_movieList, keyword) {
             `
             out += temp;
         }
+
+        console.log(moviesToLoad);
     }
 
     //setting the Row to expected results using DOM manipulation
