@@ -99,7 +99,7 @@ async function DiscoverMovies(Section) {
 
     }).catch((err) => console.error(err));
 }
-
+//change
 //calling the functions
 //GetNewMovies();
 
