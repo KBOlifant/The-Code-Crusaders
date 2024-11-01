@@ -10,7 +10,7 @@ function LoadMovieList(){
   let watchList = "";
   for (let index = 0; index < movieItems.length; index++) {
       let out =`
-      <div class="card" style="position: relative; width: 200px; id="cardGap">
+      <div class="card" id="cardGap">
       
           <div class="close-btn" onclick="removeFromWatchlist(${movieItems[index].id})">
             <img

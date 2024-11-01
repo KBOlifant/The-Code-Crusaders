@@ -134,6 +134,30 @@ function InitializeHomeGenres(){
     InitializeMovieGenres(GenreList);
 }
 
+async function InitializeLibraryGenres(_genreList){
+    fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
+    .then((response) => response.json())
+    .then((response) => {
+    SortGenres(response, _genreList);
+    console.log(GenreList);
+    let out = "";
+    let temp = "";
+    for (let index = 0; index < GenreList.length; index++) {
+        temp = `
+            <option value="">${GenreList[index][0]}</option>
+        `
+        out += temp;
+    }
+
+    document.getElementById("genreFilter").innerHTML = out;
+    }).catch((err) => console.error(err));
+}
+
+function SetGenres(){
+    InitializeLibraryGenres(GenreList)
+}
+
+
 function WatchMovie(_movie){
     if(ID != null){
         window.open(`https://www.imdb.com/title/${_movie.imdb_id}/`);
@@ -271,32 +295,8 @@ function AddToWatchList(movie){
     
 }
 
-async function IndividualBanner(tag_ID, ID)
-    {
-        for (let index = 0; index < tag_ID.length; index++) {
-            let _movie;
-            let out = "";
-            fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
-            .then((response) => response.json())
-            .then((response) => {
-                _movie = response;
-    
-                out = `
-                    <div class="centerFindMoreText">
-                        <div class="text-center middleText">
-                            <h2>${_movie.title}</h2>
-                            <p>${_movie.tagline}</p>
-                            <button type="button" class="btn btn-primary">Find out more</button>
-                        </div>
-                    </div>
-                `;
-    
-                document.getElementById(tag_ID[index]).innerHTML = out;
-                document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
-                
-    
-        }).catch((err) => console.error(err));
-        }
+function GenerateGenreCode(Genre){
+
 }
 
 //update the hero section of individual movie html
@@ -331,7 +331,7 @@ function UpdateHero(_movie){
             <h1 class="display-4" id="IndividualTitle">${_movie.title}</h1>
             
             <p class="lead" id="IndividualInfoLine">
-                ${_genre} | ${_year} | ${_duration} mins | ${_age_rating}
+                ${_genre} | ${_year} | ${_duration} mins | ${_movie.vote_average}
             </p>
 
             <p id="Individual_Desc">

@@ -19,7 +19,7 @@
 </head>
 
 
-<body onload="DiscoverMovies('library')">
+<body onload="DiscoverMovies('library'), SetGenres()">
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -146,6 +146,40 @@
 
 <section class="movieLibrary">
   <div class="container py-4">
+
+    <!-- Filter Bar -->
+    <section class="filter-bar">
+      <div class="filter-option">
+        <label for="genreFilter">Genre:</label>
+        <select id="genreFilter" class="form-select">
+          <option value="">All</option>
+          <!-- Dynamic Genre Options -->
+        </select>
+      </div>
+    
+      <div class="filter-option">
+        <label for="yearFilter">Year:</label>
+        <input class="form-control search-input" id="yearInput" type="number" min="1900" max="2024" step="1" placeholder="Year" aria-label="Search">
+          
+          <!-- Dynamic Year Options -->
+        </select>
+      </div>
+    
+      <div class="filter-option">
+        <label for="ratingFilter">IMDb Rating:</label>
+        <select id="ratingFilter" class="form-select">
+          <option value="">All</option>
+          <option value="9">9+</option>
+          <option value="8">8+</option>
+          <option value="7">7+</option>
+          <option value="6">6+</option>
+          <option value="5">5+</option>
+        </select>
+      </div>
+    
+      <button type="button" class="filter-btn" onclick="ApplyFilters('library', 'ratingFilter', 'yearInput')">Filter</button>
+    </section>
+
     <div class="rowGap mb-4">
         <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="library_Row">
 
