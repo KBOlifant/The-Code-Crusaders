@@ -100,8 +100,10 @@ img.lucide-bookmark {
   text-wrap: nowrap;
   padding: 10px 24px;
   transition: all 0.3s ease;
-  text-decoration: none;
+  text-decoration: none !important;
 }
+
+
 
 /* Hover Effect */
 .btn-primary:hover {
@@ -281,10 +283,10 @@ img.lucide-bookmark {
   margin-right: 24px;
 }
 
-.heroBannerInd {
+/* .heroBannerInd {
   background-color: #000000;
   color: white;
-}
+} */
 
 .scrollableSection {
   background-color: #1d1d1d;
@@ -654,10 +656,10 @@ img.lucide-bookmark {
   align-content: center;
 }
 
-.heroBannerInd {
+/* .heroBannerInd {
   background-color: #343434;
   padding: 40px 0;
-}
+} */
 
 .heroBannerInd h1 {
   font-family: 'Montserrat', sans-serif;
@@ -669,15 +671,6 @@ img.lucide-bookmark {
 .heroBannerInd p.lead {
   font-size: 20px;
   color: #9A9A9A;
-}
-
-.heroBannerInd .btn-primary {
-  background-color: #FF7038;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 10px 40px;
-  border-radius: 7px;
 }
 
 .heroBannerInd .btn-primary:hover {
@@ -970,8 +963,63 @@ background-color: #ff8959;
   display: flex;
   gap: 30px;
   align-items: center;
+  text-decoration: none;
 }
 
-.btn-primary {
-  text-decoration: none !important;
+/* Movie banner background on Ind movie page */
+.heroBannerInd {
+  position: relative;
+  background-color: #000000;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  padding: 40px 0;
+  color: white;
+}
+
+.heroBannerInd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); //60% opacity on movie banner
+  z-index: 1;
+}
+
+.heroBannerInd .container {
+  position: relative;
+  z-index: 2;
+}
+
+#Hero_Info .col-md-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+#IndividualTitle {
+  margin-top: -20px;
+}
+
+.movieDescription {
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.lead{
+  margin-bottom: 40px;
+  margin-top: 3px;
+}
+
+.buttonContainerIndMovie {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#IndividualCover {
+  margin-left: 30px;
 }
