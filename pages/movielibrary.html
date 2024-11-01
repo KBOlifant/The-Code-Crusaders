@@ -19,7 +19,7 @@
 </head>
 
 
-<body>
+<body onload="DiscoverMovies('library')">
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -144,14 +144,14 @@
 
   <section class="filterSection"></section>
 
-  <section class="movieLibrary">
-    <div class="container py-4">
-      <div class="rowGap mb-4">
-        <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+<section class="movieLibrary">
+  <div class="container py-4">
+    <div class="rowGap mb-4">
+        <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="library_Row">
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -162,7 +162,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -173,7 +173,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -184,7 +184,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -195,7 +195,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -206,7 +206,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -217,7 +217,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -228,7 +228,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -239,7 +239,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -250,7 +250,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -261,7 +261,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -272,7 +272,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -283,7 +283,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -294,7 +294,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -305,7 +305,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -316,7 +316,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -327,7 +327,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -338,7 +338,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -349,7 +349,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -360,7 +360,7 @@
 
           <div class="card" id="cardGap">
             <a class="MovieRowAnchor">
-              <img class="card-img-top movieLib_IMG" alt="Thumbnail">
+              <img class="card-img-top library_IMG" alt="Thumbnail">
             </a>
             <div class="body">
               <h5 class="title movieLib_Title">Title</h5>
@@ -372,12 +372,10 @@
             <a href="#" class="btn btn-primary" onclick="PreviousPage()">Previous Page</a>
             <a href="#" class="btn btn-primary" onclick="NextPage()">Next Page</a>
           </div>
-                
-        </div>
-
-      </div>
-    </div>
-  </section>
+            <a href="#" class="btn btn-primary" onclick="NextPage('library')">Next Page</a>
+          </div>
+          </div>
+          </section>
 
 
   <section class="carouselSection">
@@ -465,7 +463,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-  <script src="../js/MovieGen_Lib.js"></script>
+  <script src="../js/Script.js"></script>
 </body>
 
 </html>

@@ -35,7 +35,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body onload="InitializeHomeGenres(), GetNewMovies(), IndividualBanner(['home_ban1', 'home_ban2'], [550, 677179])">
 
     <header>
         <nav class="navbar navbar-expand-lg">
@@ -149,7 +149,7 @@
                             <div class="carousel-caption text-start">
                                 <h1>True Stories, Untold</h1>
                                 <p>Revealing the powerful, inspiring, and sometimes chilling truths behind reality.</p>
-                                                                <a href="#" class="btn btn-primary">Explore More</a>
+                                <a href="#" class="btn btn-primary">Explore More</a>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -193,170 +193,154 @@
         </div>
     </section>
 
-    <section class="scrollableSection">
-        <div class="container py-4">
-            <h2 class="section-title">What's New</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
-                <div class="col">
+<section class="scrollableSection">
+    <div class="container py-4">
+        <h2 class="section-title">What's New</h2>
+        <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="col" id="New_Row">
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
-                    <div class="card">
-                        <a class="NewRowAnchor">
-                            <img class="card-img-top New_HomeIMG" alt="Thumbnail">
-                        </a>
-                        <div class="card-body">
-                            <h6 class="title New_HomeTitle">Title</h6>
-                            <p class="New_Home_subTitle">Subtitle</p>
-                        </div>
+                <div class="card">
+                    <a class="NewRowAnchor">
+                        <img class="card-img-top New_IMG" alt="Thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h6 class="title New_HomeTitle">Title</h6>
+                        <p class="New_Home_subTitle">Subtitle</p>
                     </div>
 
 
@@ -405,7 +389,7 @@
     </section>
 
 
-    <section class="findOutMore">
+    <section class="findOutMore" id="home_ban1">
         <div class="centerFindMoreText">
             <div class="text-center middleText">
                 <h2>Heading</h2>
@@ -418,46 +402,47 @@
 
     <section class="scrollabeSection">
         <div class="container py-4">
-            <h2 class="section-title">On the edge of your seat</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+                <h2 class="section-title">On the edge of your seat</h2>
+                <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="Thriller_Row">
 
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="ThrillerRowAnchor">
+                            <img class="card-img-top Thriller_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Thriller_HomeTitle">Title</h6>
+                            <p class="Thriller_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    
+                    <div class="card">
+                        <a class="ThrillerRowAnchor">
+                            <img class="card-img-top Thriller_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Thriller_HomeTitle">Title</h6>
+                            <p class="Thriller_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="ThrillerRowAnchor">
+                            <img class="card-img-top Thriller_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Thriller_HomeTitle">Title</h6>
+                            <p class="Thriller_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="ThrillerRowAnchor">
+                            <img class="card-img-top Thriller_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Thriller_HomeTitle">Title</h6>
+                            <p class="Thriller_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -466,45 +451,46 @@
 
         <div class="container py-4">
             <h2 class="section-title">Tissues recommended</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="Animation_Row">
 
-                <div class="card">
-                    <a class="AnimationRowAnchor">
-                        <img class="card-img-top Animation_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Animation_HomeTitle">Title</h6>
-                        <p class="Animation_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="AnimationRowAnchor">
+                            <img class="card-img-top Animation_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Animation_HomeTitle">Title</h6>
+                            <p class="Animation_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
-
-                <div id="cardGap" class="card">
-                    <a class="AnimationRowAnchor">
-                        <img class="card-img-top Animation_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Animation_HomeTitle">Title</h6>
-                        <p class="Animation_Home_subTitle">Sub title</p>
+                    
+                    <div id="cardGap" class="card">
+                        <a class="AnimationRowAnchor">
+                            <img class="card-img-top Animation_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Animation_HomeTitle">Title</h6>
+                            <p class="Animation_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div id="cardGap" class="card">
-                    <a class="AnimationRowAnchor">
-                        <img class="card-img-top Animation_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Animation_HomeTitle">Title</h6>
-                        <p class="Animation_Home_subTitle">Sub title</p>
+                    <div id="cardGap" class="card">
+                        <a class="AnimationRowAnchor">
+                            <img class="card-img-top Animation_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Animation_HomeTitle">Title</h6>
+                            <p class="Animation_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div id="cardGap" class="card">
-                    <a class="AnimationRowAnchor">
-                        <img class="card-img-top Animation_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Animation_HomeTitle">Title</h6>
-                        <p class="Animation_Home_subTitle">Sub title</p>
+                    <div id="cardGap" class="card">
+                        <a class="AnimationRowAnchor">
+                            <img class="card-img-top Animation_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Animation_HomeTitle">Title</h6>
+                            <p class="Animation_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -513,45 +499,46 @@
 
         <div class="container py-4">
             <h2 class="section-title">Lights off, Heart racing</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="Adventure_Row">
 
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="AdventureRowAnchor">
+                            <img class="card-img-top Adventure_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Adventure_HomeTitle">Title</h6>
+                            <p class="Adventure_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    
+                    <div class="card">
+                        <a class="AdventureRowAnchor">
+                            <img class="card-img-top Adventure_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Adventure_HomeTitle">Title</h6>
+                            <p class="Adventure_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="AdventureRowAnchor">
+                            <img class="card-img-top Adventure_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Adventure_HomeTitle">Title</h6>
+                            <p class="Adventure_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="ThrillerRowAnchor">
-                        <img class="card-img-top Thriller_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Thriller_HomeTitle">Title</h6>
-                        <p class="Thriller_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="AdventureRowAnchor">
+                            <img class="card-img-top Adventure_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Adventure_HomeTitle">Title</h6>
+                            <p class="Adventure_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -559,7 +546,7 @@
         </div>
     </section>
 
-    <section class="findOutMore">
+    <section class="findOutMore" id="home_ban2">
         <div class="d-flex justify-content-end d-flex align-items-end text-end centerFindMoreText px-5">
             <div class="middleText">
                 <h2>Heading</h2>
@@ -574,45 +561,46 @@
 
         <div class="container py-4">
             <h2 class="section-title">True Stories, Real Impact</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="Documentary_Row">
 
-                <div class="card">
-                    <a class="DocumentaryRowAnchor">
-                        <img class="card-img-top Documentary_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Documentary_HomeTitle">Title</h6>
-                        <p class="Documentary_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="DocumentaryRowAnchor">
+                            <img class="card-img-top Documentary_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Documentary_HomeTitle">Title</h6>
+                            <p class="Documentary_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <a class="DocumentaryRowAnchor">
-                        <img class="card-img-top Documentary_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Documentary_HomeTitle">Title</h6>
-                        <p class="Documentary_Home_subTitle">Sub title</p>
+                    
+                    <div class="card">
+                        <a class="DocumentaryRowAnchor">
+                            <img class="card-img-top Documentary_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Documentary_HomeTitle">Title</h6>
+                            <p class="Documentary_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="DocumentaryRowAnchor">
-                        <img class="card-img-top Documentary_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Documentary_HomeTitle">Title</h6>
-                        <p class="Documentary_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="DocumentaryRowAnchor">
+                            <img class="card-img-top Documentary_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Documentary_HomeTitle">Title</h6>
+                            <p class="Documentary_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="DocumentaryRowAnchor">
-                        <img class="card-img-top Documentary_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Documentary_HomeTitle">Title</h6>
-                        <p class="Documentary_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="DocumentaryRowAnchor">
+                            <img class="card-img-top Documentary_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Documentary_HomeTitle">Title</h6>
+                            <p class="Documentary_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -622,45 +610,46 @@
 
         <div class="container py-4">
             <h2 class="section-title">Out of this world</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="Fantasy_Row">
 
-                <div class="card">
-                    <a class="FantasyRowAnchor">
-                        <img class="card-img-top Fantasy_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Fantasy_HomeTitle">Title</h6>
-                        <p class="Fantasy_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="FantasyRowAnchor">
+                            <img class="card-img-top Fantasy_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Fantasy_HomeTitle">Title</h6>
+                            <p class="Fantasy_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <a class="FantasyRowAnchor">
-                        <img class="card-img-top Fantasy_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Fantasy_HomeTitle">Title</h6>
-                        <p class="Fantasy_Home_subTitle">Sub title</p>
+                    
+                    <div class="card">
+                        <a class="FantasyRowAnchor">
+                            <img class="card-img-top Fantasy_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Fantasy_HomeTitle">Title</h6>
+                            <p class="Fantasy_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="FantasyRowAnchor">
-                        <img class="card-img-top Fantasy_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Fantasy_HomeTitle">Title</h6>
-                        <p class="Fantasy_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="FantasyRowAnchor">
+                            <img class="card-img-top Fantasy_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Fantasy_HomeTitle">Title</h6>
+                            <p class="Fantasy_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="FantasyRowAnchor">
-                        <img class="card-img-top Fantasy_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Fantasy_HomeTitle">Title</h6>
-                        <p class="Fantasy_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="FantasyRowAnchor">
+                            <img class="card-img-top Fantasy_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Fantasy_HomeTitle">Title</h6>
+                            <p class="Fantasy_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -669,47 +658,48 @@
 
 
 
-        <div class="container py-4">
-            <h2 class="section-title">For the entire family</h2>
-            <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+<div class="container py-4">
+    <h2 class="section-title">For the entire family</h2>
+    <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="Family_Row">
 
-                <div class="card">
-                    <a class="FamilyRowAnchor">
-                        <img class="card-img-top Family_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Family_HomeTitle">Title</h6>
-                        <p class="Family_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="FamilyRowAnchor">
+                            <img class="card-img-top Family_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Family_HomeTitle">Title</h6>
+                            <p class="Family_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <a class="FamilyRowAnchor">
-                        <img class="card-img-top Family_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Family_HomeTitle">Title</h6>
-                        <p class="Family_Home_subTitle">Sub title</p>
+                    
+                    <div class="card">
+                        <a class="FamilyRowAnchor">
+                            <img class="card-img-top Family_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Family_HomeTitle">Title</h6>
+                            <p class="Family_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="FamilyRowAnchor">
-                        <img class="card-img-top Family_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Family_HomeTitle">Title</h6>
-                        <p class="Family_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="FamilyRowAnchor">
+                            <img class="card-img-top Family_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Family_HomeTitle">Title</h6>
+                            <p class="Family_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
-                </div>
 
-                <div class="card">
-                    <a class="FamilyRowAnchor">
-                        <img class="card-img-top Family_HomeIMG" alt="Thumbnail">
-                    </a>
-                    <div class="body">
-                        <h6 class="title Family_HomeTitle">Title</h6>
-                        <p class="Family_Home_subTitle">Sub title</p>
+                    <div class="card">
+                        <a class="FamilyRowAnchor">
+                            <img class="card-img-top Family_IMG" alt="Thumbnail">
+                        </a>
+                        <div class="body">
+                            <h6 class="title Family_HomeTitle">Title</h6>
+                            <p class="Family_Home_subTitle">Sub title</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -769,11 +759,10 @@
     </footer>
 
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <script src="../js/HomeMovies.js"></script>
-
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script src="../js/Script.js"></script>
 </body>
 
 </html>
