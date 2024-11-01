@@ -28,7 +28,7 @@
     />
   </head>
 
-  <body>
+  <body onload="ShowRecommended(RetrieveMovieCode()), ShowCurrentMovie(RetrieveMovieCode())">
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -144,19 +144,16 @@
     </header>
 
     <!-- Hero Section with individ movie info -->
-    <section class="heroBannerInd py-5">
-      <div class="container">
-        <div class="row align-items-center">
+    <section class="heroBannerInd py-5" id="heroBanID">
+      <div class="container" id="heroCover">
+        <div class="row align-items-center" id="Hero_Info">
+
           <div class="col-md-4">
             <a id="imdb_movie">
-              <img
-                src="../assets/moviePosterPlaceholder.png"
-                class="img-fluid cover"
-                alt="Movie Poster"
-                id="IndividualCover"
-              />
+              <img src="../assets/moviePosterPlaceholder.png" class="img-fluid cover" alt="Movie Poster" id="IndividualCover">
             </a>
           </div>
+          
           <div class="col-md-8">
             <h1 class="display-4" id="IndividualTitle">Movie Title</h1>
             <p class="lead" id="IndividualInfoLine">
@@ -167,25 +164,20 @@
               viverra pharetra nulla, non viverra massa. Ut bibendum non metus
               sed consectetur.
             </p>
-            <div class="d-flex align-items-center">
-              <a id="watchButton">
-                <button type="button" class="btn btn-primary me-2">
-                  Watch Now
-                </button>
-              </a>
-              <img
-                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoYXJlIj48cGF0aCBkPSJNNCAxMnY4YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMnYtOCIvPjxwb2x5bGluZSBwb2ludHM9IjE2IDYgMTIgMiA4IDYiLz48bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjIiIHkyPSIxNSIvPjwvc3ZnPg=="
-                alt="Share Icon"
-                class="me-2"
-              />
-              <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                <img
-                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2ttYXJrIj48cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiLz48L3N2Zz4="
-                    alt="Bookmark Icon"
-                />
-              </a>
-            </div>
+
+            <a id="watchButton">
+              <button type="button" class="btn btn-primary me-2">Watch Now</button>
+            </a>
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoYXJlIj48cGF0aCBkPSJNNCAxMnY4YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMnYtOCIvPjxwb2x5bGluZSBwb2ludHM9IjE2IDYgMTIgMiA4IDYiLz48bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjIiIHkyPSIxNSIvPjwvc3ZnPg==" alt="Share Icon" class="me-2">
+            <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2ttYXJrIj48cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiLz48L3N2Zz4=" alt="Bookmark Icon">
+            </a>
           </div>
+
+          <div class="d-flex align-items-center">
+            
+          </div>
+
         </div>
       </div>
     </section>
@@ -195,7 +187,120 @@
       <div class="container py-4">
         <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4"></div>
           <h2 class="section-title">Related Movies</h2>
-          <div class="scrollable-row pt-2">
+          <div class="scrollable-row pt-2" id="Recommended_Row">
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <a class="recommendedRowAnchor">
+                <img
+                  class="card-img-top Recommended_IMG"
+                  src="../assets/moviePosterPlaceholder.png"
+                  alt="Thumbnail"
+                />
+              </a>
+              <div class="body">
+                <h6 class="title Recommended_Title">Movie Title</h6>
+                <p class="Recommended_subTitle">Sub title</p>
+              </div>
+            </div>
+
             <div class="card">
               <a class="recommendedRowAnchor">
                 <img
@@ -256,7 +361,7 @@
       </div>
     </section>
 
-    <!-- recommended movies section -->
+    <!-- recommended movies section 
     <section class="scrollableSection">
       <div class="container py-4">
         <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4"></div>
@@ -356,7 +461,7 @@
         </div>
       </div>
     </section>
-
+    -->
     <!-- Review Section -->
     <section class="reviews py-5 bg-light">
       <div class="container">
@@ -450,6 +555,8 @@
       </div>
     </footer>
 
-    <script src="../js/IndividualMovie.js"></script>
+  <script src="../js/Script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="../jq_plugins/average-color-image/average-color-image/psColor.js"></script>
   </body>
 </html>

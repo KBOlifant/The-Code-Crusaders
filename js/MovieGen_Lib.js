@@ -12,15 +12,12 @@ let movieList;
 
 function NextPage(){
     pageNumber++;
-    movieName();
+    DiscoverMovies();
 }
       
     
     //GetMovieNames(Movie){
-async function movieName() {
-  // try{
-  //     let result;
-
+async function DiscoverMovies() {
     fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${pageNumber}`,options)
     .then((response) => response.json())
     .then((response) => {
@@ -32,40 +29,30 @@ async function movieName() {
 }
 
 function SortMovies(_movieList) {
-    var anchors = document.querySelectorAll('.MovieRowAnchor');
+    let out = '';
+    let temp = '';
 
     for (let index = 0; index < document.getElementsByClassName("movieLib_IMG").length; index++) {
-        document.getElementsByClassName("movieLib_IMG")[index].src = `https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}`;
-        document.getElementsByClassName("movieLib_Title")[index].innerHTML = _movieList.results[index].original_title;
-        document.getElementsByClassName("movieLib_subTitle")[index].innerHTML = String(_movieList.results[index].release_date).substring(0, 4);
-        document.getElementsByClassName("MovieRowAnchor")[index].href = '../pages/individualmovie.html';
-        document.getElementsByClassName("MovieRowAnchor")[index].title = _movieList.results[index].id;
-        console.log(document.getElementsByClassName("MovieRowAnchor")[index].title)
-        anchors[index].addEventListener('click', LoadToNextPage, false);
+        temp = `
+            <div class="card" id="cardGap">
+                <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="${LoadToNextPage(_movieList.results[index].id)}">
+                    <img class="card-img-top movieLib_IMG" alt="Thumbnail" src="https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}">
+                </a>
+                <div class="body">
+                    <h5 class="title movieLib_Title">${_movieList.results[index].original_title}</h5>
+                    <h6 class="movieLib_subTitle">${String(_movieList.results[index].release_date).substring(0, 4)}</h6>
+                </div>
+            </div>
+        `;
+
+        out += temp;
     }
+
+    document.getElementById("librarySection").innerHTML = out;
 }
 
-function LoadToNextPage(){
-    let att = this.getAttribute("title");
-    localStorage.setItem("IndividualMovieCode", att);
+function LoadToNextPage(ID){
+    localStorage.setItem("IndividualMovieCode", ID);
 }
 
-function KeywordConverter(keyword){
-    fetch(`https://api.themoviedb.org/3/search/keyword?query=${keyword}&page=1`, options)
-    .then((response) => response.json())
-    .then((response) => {
-    console.log(response);
-
-    }).catch((err) => console.error(err));
-}
-
-function storeInput(){
-    _userInput = document.getElementById("userInput").value;
-    if(_userInput != undefined){
-        currentInput = sessionStorage.setItem("Input", _userInput);
-        alert(currentInput);
-        console.log(currentInput);
-    }
-}
-
-movieName();
+DiscoverMovies();

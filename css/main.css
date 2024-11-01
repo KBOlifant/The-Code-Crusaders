@@ -576,7 +576,7 @@ body {
 
 /* Background styling for "Find Out More" section in individual movie page */
 .findOutMore {
-  background-image: url("../assets/placeholder.jpg");
+  
   height: 500px;
   background-position: center;
   background-repeat: no-repeat;
@@ -681,7 +681,7 @@ body {
   border-bottom: 2px solid #ff7038;
 }
 
-.card-img-top:hover{
+.card-img-top:hover, .card:hover img{
   border-bottom: 2px solid #6EABC8;
 }
 
@@ -749,6 +749,15 @@ body {
   text-align: center;
   transition: background-color 0.3s ease;
 }
+
+.heroBannerInd img{
+  height: 100%;
+  object-fit: cover;
+}
+
+/* #heroCover{
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), black);
+} */
 
 .movieLibrary .btn-primary:hover {
   background-color: #ff8959;

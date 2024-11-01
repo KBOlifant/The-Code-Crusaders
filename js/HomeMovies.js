@@ -60,7 +60,6 @@ async function InitializeMovieGenres(_genreList){
 GetNewMovies();
 InitializeMovieGenres(GenreList);
 
-
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
     moviesToLoad = document.getElementsByClassName(keyword+"_HomeIMG").length;
