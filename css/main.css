@@ -1020,6 +1020,13 @@ background-color: #ff8959;
   margin-top: 50px;
 }
 
+.buttonContainerIndMovie a,
+.buttonContainerIndMovie button {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+
 #IndividualCover {
   margin-left: 30px;
 }
@@ -1035,20 +1042,24 @@ background-color: #ff8959;
 
 /* movie watchlist cards x button */
 
-.card {
-  position: relative;
-}
-
 .close-btn {
   position: absolute;
   top: 8px;
   right: 8px;
   cursor: pointer;
+  text-decoration: none !important;
+  /* Override Bootstrap underline */
+  display: inline-block;
+}
+
+.close-btn a,
+.close-btn img {
+  text-decoration: none !important;
+  border-bottom: none !important;
 }
 
 .close-btn img {
   width: 16px;
   height: 16px;
   filter: invert(1);
-  text-decoration: none;
 }
