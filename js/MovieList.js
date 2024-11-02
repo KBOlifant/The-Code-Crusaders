@@ -1,13 +1,18 @@
 const myNodeList = document.querySelectorAll("movieWatchlist");
 
 function GetFromLocalStorage(key) {
+  try{
     return JSON.parse(localStorage.getItem(key));
+  }catch{
+    return null;
+  }
 }
 
-movieItems = GetFromLocalStorage("watchList");
+
 
 function LoadMovieList(){
   let watchList = "";
+  movieItems = GetFromLocalStorage("watchList");
   for (let index = 0; index < movieItems.length; index++) {
       let out =`
       <div class="card" id="cardGap">
@@ -45,8 +50,10 @@ function LoadToNextPage(movie_API_Id){
     localStorage.setItem("IndividualMovieCode", movie_API_Id);
 }
 
+//removing movie from watchlist
 function removeFromWatchlist(movie_API_Id){
-  
+  movieItems = GetFromLocalStorage("watchList");
+
   for (let index = 0; index < movieItems.length; index++) {
     if(movie_API_Id == movieItems[index].id){
       movieItems.splice(index, 1);
@@ -55,6 +62,4 @@ function removeFromWatchlist(movie_API_Id){
       LoadMovieList();
     }
   }
-  
-  
 }
