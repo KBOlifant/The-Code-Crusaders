@@ -69,6 +69,12 @@ body {
   color: #ffffff;
 }
 
+/* Style for making bookmark and share icons white */
+img.lucide-share,
+img.lucide-bookmark {
+  filter: invert(100%);
+}
+
 /* Image Styles */
 .card-img-top {
   width: 200px;
@@ -94,7 +100,10 @@ body {
   text-wrap: nowrap;
   padding: 10px 24px;
   transition: all 0.3s ease;
+  text-decoration: none !important;
 }
+
+
 
 /* Hover Effect */
 .btn-primary:hover {
@@ -274,10 +283,10 @@ body {
   margin-right: 24px;
 }
 
-.heroBannerInd {
+/* .heroBannerInd {
   background-color: #000000;
   color: white;
-}
+} */
 
 .scrollableSection {
   background-color: #1d1d1d;
@@ -647,10 +656,10 @@ body {
   align-content: center;
 }
 
-.heroBannerInd {
+/* .heroBannerInd {
   background-color: #343434;
   padding: 40px 0;
-}
+} */
 
 .heroBannerInd h1 {
   font-family: 'Montserrat', sans-serif;
@@ -662,15 +671,6 @@ body {
 .heroBannerInd p.lead {
   font-size: 20px;
   color: #9A9A9A;
-}
-
-.heroBannerInd .btn-primary {
-  background-color: #FF7038;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 10px 40px;
-  border-radius: 7px;
 }
 
 .heroBannerInd .btn-primary:hover {
@@ -1159,10 +1159,6 @@ body {
   border: 1px solid #FF7038;
   outline: none;
   color: #ffffff;
-}
-
-#watchListBtn{
-  background-color: #175F81;
 }
 
 /* Responsive Styling */
