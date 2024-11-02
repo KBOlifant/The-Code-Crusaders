@@ -102,13 +102,13 @@ async function DiscoverMovies(Section) {
 
 async function ApplyFilters(Section, rating_Filter, year_Filter){
     console.log();
-    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc&vote_average.lte=${document.getElementById(rating_Filter).value}`, options)
+    let rating = parseInt(document.getElementById(rating_Filter).value)
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc&vote_average.gte=${rating}&vote_average.lte=${rating + 1}`, options)
     .then((response) => response.json())
     .then((response) => {
     console.log(response);
     movieList = response;
     SortMovies(movieList, Section);
-
     }).catch((err) => console.error(err));
 }
 
@@ -208,6 +208,21 @@ function WatchMovie(_movie){
 function StoreMovieToWatchList(){
     console.log("movie saved");
     AddToWatchList(currentMovie_JSON)
+}
+
+//getting movie in JSON format
+function GetFromLocalStorage(key) {
+    try{
+      return JSON.parse(localStorage.getItem(key));
+    }catch{
+      return null;
+    }
+}
+
+//clearing the local storage for empty watchlist
+function clearWatchList(){
+    localStorage.clear();
+    document.querySelector(".watchListDynamic").innerHTML = "";
 }
 
 //loads the next page
@@ -339,6 +354,20 @@ function GenerateGenreCode(Genre){
 
 }
 
+function removeFromWatchlist(movie_API_Id){
+    movieItems = GetFromLocalStorage("watchList");
+  
+    for (let index = 0; index < movieItems.length; index++) {
+      if(movie_API_Id == movieItems[index].id){
+        movieItems.splice(index, 1);
+        console.log(movieItems);
+        localStorage.setItem("watchList", JSON.stringify(movieItems));
+        LoadMovieList();
+      }
+    }
+  }
+  
+
 //update the hero section of individual movie html
 function UpdateHero(_movie){
     let out = '';
@@ -383,7 +412,7 @@ function UpdateHero(_movie){
                 <button type="button" class="btn-primary">Watch Now</button>
               </a>
               <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                <button type="button" class="btn-primary">Add to Watchlist</button>
+                <button type="button" class="btn-primary" id="watchListBtn">Add to Watchlist</button>
               </a>
             </div>
         </div>
@@ -393,3 +422,32 @@ function UpdateHero(_movie){
     document.getElementById("heroBanID").style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
     
 }
+
+function LoadMovieList(){
+    let watchList = "";
+    movieItems = GetFromLocalStorage("watchList");
+    for (let index = 0; index < movieItems.length; index++) {
+        let out =`
+        <div class="card" id="cardGap">
+        
+            <div class="close-btn" onclick="removeFromWatchlist(${movieItems[index].id})">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+"
+                alt="Close Icon">
+            </div>
+  
+            <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${movieItems[index].id})">
+              <img src="https://image.tmdb.org/t/p/original/${movieItems[index].poster_path}" width="80%" class="cover">
+            </a>
+            <div class="body">
+              <h5 class="movieWatch_Title">${movieItems[index].original_title}</h5>
+              <h6 class="movieWatch_subTitle">${String(movieItems[index].release_date).substring(0, 4)}</h6>
+            </div>
+          </div>
+        `;
+  
+        watchList += out;
+    }
+  
+    document.querySelector(".watchListDynamic").innerHTML = watchList;
+  }
