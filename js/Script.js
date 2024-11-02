@@ -383,7 +383,7 @@ function UpdateHero(_movie){
                 <button type="button" class="btn-primary">Watch Now</button>
               </a>
               <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                <button type="button" class="btn-primary">Add to Watchlist</button>
+                <button type="button" class="btn-primary" id="watchListBtn">Add to Watchlist</button>
               </a>
             </div>
         </div>
