@@ -69,6 +69,12 @@ body {
   color: #ffffff;
 }
 
+/* Style for making bookmark and share icons white */
+img.lucide-share,
+img.lucide-bookmark {
+  filter: invert(100%);
+}
+
 /* Image Styles */
 .card-img-top {
   width: 200px;
@@ -94,7 +100,10 @@ body {
   text-wrap: nowrap;
   padding: 10px 24px;
   transition: all 0.3s ease;
+  text-decoration: none !important;
 }
+
+
 
 /* Hover Effect */
 .btn-primary:hover {
@@ -274,10 +283,10 @@ body {
   margin-right: 24px;
 }
 
-.heroBannerInd {
+/* .heroBannerInd {
   background-color: #000000;
   color: white;
-}
+} */
 
 .scrollableSection {
   background-color: #1d1d1d;
@@ -647,10 +656,10 @@ body {
   align-content: center;
 }
 
-.heroBannerInd {
+/* .heroBannerInd {
   background-color: #343434;
   padding: 40px 0;
-}
+} */
 
 .heroBannerInd h1 {
   font-family: 'Montserrat', sans-serif;
@@ -662,15 +671,6 @@ body {
 .heroBannerInd p.lead {
   font-size: 20px;
   color: #9A9A9A;
-}
-
-.heroBannerInd .btn-primary {
-  background-color: #FF7038;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  padding: 10px 40px;
-  border-radius: 7px;
 }
 
 .heroBannerInd .btn-primary:hover {
@@ -955,4 +955,246 @@ background-color: #ff8959;
   height: 100%;
   padding: 20px;
   padding-left: 50px;
+}
+
+/* INdividual movie page */
+
+.buttonContainerIndMovie {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* Movie banner background on Ind movie page */
+.heroBannerInd {
+  position: relative;
+  background-color: #000000;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  padding: 40px 0;
+  color: white;
+}
+
+.heroBannerInd::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.heroBannerInd .container {
+  position: relative;
+  z-index: 2;
+}
+
+#Hero_Info .col-md-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+
+#IndividualTitle {
+  margin-top: -20px;
+}
+
+.movieDescription {
+  padding-right: 20px;
+  padding-top: 30px;
+}
+
+.lead{
+  margin-bottom: 40px;
+  margin-top: 3px;
+}
+
+.buttonContainerIndMovie {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.buttonContainerIndMovie a,
+.buttonContainerIndMovie button {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+
+#IndividualCover {
+  margin-left: 30px;
+}
+
+.scrollable-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* movie watchlist cards x button */
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+  text-decoration: none !important;
+  /* Override Bootstrap underline */
+  display: inline-block;
+}
+
+.close-btn a,
+.close-btn img {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+.close-btn img {
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+}
+
+/* Filter Bar Styling */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  background-color: #000000;
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  border-bottom: 1px solid #333;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-radius: 40px;
+  margin-bottom: 30px;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.filter-option {
+  color: #ffffff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filter-option label {
+  margin-right: 8px;
+  display: inline-block;
+}
+
+/* Responsive Filter Button */
+.filter-btn {
+  background-color: #FF7038;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  min-width: 150px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #ff8959;
+  color: #ffffff;
+}
+
+.filter-btn:active {
+  background-color: #ffffff5e !important;
+  color: #ffffff !important;
+}
+
+/* Dropdown Styling */
+.form-select {
+  background-color: #1a1a1a;
+  color: #9A9A9A;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 150px;
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+}
+
+.form-select::after {
+  content: '▼';
+  color: #9A9A9A;
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.form-select:focus {
+  background-color: #1a1a1a;
+  border: 1px solid #FF7038;
+  outline: none;
+  color: #ffffff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .filter-option {
+    margin-bottom: 10px;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+
+  .form-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-bar {
+    gap: 10px;
+    padding: 8px 12px;
+  }
+
+  .filter-btn {
+    font-size: 14px;
+    height: 40px;
+    padding: 8px 16px;
+  }
+
+  .form-select {
+    padding: 6px 10px;
+  }
 }

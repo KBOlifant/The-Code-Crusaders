@@ -99,6 +99,72 @@ async function DiscoverMovies(Section) {
 
     }).catch((err) => console.error(err));
 }
+
+async function ApplyFilters(Section, rating_Filter, year_Filter){
+    console.log();
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc&vote_average.lte=${document.getElementById(rating_Filter).value}`, options)
+    .then((response) => response.json())
+    .then((response) => {
+    console.log(response);
+    movieList = response;
+    SortMovies(movieList, Section);
+
+    }).catch((err) => console.error(err));
+}
+
+async function IndividualBanner(tag_ID, ID)
+    {
+        for (let index = 0; index < tag_ID.length; index++) {
+            let _movie;
+            let out = "";
+            fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
+            .then((response) => response.json())
+            .then((response) => {
+                _movie = response;
+    
+                out = `
+                    <div class="centerFindMoreText">
+                        <div class="text-center middleText">
+                            <h2>${_movie.title}</h2>
+                            <p>${_movie.tagline}</p>
+                            <button type="button" class="btn btn-primary">Find out more</button>
+                        </div>
+                    </div>
+                `;
+    
+                document.getElementById(tag_ID[index]).innerHTML = out;
+                document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
+                
+    
+        }).catch((err) => console.error(err));
+        }
+}
+
+async function LoadByID(ID){
+    for (let index = 0; index < ID.length; index++) {
+        let _movie;
+        let out = "";
+        fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
+        .then((response) => response.json())
+        .then((response) => {
+            _movie = response;
+
+            out = `
+                <div class="centerFindMoreText">
+                    <div class="text-center middleText">
+                        <h2>${_movie.title}</h2>
+                        <p>${_movie.tagline}</p>
+                        <button type="button" class="btn btn-primary">Find out more</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById(tag_ID[index]).innerHTML = out;
+            document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
+
+    }).catch((err) => console.error(err));
+    }
+}
 //change
 //calling the functions
 //GetNewMovies();
@@ -107,6 +173,30 @@ async function DiscoverMovies(Section) {
 function InitializeHomeGenres(){
     InitializeMovieGenres(GenreList);
 }
+
+async function InitializeLibraryGenres(_genreList){
+    fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
+    .then((response) => response.json())
+    .then((response) => {
+    SortGenres(response, _genreList);
+    console.log(GenreList);
+    let out = "";
+    let temp = "";
+    for (let index = 0; index < GenreList.length; index++) {
+        temp = `
+            <option value="">${GenreList[index][0]}</option>
+        `
+        out += temp;
+    }
+
+    document.getElementById("genreFilter").innerHTML = out;
+    }).catch((err) => console.error(err));
+}
+
+function SetGenres(){
+    InitializeLibraryGenres(GenreList)
+}
+
 
 function WatchMovie(_movie){
     if(ID != null){
@@ -232,58 +322,8 @@ function AddToWatchList(movie){
     
 }
 
-async function IndividualBanner(tag_ID, ID)
-    {
-        for (let index = 0; index < tag_ID.length; index++) {
-            let _movie;
-            let out = "";
-            fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
-            .then((response) => response.json())
-            .then((response) => {
-                _movie = response;
-    
-                out = `
-                    <div class="centerFindMoreText">
-                        <div class="text-center middleText">
-                            <h2>${_movie.title}</h2>
-                            <p>${_movie.tagline}</p>
-                            <button type="button" class="btn btn-primary">Find out more</button>
-                        </div>
-                    </div>
-                `;
-    
-                document.getElementById(tag_ID[index]).innerHTML = out;
-                document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
-                
-    
-        }).catch((err) => console.error(err));
-        }
-}
+function GenerateGenreCode(Genre){
 
-async function LoadByID(ID){
-    for (let index = 0; index < ID.length; index++) {
-        let _movie;
-        let out = "";
-        fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
-        .then((response) => response.json())
-        .then((response) => {
-            _movie = response;
-
-            out = `
-                <div class="centerFindMoreText">
-                    <div class="text-center middleText">
-                        <h2>${_movie.title}</h2>
-                        <p>${_movie.tagline}</p>
-                        <button type="button" class="btn btn-primary">Find out more</button>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById(tag_ID[index]).innerHTML = out;
-            document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
-
-    }).catch((err) => console.error(err));
-    }
 }
 
 function removeFromWatchlist(movie_API_Id){
@@ -336,30 +376,6 @@ function UpdateHero(_movie){
             <p id="Individual_Desc">
                 ${_movie.overview}
             </p>
-
-<<<<<<< Updated upstream
-            <a id="watchButton" href="${_movie.homepage}">
-                <button type="button" class="btn btn-primary me-2">Watch Now</button>
-            </a>
-
-            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXNoYXJlIj48cGF0aCBkPSJNNCAxMnY4YTIgMiAwIDAgMCAyIDJoMTJhMiAyIDAgMCAwIDItMnYtOCIvPjxwb2x5bGluZSBwb2ludHM9IjE2IDYgMTIgMiA4IDYiLz48bGluZSB4MT0iMTIiIHgyPSIxMiIgeTE9IjIiIHkyPSIxNSIvPjwvc3ZnPg==" 
-            alt="Share Icon" class="me-2">
-
-            <a href="../pages/moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWJvb2ttYXJrIj48cGF0aCBkPSJtMTkgMjEtNy00LTcgNFY1YTIgMiAwIDAgMSAyLTJoMTBhMiAyIDAgMCAxIDIgMnYxNnoiLz48L3N2Zz4=" 
-                alt="Bookmark Icon">
-            </a>
-=======
-            <div class="buttonContainerIndMovie">
-              <a id="watchButton" href="#">
-                <button type="button" class="btn-primary">Watch Now</button>
-              </a>
-              <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                <button type="button" class="btn-primary" id="watchListBtn">Add to Watchlist</button>
-              </a>
-            </div>
->>>>>>> Stashed changes
-        </div>
     `
     //DOM manipulation to update the hero section
     document.getElementById("Hero_Info").innerHTML = out;
