@@ -1026,7 +1026,6 @@ background-color: #ff8959;
   border-bottom: none !important;
 }
 
-
 #IndividualCover {
   margin-left: 30px;
 }
@@ -1159,6 +1158,10 @@ body {
   border: 1px solid #FF7038;
   outline: none;
   color: #ffffff;
+}
+
+#watchListBtn{
+  background-color: #175F81;
 }
 
 /* Responsive Styling */
