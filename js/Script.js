@@ -391,7 +391,7 @@ function UpdateHero(_movie){
 
     out = `
         <div class="col-md-4">
-            <a id="imdb_movie">
+            <a id="imdb_movie" href="https://www.imdb.com/title/${_movie.imdb_id}/">
               <img src="https://image.tmdb.org/t/p/original/${_movie.poster_path}" class="img-fluid cover" alt="Movie Poster" id="IndividualCover" href="https://www.imdb.com/title/${_movie.imdb_id}">
             </a>
         </div>
@@ -408,7 +408,7 @@ function UpdateHero(_movie){
             </p>
 
             <div class="buttonContainerIndMovie">
-              <a id="watchButton" href="#">
+              <a id="watchButton" href="${_movie.homepage}">
                 <button type="button" class="btn-primary">Watch Now</button>
               </a>
               <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
