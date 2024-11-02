@@ -4,9 +4,7 @@ function GetFromLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
 }
 
-movieItems = GetFromLocalStorage("watchList");
-
-let watchList = "";
+function LoadMovieList(){
 
 for (let index = 0; index < movieItems.length; index++) {
     let out =`
@@ -33,3 +31,6 @@ document.querySelector(".watchListDynamic").innerHTML = watchList;
 function LoadToNextPage(movie_API_Id){
     localStorage.setItem("IndividualMovieCode", movie_API_Id);
 }
+
+function removeFromWatchlist(movie_API_Id){
+  let movieItems = GetFromLocalStorage("watchList");
