@@ -1063,3 +1063,138 @@ background-color: #ff8959;
   height: 16px;
   filter: invert(1);
 }
+
+/* Filter Bar Styling */
+.filter-bar {
+  display: flex;
+  gap: 15px;
+  background-color: #000000;
+  padding: 12px 20px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* Allows wrapping on smaller screens */
+  border-bottom: 1px solid #333;
+  font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  border-radius: 40px;
+  margin-bottom: 30px;
+}
+
+body {
+  padding-top: 60px;
+}
+
+.filter-option {
+  color: #ffffff;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.filter-option label {
+  margin-right: 8px;
+  display: inline-block;
+}
+
+/* Responsive Filter Button */
+.filter-btn {
+  background-color: #FF7038;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  min-width: 150px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background-color: #ff8959;
+  color: #ffffff;
+}
+
+.filter-btn:active {
+  background-color: #ffffff5e !important;
+  color: #ffffff !important;
+}
+
+/* Dropdown Styling */
+.form-select {
+  background-color: #1a1a1a;
+  color: #9A9A9A;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 150px;
+  cursor: pointer;
+  appearance: none;
+  position: relative;
+}
+
+.form-select::after {
+  content: '▼';
+  color: #9A9A9A;
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.form-select:focus {
+  background-color: #1a1a1a;
+  border: 1px solid #FF7038;
+  outline: none;
+  color: #ffffff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+  }
+
+  .filter-option {
+    margin-bottom: 10px;
+  }
+
+  .filter-btn {
+    width: 100%;
+  }
+
+  .form-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-bar {
+    gap: 10px;
+    padding: 8px 12px;
+  }
+
+  .filter-btn {
+    font-size: 14px;
+    height: 40px;
+    padding: 8px 16px;
+  }
+
+  .form-select {
+    padding: 6px 10px;
+  }
+}
