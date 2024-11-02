@@ -121,7 +121,7 @@ async function ApplyFilters(Section, genre_Filter, year_Filter, rating_Filter){
 
     let params = [Section, genre_Filter, year_Filter, rating_Filter];
     params_JSON = JSON.stringify(params);
-    console.log(JSON.parse(params_JSON));
+    //console.log(JSON.parse(params_JSON));
     sessionStorage.setItem("filter", params_JSON);
 
     fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc${rating_string}&with_genres=${genreID}`, options)
@@ -255,12 +255,27 @@ function NextPage(_section){
         ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3])
     } else{
         DiscoverMovies(_section);
+    }
+}
+
+function PreviousPage(_section){
+    if(pageNumber <= 1){
+        return;
+    }
+    pageNumber--;
+    let filter_params = sessionStorage.getItem("filter");
+    params_JSON = JSON.parse(filter_params);
+    if(params_JSON != null){
+        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3])
+    } else{
+        DiscoverMovies(_section);
     } 
 }
 
+
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
-    moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
+    moviesToLoad = _movieList.results.length;
 
     let out = '';
     if(moviesToLoad <= _movieList.results.length){
