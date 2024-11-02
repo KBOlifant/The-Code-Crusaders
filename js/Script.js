@@ -216,12 +216,6 @@ function NextPage(_section){
     DiscoverMovies(_section);
 }
 
-//clearing local storage for watchlist;
-function clearWatchList(){
-    localStorage.clear();
-    document.querySelector(".watchListDynamic").innerHTML = "";
-}
-
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
     moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
@@ -294,6 +288,25 @@ function RecommendMovies(_movieList){
     document.getElementById("Recommended_Row").innerHTML = out;
 }
 
+//retrieving the move code
+function RetrieveMovieCode(){
+    let MovieID = localStorage.getItem("IndividualMovieCode");
+    return MovieID;
+}
+
+//format for local storage
+function StringifyJSON(movie){
+    if(typeof movie != "string"){
+        movie = JSON.stringify(movie);
+    }
+    return movie;
+}
+
+//retrieving the movie as a JSON
+function GetFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
 //adding the movie to watchlist array
 function AddToWatchList(movie){
     currentMovie = [];
@@ -325,18 +338,6 @@ function AddToWatchList(movie){
 function GenerateGenreCode(Genre){
 
 }
-
-function removeFromWatchlist(movie_API_Id){
-    let movieItems = GetFromLocalStorage("watchList");
-    for (let index = 0; index < movieItems.length; index++) {
-      if(movie_API_Id == movieItems[index].id){
-        movieItems.splice(index, 1);
-        console.log(movieItems);
-        localStorage.setItem("watchList", JSON.stringify(movieItems));
-        LoadMovieList();
-      }
-    }
-  }
 
 //update the hero section of individual movie html
 function UpdateHero(_movie){
@@ -376,43 +377,19 @@ function UpdateHero(_movie){
             <p id="Individual_Desc">
                 ${_movie.overview}
             </p>
+
+            <div class="buttonContainerIndMovie">
+              <a id="watchButton" href="#">
+                <button type="button" class="btn-primary">Watch Now</button>
+              </a>
+              <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
+                <button type="button" class="btn-primary">Add to Watchlist</button>
+              </a>
+            </div>
+        </div>
     `
     //DOM manipulation to update the hero section
     document.getElementById("Hero_Info").innerHTML = out;
     document.getElementById("heroBanID").style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
     
 }
-
-function LoadMovieList(){
-    let watchList = "";
-    let movieItems = GetFromLocalStorage("watchList");
-    if(movieItems == null){
-        document.querySelector(".watchListDynamic").innerHTML = "";
-        return;
-    }
-    
-    for (let index = 0; index < movieItems.length; index++) {
-        let out =`
-        <div class="card" id="cardGap">
-        
-            <div class="close-btn" onclick="removeFromWatchlist(${movieItems[index].id})">
-              <img
-                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+"
-                alt="Close Icon">
-            </div>
-  
-            <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${movieItems[index].id})">
-              <img src="https://image.tmdb.org/t/p/original/${movieItems[index].poster_path}" width="80%" class="cover">
-            </a>
-            <div class="body">
-              <h5 class="movieWatch_Title">${movieItems[index].original_title}</h5>
-              <h6 class="movieWatch_subTitle">${String(movieItems[index].release_date).substring(0, 4)}</h6>
-            </div>
-          </div>
-        `;
-  
-        watchList += out;
-    }
-  
-    document.querySelector(".watchListDynamic").innerHTML = watchList;
-  }
