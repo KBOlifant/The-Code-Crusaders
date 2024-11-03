@@ -593,32 +593,43 @@ function UpdateHero(_movie){
     
 }
 
-function LoadMovieList(){
-    let watchList = "";
-    movieItems = GetFromLocalStorage("watchList");
-    for (let index = 0; index < movieItems.length; index++) {
-        let out = `
+function LoadMovieList() {
+  // Clear the container initially to avoid duplicating items
+  document.querySelector(".watchListDynamic").innerHTML = "";
+
+  // Fetch items from local storage
+  const movieItems = GetFromLocalStorage("watchList");
+
+  for (let index = 0; index < movieItems.length; index++) {
+    let out = `
         <div class="card" id="cardGap">
-        
-            <div class="close-btn" onclick="removeFromWatchlist(${movieItems[index].id})">
-              <img
-                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+"
-                alt="Close Icon">
+            <div class="close-btn" onclick="removeFromWatchlist(${
+              movieItems[index].id
+            })">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+" alt="Close Icon">
             </div>
-  
-            <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${movieItems[index].id})">
-              <img src="https://image.tmdb.org/t/p/original/${movieItems[index].poster_path}" width="80%" class="card-img-top movieWatch_IMG" alt="Thumbnail">
+            <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${
+              movieItems[index].id
+            })">
+                <img src="https://image.tmdb.org/t/p/original/${
+                  movieItems[index].poster_path
+                }" width="80%" class="card-img-top movieWatch_IMG" alt="Thumbnail">
             </a>
             <div class="body">
-              <h6 class="title">${movieItems[index].original_title}</h6>
-              <p class="movieWatch_subTitle">${String(movieItems[index].release_date).substring(0, 4)}</p>
-              <div class="imdb-rating">${String(movieItems[index].vote_average).substring(0, 3)}</div>
+                <h6 class="title">${movieItems[index].original_title}</h6>
+                <p class="movieWatch_subTitle">${String(
+                  movieItems[index].release_date
+                ).substring(0, 4)}</p>
+                <div class="imdb-rating">${String(
+                  movieItems[index].vote_average
+                ).substring(0, 3)}</div>
             </div>
-          </div>
+        </div>
         `;
-  
-        watchList += out;
-    }
-  
-    document.querySelector(".watchListDynamic").innerHTML = watchList;
+
+    // Append each card individually to avoid overwriting existing content
+    document
+      .querySelector(".watchListDynamic")
+      .insertAdjacentHTML("beforeend", out);
+  }
 }

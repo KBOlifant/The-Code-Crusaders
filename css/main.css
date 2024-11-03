@@ -103,21 +103,14 @@ img.lucide-bookmark {
   text-decoration: none !important;
 }
 
-
-
-/* Hover Effect */
 .btn-primary:hover {
   background-color: #ff8959;
   color: #ffffff;
 }
-
-/* Pressed (Active) Effect */
 .btn-primary:active {
   background-color: #ffffff5e !important;
   color: #ffffff !important;
 }
-
-/* Specific Carousel Button Styling */
 .carousel-caption .btn-primary {
   background-color: #FF7038;
   color: #fff;
@@ -169,10 +162,14 @@ img.lucide-bookmark {
 /* Navbar Styles */
 .navbar {
   background-color: #000000;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 /* Logo */
@@ -546,7 +543,6 @@ img.lucide-bookmark {
   }
 }
 
-/* card styling starts here */
 /* Section headers */
 .section-title {
   font-family: 'Montserrat', sans-serif;
@@ -565,6 +561,13 @@ img.lucide-bookmark {
   white-space: nowrap;
 }
 
+/* Scrollable Section */
+.scrollableSection {
+  background-color: #1E1E1E;
+  height: auto;
+  padding-left: 10px;
+}
+
 /* Cards styling */
 .scrollable-row .card,
 .movieLibrary .card,
@@ -579,13 +582,6 @@ img.lucide-bookmark {
   margin: auto;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
-}
-
-/* Scrollable Section */
-.scrollableSection {
-  background-color: #1E1E1E;
-  height: auto;
-  padding-left: 10px;
 }
 
 /* Title styling for various sections */
@@ -667,7 +663,7 @@ img.lucide-bookmark {
 .Family_IMG,
 .library_IMG,
 .movieWatch_IMG,
-.New_IMG {
+.New_IMG, .card-img-top movieWatch_IMG {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -684,199 +680,8 @@ img.lucide-bookmark {
   border-bottom: 2px solid #6EABC8;
 }
 
-/* Find Out More section styling */
-.findOutMore {
-  background-color: #000;
-  padding: 40px 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 
-.findOutMore .middleText {
-  font-family: 'Montserrat', sans-serif;
-  color: #ffffff;
-  text-align: center;
-}
-
-.findOutMore h2 {
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.findOutMore p {
-  font-size: 16px;
-  color: #9A9A9A;
-}
-
-.findOutMore .btn-primary {
-  background-color: #FF7038;
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  text-transform: uppercase;
-}
-
-.findOutMore .btn-primary:hover {
-  background-color: #ff8959;
-}
-
-/* Button container styling */
-.button-container {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.button-container .btn-primary {
-  background-color: #FF7038;
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  text-transform: uppercase;
-}
-
-.button-container .btn-primary:hover {
-  background-color: #ff8959;
-}
-
-/* Watchlist page styling */
-.movieWatchlist {
-  background-color: #1E1E1E;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.movieWatchlist .card {
-  position: relative;
-}
-
-.movieWatch_IMG {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-bottom: 2px solid #FF7038;
-}
-
-/* Close button for Watchlist cards */
-.close-btn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 50%;
-  padding: 5px;
-  transition: background 0.3s ease;
-}
-
-.close-btn:hover {
-  background: rgba(255, 112, 56, 0.8);
-}
-
-.movieWatch_Title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #ffffff;
-  margin-top: 15px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-  text-align: left;
-  white-space: normal;
-  overflow-wrap: break-word;
-  height: 3em;
-  display: flex;
-  align-items: flex-start;
-}
-
-.movieWatch_subTitle {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 5px;
-  padding-left: 10px;
-  text-align: left;
-}
-
-/* Watchlist Container Styling */
-/* Container for the fixed grid */
-.fixed-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* Adjust number of columns as needed */
-  grid-template-rows: auto;
-  gap: 20px;
-  /* Space between cards */
-  justify-content: start;
-  /* Aligns grid to the left */
-}
-
-/* Card styling within the grid */
-.fixed-grid .card {
-  background-color: #272727;
-  border-radius: 8px;
-  padding: 10px;
-  width: 100%;
-  max-width: 280px;
-  /* Fixed width for all cards */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-  position: relative;
-  /* Allows for positioning of close button */
-}
-
-/* Image styling */
-.fixed-grid .card img.card-img-top {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-bottom: 2px solid #FF7038;
-}
-
-/* Title Styling */
-.fixed-grid .card .title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: #ffffff;
-  padding: 10px 0;
-  text-align: left;
-}
-
-/* Subtitle Styling */
-.fixed-grid .card .movieWatch_subTitle {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  padding-bottom: 10px;
-  text-align: left;
-}
-
-/* IMDb Rating Styling */
-.fixed-grid .card .imdb-rating {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  color: #FF7038;
-  padding-left: 10px;
-  text-align: left;
-  display: flex;
-  align-items: center;
-}
-
-/* Hover and close button styling remains consistent */
-.fixed-grid .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-}
-
-.fixed-grid .card .close-btn {
+.watchListDynamic .card .close-btn {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -887,9 +692,15 @@ img.lucide-bookmark {
   transition: background 0.3s ease;
 }
 
-.fixed-grid .card .close-btn:hover {
+.watchListDynamic .card .close-btn:hover {
   background: rgba(255, 112, 56, 0.8);
 }
+
+.movieWatchlist .btn-primary{
+  margin-top: 50px;
+  margin-left: 20px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .scrollable-row {
@@ -909,14 +720,14 @@ img.lucide-bookmark {
 
   /* Enable horizontal scrolling and adjust card size on smaller screens */
   .scrollable-row,
-  .movieLibrary .row,
-  .movieWatchlist .row {
+  .movieLibrary .row {
     flex-direction: row;
     overflow-x: auto;
     white-space: nowrap;
     gap: 10px;
     padding: 0 5px;
   }
+
 
   #top3card,
   .scrollable-row .card,
@@ -942,65 +753,6 @@ img.lucide-bookmark {
   }
 }
 
-/* Carousel on Home Page */
-
-/* Carousel Section */
-.carouselSection {
-  background-color: #000000;
-  /* Set carousel background to black */
-  padding: 50px 0;
-  /* Increase height with padding */
-  height: auto;
-}
-
-/* Carousel Item Styling */
-.carousel-item {
-  height: 500px;
-  /* Increase the height of the carousel items */
-}
-
-/* Carousel Control Styling */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 100px;
-}
-
-/* Carousel Caption Styling */
-.carousel-caption {
-  position: relative;
-  padding-left: 30px;
-  color: #ffffff;
-  /* White text color for captions */
-}
-
-/* Carousel Headings */
-.carousel-caption h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
-  /* Adjust heading size as needed */
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 15px;
-}
-
-/* Carousel Subheadings */
-.carousel-caption p {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 18px;
-  /* Adjust subheading size as needed */
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
-}
-
-/* Carousel Image Styling */
-.carousel-item img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  padding-left: 50px;
-}
-
 /* INdividual movie page */
 
 .buttonContainerIndMovie {
@@ -1014,7 +766,6 @@ img.lucide-bookmark {
 .heroBannerInd {
   position: relative;
   background-color: #000000;
-  /* background-color: rgba(0, 0, 0, 0.6); */
   padding: 40px 0;
   color: white;
 }
@@ -1075,12 +826,15 @@ img.lucide-bookmark {
 }
 
 .scrollable-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+    display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-left: 15px;
+      padding-right: 15px;
+      flex-direction: row;
+      align-content: center;
+      margin-top: 30px;
+      margin-bottom: 15px;
 }
 
 /* movie watchlist cards x button */
@@ -1262,4 +1016,106 @@ body {
 
 #yearInput{
   width: 200px;
+}
+
+/* discovery page hero banner at bottom   */
+
+/* Carousel Section Styling */
+/* Carousel Section Styling */
+.carouselWatchlistSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 500px;
+  overflow: hidden;
+}
+
+.carouselWatchlist-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.carouselWatchlist-caption {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.carouselWatchlist-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.carouselWatchlist-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.carouselWatchlist-btn {
+background-color: #FF7038;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  width: 180px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-wrap: nowrap;
+  padding: 10px 24px;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.carouselWatchlist-btn:hover {
+  background-color: #ff8959;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .carouselWatchlist-title {
+    font-size: 28px;
+  }
+
+  .carouselWatchlist-subtitle {
+    font-size: 16px;
+  }
 }
