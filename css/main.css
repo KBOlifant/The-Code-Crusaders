@@ -103,21 +103,14 @@ img.lucide-bookmark {
   text-decoration: none !important;
 }
 
-
-
-/* Hover Effect */
 .btn-primary:hover {
   background-color: #ff8959;
   color: #ffffff;
 }
-
-/* Pressed (Active) Effect */
 .btn-primary:active {
   background-color: #ffffff5e !important;
   color: #ffffff !important;
 }
-
-/* Specific Carousel Button Styling */
 .carousel-caption .btn-primary {
   background-color: #FF7038;
   color: #fff;
@@ -169,10 +162,14 @@ img.lucide-bookmark {
 /* Navbar Styles */
 .navbar {
   background-color: #000000;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 /* Logo */
@@ -546,8 +543,7 @@ img.lucide-bookmark {
   }
 }
 
-/* card styling starts here */
-/* Section headers - "What's New" and "Top Movies" on home page */
+/* Section headers */
 .section-title {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
@@ -559,210 +555,25 @@ img.lucide-bookmark {
   border-bottom: 2px solid #175F81;
 }
 
-/* Scrollable row for "What's New" */
+/* Scrollable row styling */
 .scrollable-row {
-  /* display: flex; */
   overflow-x: auto;
   white-space: nowrap;
-  /* gap: 30px; */
-  /* padding-left: 0; */
-  /* margin-left: 10px; */
-  /* margin-right: -50vw; */
-  /* width: calc(100vw + 40px); */
-  /* box-sizing: border-box; */
 }
 
-/* Cards within scrollable sections of "What's New" */
-.scrollable-row .card {
-  display: inline-block;
-  /*min-width: 200px;
-  *//*margin-right: 16px;
-  */background-color: #272727;
-  border-radius: 8px;
-  padding: 10px;
-
-}
-
+/* Scrollable Section */
 .scrollableSection {
   background-color: #1E1E1E;
   height: auto;
   padding-left: 10px;
 }
 
-.card-title,
-.New_HomeTitle,
-.top3Title,
-.Thriller_HomeTitle,
-.Animation_HomeTitle,
-.Documentary_HomeTitle,
-.Fantasy_HomeTitle,
-.Family_HomeTitle, .movieLib_Title, .Recommended_Title, .movieWatch_Title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #ffffff;
-  margin-top: 15px;
-  white-space: normal;
-  overflow-wrap: break-word;
-  padding-left: 10px;
-  padding-bottom: 10px;
-  height: 3em;
-  display: flex;
-  align-items: flex-start;
-  text-align: left;
-}
-
-/* All subheadings within movie cards */
-.card-subtitle,
-.New_Home_subTitle,
-.top3Subtitle,
-.Thriller_Home_subTitle,
-.Animation_Home_subTitle,
-.Documentary_Home_subTitle,
-.Fantasy_Home_subTitle,
-.Family_Home_subTitle, .movieLib_subTitle, .Recommended_subTitle, .movieWatch_subTitle {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 15px;
-  padding-left: 10px;
-  text-align: left;
-
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  width: 50px;
-}
-
-/* Background styling for "Find Out More" section in individual movie page */
-.findOutMore {
-  
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* "Find Out More" section in individual movie page */
-.findOutMoreText {
-  width: 500px;
-  font-family: 'Nunito Sans', sans-serif;
-}
-
-.centerFindMoreText {
-  text-align: center;
-  align-content: center;
-}
-
-/* .heroBannerInd {
-  background-color: #343434;
-  padding: 40px 0;
-} */
-
-.heroBannerInd h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.heroBannerInd p.lead {
-  font-size: 20px;
-  color: #9A9A9A;
-}
-
-.heroBannerInd .btn-primary:hover {
-  background-color: #ff8959;
-}
-
-.heroBannerInd .img-fluid {
-  border-radius: 8px;
-}
-
-.synopsis {
-  background-color: #f8f8f8;
-  padding: 40px 0;
-}
-
-.synopsis h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.synopsis p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.container {
-  width: 100%;
-  padding: 20px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.card {
-  width: 100%;
-  max-width: 280px;
-  position: relative;
-  background-color: #1d1d1d;
-  height: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #ffffff;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-  border-bottom: #000000;
-}
-
-.card .card-img-top,
-.card .movieLibrary .card .card-img-top,
-.movieLibrary .card img,
-.movieWatchlist .card .card-img-top,
-.movieWatchlist .card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-bottom: 2px solid #ff7038;
-}
-
-.card-img-top:hover, .card:hover img{
-  border-bottom: 2px solid #6EABC8;
-}
-
-.card .btn-primary {
-  width: 100%;
-  padding: 10px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: #FF7038;
-  border: none;
-  border-radius: 7px;
-  text-align: center;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.card .btn-primary:hover {
-  background-color: #ff8959;
-}
-
+/* Cards styling */
+.scrollable-row .card,
 .movieLibrary .card,
 .movieWatchlist .card,
-.scrollable-row .card {
-  margin: auto;
+#cardGap {
+  display: inline-block;
   background-color: #272727;
   border-radius: 8px;
   padding: 10px;
@@ -773,48 +584,121 @@ img.lucide-bookmark {
   overflow: hidden;
 }
 
-
-/* Center-align all cards within containers */
-.scrollable-row,
-.movieLibrary .row,
-.scrollableSection .row,
-.movieWatchlist .row {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 0 10px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.movieLibrary .movieWatchlist .btn-primary {
-  width: 200px;
-  padding: 10px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
+/* Title styling for various sections */
+.title,
+.Thriller_HomeTitle,
+.Animation_HomeTitle,
+.Adventure_HomeTitle,
+.Documentary_HomeTitle,
+.Fantasy_HomeTitle,
+.Family_HomeTitle,
+.movieLib_Title,
+.movieWatch_Title,
+.Recommended_Title,
+.New_HomeTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
   color: #ffffff;
-  background-color: #FF7038;
-  border: none;
-  border-radius: 7px;
-  text-align: center;
-  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  height: 3em;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.heroBannerInd img{
+/* Subtitle styling */
+.Thriller_subTitle,
+.Animation_subTitle,
+.Adventure_subTitle,
+.Documentary_subTitle,
+.Fantasy_subTitle,
+.Family_subTitle,
+.movieLib_subTitle,
+.movieWatch_subTitle,
+.Recommended_subTitle,
+.library_subTitle,
+.New_subTitle,
+.card-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 10px;
+  padding-left: 10px;
+  text-align: left;
+}
+
+/* IMDb rating styling for all cards */
+.imdb-rating {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: #FF7038;
+  padding-left: 10px;
+  text-align: left;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.imdb-rating::before {
+  content: "IMDb Rating: ";
+  font-weight: 600;
+  color: #ffffff;
+  margin-right: 5px;
+}
+
+/* Card image styling */
+.card-img-top,
+.Thriller_IMG,
+.Animation_IMG,
+.Adventure_IMG,
+.Documentary_IMG,
+.Fantasy_IMG,
+.Family_IMG,
+.library_IMG,
+.movieWatch_IMG,
+.New_IMG, .card-img-top movieWatch_IMG {
+  width: 100%;
   height: 100%;
   object-fit: cover;
+  border-bottom: 2px solid #FF7038;
 }
 
-/* #heroCover{
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), black);
-} */
+/* Hover effects */
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
 
-.movieLibrary .btn-primary:hover {
-  background-color: #ff8959;
+.card-img-top:hover {
+  border-bottom: 2px solid #6EABC8;
+}
+
+
+.watchListDynamic .card .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 5px;
+  transition: background 0.3s ease;
+}
+
+.watchListDynamic .card .close-btn:hover {
+  background: rgba(255, 112, 56, 0.8);
+}
+
+.movieWatchlist .btn-primary{
+  margin-top: 50px;
+  margin-left: 20px;
 }
 
 /* Responsive adjustments */
@@ -836,14 +720,14 @@ img.lucide-bookmark {
 
   /* Enable horizontal scrolling and adjust card size on smaller screens */
   .scrollable-row,
-  .movieLibrary .row,
-  .movieWatchlist .row {
+  .movieLibrary .row {
     flex-direction: row;
     overflow-x: auto;
     white-space: nowrap;
     gap: 10px;
     padding: 0 5px;
   }
+
 
   #top3card,
   .scrollable-row .card,
@@ -869,95 +753,6 @@ img.lucide-bookmark {
   }
 }
 
-/* Carousel on Home Page */
-
-/* Carousel Section */
-.carouselSection {
-  background-color: #000000;
-  /* Set carousel background to black */
-  padding: 50px 0;
-  /* Increase height with padding */
-  height: auto;
-}
-
-/* Carousel Item Styling */
-.carousel-item {
-  height: 500px;
-  /* Increase the height of the carousel items */
-}
-
-/* Carousel Control Styling */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 100px;
-}
-
-/* Carousel Caption Styling */
-.carousel-caption {
-  position: relative;
-  padding-left: 30px;
-  color: #ffffff;
-  /* White text color for captions */
-}
-
-/* Carousel Headings */
-.carousel-caption h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
-  /* Adjust heading size as needed */
-  font-weight: 700;
-  color: #ffffff;
-  margin-bottom: 15px;
-}
-
-/* Carousel Subheadings */
-.carousel-caption p {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 18px;
-  /* Adjust subheading size as needed */
-  color: rgba(255, 255, 255, 0.8);
-  margin-bottom: 20px;
-}
-
-/* Carousel Button Styling
-.carousel-caption .btn-primary {
-    background-color: #FF7038;
-      color: #fff;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 16px;
-      border: none;
-      border-radius: 30px;
-      height: 50px;
-      width: 180px;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-wrap: nowrap;
-      padding: 10px 24px;
-      transition: all 0.3s ease;-
-}
-
-.carousel-caption .btn-primary:hover {
-background-color: #ff8959;
-  color: #ffffff;
-}
-
-.carousel-caption .btn-primary:active {
-  background-color: #ffffff5e !important;
-  color: #ffffff !important;
-} */
-
-/* Carousel Image Styling */
-.carousel-item img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  padding-left: 50px;
-}
-
 /* INdividual movie page */
 
 .buttonContainerIndMovie {
@@ -971,7 +766,6 @@ background-color: #ff8959;
 .heroBannerInd {
   position: relative;
   background-color: #000000;
-  /* background-color: rgba(0, 0, 0, 0.6); */
   padding: 40px 0;
   color: white;
 }
@@ -1032,12 +826,15 @@ background-color: #ff8959;
 }
 
 .scrollable-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
-  padding-left: 15px;
-  padding-right: 15px;
+    display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding-left: 15px;
+      padding-right: 15px;
+      flex-direction: row;
+      align-content: center;
+      margin-top: 30px;
+      margin-bottom: 15px;
 }
 
 /* movie watchlist cards x button */
@@ -1219,4 +1016,138 @@ body {
 
 #yearInput{
   width: 200px;
+}
+
+/* discovery page hero banner at bottom   */
+
+/* Carousel Section Styling */
+/* Carousel Section Styling */
+.carouselWatchlistSection {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: 500px;
+  overflow: hidden;
+}
+
+.carouselWatchlist-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.carouselWatchlist-caption {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.carouselWatchlist-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.carouselWatchlist-subtitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.carouselWatchlist-btn {
+background-color: #FF7038;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  height: 50px;
+  width: 180px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-wrap: nowrap;
+  padding: 10px 24px;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.carouselWatchlist-btn:hover {
+  background-color: #ff8959;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .carouselWatchlist-title {
+    font-size: 28px;
+  }
+
+  .carouselWatchlist-subtitle {
+    font-size: 16px;
+  }
+}
+
+/* Scroll to Top Button Styling */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 70px;
+  right: 30px;
+  background-color: #FF7038;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: opacity 0.3s, background-color 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLXVwIj48cGF0aCBkPSJtMTggMTUtNi02LTYgNiIvPjwvc3ZnPg==");
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #ff8959;
+  /* Button color on hover */
 }
