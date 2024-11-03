@@ -354,64 +354,84 @@ function PreviousPage(_section){
 
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
-    moviesToLoad = _movieList.results.length;
+  moviesToLoad = _movieList.results.length;
 
-    let out = '';
-    //DOM manipulation
-    let temp = '';
-    for (let index = 0; index < moviesToLoad; index++) {
-        if(_movieList.results[index].release_date != undefined){
-            _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
-        }
-        
-        if(_movieList.results[index].poster_path != null){
-            temp =  `
+  let out = "";
+  //DOM manipulation
+  let temp = "";
+  for (let index = 0; index < moviesToLoad; index++) {
+    if (_movieList.results[index].release_date != undefined) {
+      _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+    }
+
+    if (_movieList.results[index].poster_path != null) {
+      temp = `
             <div class="card">
-                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
-                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${
+                  _movieList.results[index].id
+                })">
+                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${
+        _movieList.results[index].poster_path
+      }'>
                 </a>
                 <div class="card-body">
-                    <h6 class="title">${_movieList.results[index].original_title}</h6>
-                    <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
-                    <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
+                    <h6 class="title">${
+                      _movieList.results[index].original_title
+                    }</h6>
+                    <p class="${keyword}_subTitle">${String(
+        _movieList.results[index].release_date
+      ).substring(0, 4)} ${months[_month]}</p>
+                    <p class="imdb-rating">${String(
+                      _movieList.results[index].vote_average
+                    ).substring(0, 3)}</p>
                 </div>
             </div>
         `;
-        }else{
-            temp = '';
-        }
-
-        out += temp;
+    } else {
+      temp = "";
     }
-    //setting the Row to expected results using DOM manipulation
-    document.getElementById(`${keyword}_Row`).innerHTML = out;
+
+    out += temp;
+  }
+  //setting the Row to expected results using DOM manipulation
+  document.getElementById(`${keyword}_Row`).innerHTML = out;
 }
 
 function SortMoviesHome(_movieList, keyword) {
-    moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
+  moviesToLoad = document.getElementsByClassName(keyword + "_IMG").length;
 
-    let out = '';
-    //DOM manipulation
-    let temp = '';
-    for (let index = 0; index < moviesToLoad; index++) {
-        _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+  let out = "";
+  //DOM manipulation
+  let temp = "";
+  for (let index = 0; index < moviesToLoad; index++) {
+    _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
 
-        temp =  `
+    temp = `
             <div class="card">
-                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
-                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${
+                  _movieList.results[index].id
+                })">
+                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${
+      _movieList.results[index].poster_path
+    }'>
                 </a>
                 <div class="card-body">
-                    <h6 class="title">${_movieList.results[index].original_title}</h6>
-                    <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
-                    <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
+                    <h6 class="title">${
+                      _movieList.results[index].original_title
+                    }</h6>
+                    <p class="${keyword}_subTitle">${String(
+      _movieList.results[index].release_date
+    ).substring(0, 4)} ${months[_month]}</p>
+                    <p class="imdb-rating">${String(
+                      _movieList.results[index].vote_average
+                    ).substring(0, 3)}</p>
                 </div>
             </div>
-        `
-        out += temp;
-    }
-    //setting the Row to expected results using DOM manipulation
-    document.getElementById(`${keyword}_Row`).innerHTML = out;
+        `;
+    out += temp;
+  }
+  //setting the Row to expected results using DOM manipulation
+  document.getElementById(`${keyword}_Row`).innerHTML = out;
 }
 
 //Getting the genre list from the API
