@@ -882,3 +882,116 @@ async function loadTrailerBanner() {
 
 // Call function on page load
 document.addEventListener("DOMContentLoaded", loadTrailerBanner);
+
+async function loadWatchlistBanner() {
+    const options = {
+        method: "GET",
+        headers: {
+            accept: "application/json",
+            Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMTBkOGMzNWQ5YzI1NDA4MjI3YmY3MjI5ZGZmZTg3YiIsIm5iZiI6MTcyOTA3NzY2OC4wMjUzMTcsInN1YiI6IjY2ZTgyNDlkZGQyMjRkMWEzOTkxZDkzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LcrKnRRMJ_4Y4ahXNTcY3H3anUkGRA0W6D0kLR2-1Rs",
+        },
+    };
+
+    try {
+        // Fetch a list of popular movies
+        const response = await fetch("https://api.themoviedb.org/3/movie/popular?language=en-US&page=1", options);
+        const movies = await response.json();
+        
+        // Select a random movie (not the first one) for variety
+        const movie = movies.results[Math.floor(Math.random() * (movies.results.length - 1)) + 1];
+
+        // Fetch additional details for the director and age restriction if needed
+        const detailsResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}?language=en-US`, options);
+        const movieDetails = await detailsResponse.json();
+        const director = movieDetails.credits.crew.find(person => person.job === "Director")?.name || "Unknown Director";
+        
+        // Set the background to the movie's poster
+        document.getElementById("WatchlistBanner").style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${movie.poster_path}')`;
+
+        // Populate banner content
+        document.getElementById("watchlistBannerTitle").textContent = movie.title;
+        document.getElementById("watchlistBannerDirector").textContent = `Directed by: ${director}`;
+        document.getElementById("watchlistBannerYear").textContent = `Year: ${movie.release_date.substring(0, 4)}`;
+        document.getElementById("watchlistBannerAge").textContent = `Age Restriction: ${movie.adult ? "18+" : "PG"}`;
+
+        // Set the button to scroll to the Watchlist section
+        document.getElementById("startWatchingBtn").addEventListener("click", (e) => {
+            e.preventDefault();
+            document.querySelector("#MovieWatchlistContainer").scrollIntoView({ behavior: "smooth" });
+        });
+    } catch (error) {
+        console.error("Error loading watchlist banner:", error);
+    }
+}
+
+// Call the function to load the WatchlistBanner when the page loads
+document.addEventListener("DOMContentLoaded", loadWatchlistBanner);
+
+async function loadWatchlistBanner() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer YOUR_API_KEY", // Replace with your actual API key
+    },
+  };
+
+  try {
+    // Fetch a list of popular movies
+    const response = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      options
+    );
+    const movies = await response.json();
+
+    // Select a random movie (not the first one)
+    const movie =
+      movies.results[
+        Math.floor(Math.random() * (movies.results.length - 1)) + 1
+      ];
+
+    // Set the background to the movie's poster
+    document.getElementById(
+      "WatchlistBanner"
+    ).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${movie.poster_path}')`;
+
+    // Populate the title
+    document.getElementById("watchlistBannerTitle").textContent = movie.title;
+
+    // Fetch the movie's full details to get genres, runtime, etc.
+    const movieDetailsResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie.id}?language=en-US`,
+      options
+    );
+    const movieDetails = await movieDetailsResponse.json();
+
+    // Extract and format movie details
+    const genres = movieDetails.genres.map((genre) => genre.name).join(", ");
+    const releaseYear = movieDetails.release_date.substring(0, 4);
+    const runtime = `${movieDetails.runtime} mins`;
+    const rating = movieDetails.vote_average
+      ? movieDetails.vote_average.toFixed(1)
+      : "N/A";
+
+    // Display the formatted movie details in .moviesubtitles style
+    document.getElementById(
+      "watchlistBannerDetails"
+    ).textContent = `${genres} | ${releaseYear} | ${runtime} | ${rating}`;
+
+    // Set the button to scroll to the Watchlist section
+    document
+      .getElementById("startWatchingBtn")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        document
+          .querySelector("#MovieWatchlistContainer")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+  } catch (error) {
+    console.error("Error loading watchlist banner:", error);
+  }
+}
+
+// Call function on page load
+document.addEventListener("DOMContentLoaded", loadWatchlistBanner);

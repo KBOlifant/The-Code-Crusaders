@@ -697,8 +697,9 @@ img.lucide-bookmark {
 }
 
 .movieWatchlist .btn-primary{
-  margin-top: 50px;
+  margin-top: 60px;
   margin-left: 20px;
+  margin-bottom: 80px;
 }
 
 /* Responsive adjustments */
@@ -1155,7 +1156,6 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   
 }
 
-
 .movie-banner {
   position: relative;
   height: 500px;
@@ -1332,3 +1332,31 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   padding: 12px 24px;
   text-transform: uppercase;
 }
+
+#WatchlistBanner {
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+#WatchlistBanner .btn-primary{
+  margin-top: 80px;
+}
+
+#WatchlistBanner .moviesubtitles {
+  font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 5px;
+}
+
+
+
