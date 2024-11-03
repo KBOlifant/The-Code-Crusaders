@@ -291,7 +291,8 @@ function SortMovies(_movieList, keyword) {
                     </a>
                     <div class="card-body">
                         <h6 class="title">${_movieList.results[index].original_title}</h6>
-                        <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}</p>
+                        <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
+                        <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
                     </div>
                 </div>
             `
