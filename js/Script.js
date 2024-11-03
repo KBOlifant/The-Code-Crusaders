@@ -634,7 +634,7 @@ function LoadMovieList() {
   }
 }
 
-// Function to scroll to the top (Button on right hand side of the screen)
+// Function to scroll to the top (Button on right hand side of the)
 function scrollToTop() {
   window.scrollTo({
     top: 0,
@@ -652,3 +652,26 @@ window.onscroll = function() {
     scrollToTopBtn.classList.remove("show");
   }
 };
+
+// Function to display Individual Movie Banner
+async function IndividualMovieBanner(ID) {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${ID}?language=en-US`, options);
+    const movie = await response.json();
+
+    // Set the banner background image
+    document.getElementById("IndividualMovieBanner").style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}')`;
+
+    // Populate the title, subtitle, and Watch Now button
+    document.getElementById("bannerTitle").textContent = movie.title;
+    document.getElementById("bannerSubtitle").textContent = movie.tagline || "Watch this movie now!";
+    document.getElementById("watchNowBtn").setAttribute("href", `../pages/individualmovie.html?id=${movie.id}`);
+  } catch (error) {
+    console.error("Error fetching movie data:", error);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const movieID = RetrieveMovieCode(); // Retrieve the movie ID stored in local storage
+  IndividualMovieBanner(movieID); // Call function to display the banner
+});
