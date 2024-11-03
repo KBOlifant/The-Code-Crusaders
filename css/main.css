@@ -1026,7 +1026,6 @@ background-color: #ff8959;
   border-bottom: none !important;
 }
 
-
 #IndividualCover {
   margin-left: 30px;
 }
@@ -1161,6 +1160,10 @@ body {
   color: #ffffff;
 }
 
+#watchListBtn{
+  background-color: #175F81;
+}
+
 /* Responsive Styling */
 @media (max-width: 768px) {
   .filter-bar {
@@ -1199,6 +1202,18 @@ body {
   }
 }
 
-.scrollable-row::-webkit-scrollbar {
-  display: none;             
+.actorsFeatured{
+  background-color: #1d1d1d;
+  height: auto;
+  border-radius: 50px;
 }
+
+.team-member{
+  border-radius: 50px;
+}
+
+.cast_pfp{
+  border-radius: 150px;
+}
+
+
