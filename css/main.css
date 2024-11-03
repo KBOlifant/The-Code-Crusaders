@@ -1217,3 +1217,6 @@ body {
   border-radius: 150px;
 }
 
+#yearInput{
+  width: 200px;
+}

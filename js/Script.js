@@ -41,7 +41,7 @@ async function UpdateMovies(keyword){
         .then((response) => {
         console.log(response);
         movieList = response;
-        SortMovies(movieList, keyword);
+        SortMoviesHome(movieList, keyword);
             }).catch((err) => console.error(err));
         }
     }
@@ -101,12 +101,13 @@ async function DiscoverMovies(Section) {
     }).catch((err) => console.error(err));
 }
 
-async function ApplyFilters(Section, genre_Filter, year_Filter, rating_Filter){
+async function ApplyFilters(Section, genre_Filter, year_Filter, sort_Filter, rating_Filter){
     //initializing needed values from the html values
     let rating = parseInt(document.getElementById(rating_Filter).value);
     let genre_string = document.getElementById(genre_Filter).value;
     let rating_string = "";
     let genreID = 0;
+    let sort_option = "";
 
     //checking which genre has been chosen then storing its code
     for (let index = 0; index < GenreList.length; index++) {
@@ -129,17 +130,44 @@ async function ApplyFilters(Section, genre_Filter, year_Filter, rating_Filter){
         genre_string = `&with_genres=${genreID}`;
     }
 
+    switch(parseInt(document.getElementById(sort_Filter).value)){
+        case 0:
+            sort_option = "";
+            break;
+        case 1:
+            sort_option = "&sort_by=popularity.desc";
+            break;
+        case 2:
+            sort_option = "&sort_by=primary_release_date.asc"
+            break;
+        case 3:
+            sort_option = "&sort_by=primary_release_date.desc"
+            break;
+        case 4:
+            sort_option = "&sort_by=title.asc"
+            break;
+        case 5:
+            sort_option = "&sort_by=title.desc"
+            break;
+        case 6:
+            sort_option = "&sort_by=vote_average.asc"
+            break;
+        case 7:
+            sort_option = "&sort_by=vote_average.desc"
+            break;
+    }
+
     //storing these values into session storage to filter again without applying it again
-    let params = [Section, genre_Filter, year_Filter, rating_Filter];
+    let params = [Section, genre_Filter, year_Filter, sort_Filter, rating_Filter];
     params_JSON = JSON.stringify(params);
     //console.log(JSON.parse(params_JSON));
     sessionStorage.setItem("filter", params_JSON);
 
-    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc${rating_string}${genre_string}`, options)
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}${sort_option}${rating_string}${genre_string}&with_original_language=en`, options)
     .then((response) => response.json())
     .then((response) => {
-    console.log(genre_string);
     movieList = response;
+    console.log(movieList);
     SortMovies(movieList, Section);
     }).catch((err) => console.error(err));
 }
@@ -265,6 +293,10 @@ function SetGenres(){
     InitializeLibraryGenres(GenreList)
 }
 
+function resetPage(){
+    pageNumber = 1;
+}
+
 
 function WatchMovie(_movie){
     if(ID != null){
@@ -299,7 +331,7 @@ function NextPage(_section){
     let filter_params = sessionStorage.getItem("filter");
     params_JSON = JSON.parse(filter_params);
     if(params_JSON != null){
-        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3])
+        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3], params_JSON[4])
     } else{
         DiscoverMovies(_section);
     }
@@ -313,7 +345,7 @@ function PreviousPage(_section){
     let filter_params = sessionStorage.getItem("filter");
     params_JSON = JSON.parse(filter_params);
     if(params_JSON != null){
-        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3])
+        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3], params_JSON[4])
     } else{
         DiscoverMovies(_section);
     } 
@@ -322,30 +354,54 @@ function PreviousPage(_section){
 
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
-    moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
+    moviesToLoad = _movieList.results.length;
 
     let out = '';
-    if(moviesToLoad <= _movieList.results.length){
-        //DOM manipulation
-        let temp = '';
-        for (let index = 0; index < moviesToLoad; index++) {
-            _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+    //DOM manipulation
+    let temp = '';
+    for (let index = 0; index < moviesToLoad; index++) {
+        _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
 
-            temp =  `
-                <div class="card">
-                    <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
-                        <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
-                    </a>
-                    <div class="card-body">
-                        <h6 class="title">${_movieList.results[index].original_title}</h6>
-                        <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
-                        <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
-                    </div>
+        temp =  `
+            <div class="card">
+                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
+                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                </a>
+                <div class="card-body">
+                    <h6 class="title">${_movieList.results[index].original_title}</h6>
+                    <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
+                    <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
                 </div>
-            `
-            out += temp;
-        }
-        //console.log(moviesToLoad);
+            </div>
+        `
+        out += temp;
+    }
+    //setting the Row to expected results using DOM manipulation
+    document.getElementById(`${keyword}_Row`).innerHTML = out;
+}
+
+function SortMoviesHome(_movieList, keyword) {
+    moviesToLoad = document.getElementById(keyword+"_IMG").length;
+
+    let out = '';
+    //DOM manipulation
+    let temp = '';
+    for (let index = 0; index < moviesToLoad; index++) {
+        _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+
+        temp =  `
+            <div class="card">
+                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
+                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                </a>
+                <div class="card-body">
+                    <h6 class="title">${_movieList.results[index].original_title}</h6>
+                    <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
+                    <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
+                </div>
+            </div>
+        `
+        out += temp;
     }
     //setting the Row to expected results using DOM manipulation
     document.getElementById(`${keyword}_Row`).innerHTML = out;

@@ -167,6 +167,20 @@
       </div>
 
       <div class="filter-option">
+        <label for="sortFilter">Sort:</label>
+        <select id="sortFilter" class="form-select">
+          <option value="0">None</option>
+          <option value="1">Popularity</option>
+          <option value="2">Year: Ascending</option>
+          <option value="3">Year: Descending</option>
+          <option value="4">Title: Ascending</option>
+          <option value="5">Title: Descending</option>
+          <option value="6">Rating: Low to High</option>
+          <option value="7">Rating: High to Low</option>
+        </select>
+      </div>
+
+      <div class="filter-option">
         <label for="yearFilter">Year:</label>
         <input class="form-control search-input" id="yearInput" type="number" min="1900" max="2024" step="1" placeholder="Year" aria-label="Search">
           
@@ -174,7 +188,7 @@
         </select>
       </div>
     
-      <button type="button" class="filter-btn" onclick="ApplyFilters('library', 'genreFilter', 'yearInput', 'ratingFilter')">Filter</button>
+      <button type="button" class="filter-btn" onclick="resetPage(), ApplyFilters('library', 'genreFilter', 'yearInput', 'sortFilter', 'ratingFilter')">Filter</button>
       
     </section>
 
