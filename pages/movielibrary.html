@@ -155,14 +155,6 @@
       </div>
     
       <div class="filter-option">
-        <label for="yearFilter">Year:</label>
-        <input class="form-control search-input" id="yearInput" type="number" min="1900" max="2024" step="1" placeholder="Year" aria-label="Search">
-          
-          <!-- Dynamic Year Options -->
-        </select>
-      </div>
-    
-      <div class="filter-option">
         <label for="ratingFilter">IMDb Rating:</label>
         <select id="ratingFilter" class="form-select">
           <option value="">All</option>
@@ -173,8 +165,17 @@
           <option value="5">5+</option>
         </select>
       </div>
+
+      <div class="filter-option">
+        <label for="yearFilter">Year:</label>
+        <input class="form-control search-input" id="yearInput" type="number" min="1900" max="2024" step="1" placeholder="Year" aria-label="Search">
+          
+          <!-- Dynamic Year Options -->
+        </select>
+      </div>
     
       <button type="button" class="filter-btn" onclick="ApplyFilters('library', 'genreFilter', 'yearInput', 'ratingFilter')">Filter</button>
+      
     </section>
 
     <div class="rowGap mb-4">

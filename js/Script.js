@@ -102,33 +102,43 @@ async function DiscoverMovies(Section) {
 }
 
 async function ApplyFilters(Section, genre_Filter, year_Filter, rating_Filter){
+    //initializing needed values from the html values
     let rating = parseInt(document.getElementById(rating_Filter).value);
+    let genre_string = document.getElementById(genre_Filter).value;
     let rating_string = "";
     let genreID = 0;
 
+    //checking which genre has been chosen then storing its code
+    for (let index = 0; index < GenreList.length; index++) {
+        if(genre_string == GenreList[index][0]){
+            genreID = GenreList[index][1];
+        }
+    }
+
+    //if no rating option has been picked, then show all rating values
     if(document.getElementById(rating_Filter).value == ""){
         rating_string = "";
     } else{
         rating_string = `&vote_average.gte=${rating}&vote_average.lte=${rating + 1}`;
     }
 
-    let genreString = document.getElementById(genre_Filter).value;
-    
-    for (let index = 0; index < GenreList.length; index++) {
-        if(genreString == GenreList[index][0]){
-            genreID = GenreList[index][1];
-        }
+    //if no genre has been specified, then show all genres
+    if(document.getElementById(genre_Filter).value == ""){
+        genre_string = '';
+    } else{
+        genre_string = `&with_genres=${genreID}`;
     }
 
+    //storing these values into session storage to filter again without applying it again
     let params = [Section, genre_Filter, year_Filter, rating_Filter];
     params_JSON = JSON.stringify(params);
     //console.log(JSON.parse(params_JSON));
     sessionStorage.setItem("filter", params_JSON);
 
-    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc${rating_string}&with_genres=${genreID}`, options)
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}&sort_by=popularity.desc${rating_string}${genre_string}`, options)
     .then((response) => response.json())
     .then((response) => {
-    console.log(response);
+    console.log(genre_string);
     movieList = response;
     SortMovies(movieList, Section);
     }).catch((err) => console.error(err));
@@ -242,6 +252,10 @@ async function InitializeLibraryGenres(_genreList){
         `
         out += temp;
     }
+
+    let init = `<option value="">All</option>`;
+
+    out = init + out;
 
     document.getElementById("genreFilter").innerHTML = out;
     }).catch((err) => console.error(err));
