@@ -381,7 +381,7 @@ function SortMovies(_movieList, keyword) {
 }
 
 function SortMoviesHome(_movieList, keyword) {
-    moviesToLoad = document.getElementById(keyword+"_IMG").length;
+    moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
 
     let out = '';
     //DOM manipulation
