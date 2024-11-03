@@ -1205,9 +1205,15 @@ body {
 .actorsFeatured{
   background-color: #1d1d1d;
   height: auto;
+  border-radius: 50px;
 }
 
-.scrollable-row::-webkit-scrollbar {
-  display: none;             /* For Chrome, Safari, and Opera */
+.team-member{
+  border-radius: 50px;
 }
+
+.cast_pfp{
+  border-radius: 150px;
+}
+
 

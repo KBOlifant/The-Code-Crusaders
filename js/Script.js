@@ -73,6 +73,7 @@ async function ShowCurrentMovie(ID){
         //updating the hero section of individual movie
         UpdateHero(response);
         IndividualBanner(response);
+        showActors(ID);
         currentMovie_JSON = response;
     }).catch((err) => console.error(err));
 }
@@ -185,6 +186,38 @@ async function LoadByID(ID){
 
     }).catch((err) => console.error(err));
     }
+}
+
+async function showActors(ID){
+    fetch(`https://api.themoviedb.org/3/movie/${ID}/credits?language=en-US`, options)
+    .then((response) => response.json())
+    .then((response) => {
+    cast = response.cast;
+    console.log(cast);
+    sortActors(cast);
+    }).catch((err) => console.error(err));
+}
+
+function sortActors(cast){
+    let out = "";
+    let temp = "";
+    for (let index = 0; index < cast.length; index++) {
+        if(cast[index].known_for_department == "Acting" && cast[index].profile_path != null){
+            temp = `
+            <div class="col team-member" backgroundImage="../assets/actor.png">
+              <img class="cast_pfp" src="https://image.tmdb.org/t/p/original/${cast[index].profile_path}" alt="Profile Picture" width='150px'>
+              <p class="mt-2 mb-0">${cast[index].original_name}</p>
+              <small>${cast[index].character}</small>
+            </div>
+            `;
+        }else{
+            temp = "";
+        }
+
+        out += temp;
+    }
+
+    document.getElementById("actors_section").innerHTML = out;
 }
 //change
 //calling the functions
@@ -405,8 +438,7 @@ function removeFromWatchlist(movie_API_Id){
         LoadMovieList();
       }
     }
-  }
-  
+}
 
 //update the hero section of individual movie html
 function UpdateHero(_movie){
