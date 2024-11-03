@@ -1201,3 +1201,13 @@ body {
     padding: 6px 10px;
   }
 }
+
+.actorsFeatured{
+  background-color: #1d1d1d;
+  height: auto;
+}
+
+.scrollable-row::-webkit-scrollbar {
+  display: none;             /* For Chrome, Safari, and Opera */
+}
+
