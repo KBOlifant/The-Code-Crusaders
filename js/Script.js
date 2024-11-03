@@ -633,3 +633,22 @@ function LoadMovieList() {
       .insertAdjacentHTML("beforeend", out);
   }
 }
+
+// Function to scroll to the top (Button on right hand side of the screen)
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+
+// Show or hide the button based on scroll position
+window.onscroll = function() {
+  const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+  
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+    scrollToTopBtn.classList.add("show");
+  } else {
+    scrollToTopBtn.classList.remove("show");
+  }
+};

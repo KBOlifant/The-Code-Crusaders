@@ -1119,3 +1119,35 @@ background-color: #FF7038;
     font-size: 16px;
   }
 }
+
+/* Scroll to Top Button Styling */
+#scrollToTopBtn {
+  position: fixed;
+  bottom: 70px;
+  right: 30px;
+  background-color: #FF7038;
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: opacity 0.3s, background-color 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLXVwIj48cGF0aCBkPSJtMTggMTUtNi02LTYgNiIvPjwvc3ZnPg==");
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#scrollToTopBtn.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scrollToTopBtn:hover {
+  background-color: #ff8959;
+  /* Button color on hover */
+}
