@@ -118,7 +118,7 @@ async function ApplyFilters(Section, genre_Filter, year_Filter, sort_Filter, rat
 
     //if no rating option has been picked, then show all rating values
     if(document.getElementById(rating_Filter).value == ""){
-        rating_string = "";
+        rating_string = `&vote_average.gte=${1}&vote_average.lte=${10}`;
     } else{
         rating_string = `&vote_average.gte=${rating}&vote_average.lte=${rating + 1}`;
     }
@@ -360,9 +360,12 @@ function SortMovies(_movieList, keyword) {
     //DOM manipulation
     let temp = '';
     for (let index = 0; index < moviesToLoad; index++) {
-        _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
-
-        temp =  `
+        if(_movieList.results[index].release_date != undefined){
+            _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+        }
+        
+        if(_movieList.results[index].poster_path != null){
+            temp =  `
             <div class="card">
                 <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
                     <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
@@ -373,7 +376,11 @@ function SortMovies(_movieList, keyword) {
                     <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
                 </div>
             </div>
-        `
+        `;
+        }else{
+            temp = '';
+        }
+
         out += temp;
     }
     //setting the Row to expected results using DOM manipulation
