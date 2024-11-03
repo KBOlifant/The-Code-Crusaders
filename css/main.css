@@ -547,7 +547,6 @@ img.lucide-bookmark {
 }
 
 /* card styling starts here */
-/* card styling starts here */
 /* Section headers */
 .section-title {
   font-family: 'Montserrat', sans-serif;
@@ -582,6 +581,7 @@ img.lucide-bookmark {
   overflow: hidden;
 }
 
+/* Scrollable Section */
 .scrollableSection {
   background-color: #1E1E1E;
   height: auto;
@@ -617,7 +617,6 @@ img.lucide-bookmark {
 }
 
 /* Subtitle styling */
-.card-subtitle,
 .Thriller_subTitle,
 .Animation_subTitle,
 .Adventure_subTitle,
@@ -628,7 +627,8 @@ img.lucide-bookmark {
 .movieWatch_subTitle,
 .Recommended_subTitle,
 .library_subTitle,
-.new_subTitle {
+.New_subTitle,
+.card-subtitle {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -643,7 +643,6 @@ img.lucide-bookmark {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
   color: #FF7038;
-  /* Theme orange */
   padding-left: 10px;
   text-align: left;
   margin-bottom: 10px;
@@ -721,37 +720,6 @@ img.lucide-bookmark {
 }
 
 .findOutMore .btn-primary:hover {
-  background-color: #ff8959;
-}
-
-/* Carousel section styling */
-.carousel-caption h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.carousel-caption h3 {
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 18px;
-  line-height: 1.4;
-  color: #ffffff;
-  margin-top: 15px;
-}
-
-.carousel-caption .btn-primary {
-  background-color: #FF7038;
-  color: #ffffff;
-  font-weight: 600;
-  border: none;
-  border-radius: 5px;
-  padding: 8px 15px;
-  margin-top: 20px;
-  text-transform: uppercase;
-}
-
-.carousel-caption .btn-primary:hover {
   background-color: #ff8959;
 }
 
@@ -837,181 +805,91 @@ img.lucide-bookmark {
   text-align: left;
 }
 
-/* Adding IMDb rating to Watchlist cards */
-.movieWatchlist .card .imdb-rating {
+/* Watchlist Container Styling */
+/* Container for the fixed grid */
+.fixed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* Adjust number of columns as needed */
+  grid-template-rows: auto;
+  gap: 20px;
+  /* Space between cards */
+  justify-content: start;
+  /* Aligns grid to the left */
+}
+
+/* Card styling within the grid */
+.fixed-grid .card {
+  background-color: #272727;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  max-width: 280px;
+  /* Fixed width for all cards */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  /* Allows for positioning of close button */
+}
+
+/* Image styling */
+.fixed-grid .card img.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 2px solid #FF7038;
+}
+
+/* Title Styling */
+.fixed-grid .card .title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 10px 0;
+  text-align: left;
+}
+
+/* Subtitle Styling */
+.fixed-grid .card .movieWatch_subTitle {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  padding-bottom: 10px;
+  text-align: left;
+}
+
+/* IMDb Rating Styling */
+.fixed-grid .card .imdb-rating {
   font-family: 'Nunito Sans', sans-serif;
   font-size: 14px;
   color: #FF7038;
-  /* Theme orange */
   padding-left: 10px;
   text-align: left;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.movieWatchlist .card .imdb-rating::before {
-  content: "IMDb Rating: ";
-  font-weight: 600;
-  color: #ffffff;
-  margin-right: 5px;
-}
-
-/* Background styling for "Find Out More" section in individual movie page */
-.findOutMore {
-  height: 500px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.findOutMoreText {
-  width: 500px;
-  font-family: 'Nunito Sans', sans-serif;
-}
-
-.centerFindMoreText {
-  text-align: center;
-  align-content: center;
-}
-
-.heroBannerInd h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.heroBannerInd p.lead {
-  font-size: 20px;
-  color: #9A9A9A;
-}
-
-.heroBannerInd .btn-primary:hover {
-  background-color: #ff8959;
-}
-
-.heroBannerInd .img-fluid {
-  border-radius: 8px;
-}
-
-.synopsis {
-  background-color: #f8f8f8;
-  padding: 40px 0;
-}
-
-.synopsis h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.synopsis p {
-  font-size: 18px;
-  line-height: 1.6;
-}
-
-.container {
-  width: 100%;
-  padding: 20px;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-
-.card {
-  width: 100%;
-  max-width: 280px;
-  position: relative;
-  background-color: #1d1d1d;
-  height: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: #ffffff;
-}
-
-.card:hover {
+/* Hover and close button styling remains consistent */
+.fixed-grid .card:hover {
   transform: translateY(-10px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
-  border-bottom: #000000;
 }
 
-.card .card-img-top,
-.card .movieLibrary .card .card-img-top,
-.movieLibrary .card img,
-.movieWatchlist .card .card-img-top,
-.movieWatchlist .card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-bottom: 2px solid #ff7038;
+.fixed-grid .card .close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 5px;
+  transition: background 0.3s ease;
 }
 
-.card-img-top:hover,
-.card:hover img {
-  border-bottom: 2px solid #6EABC8;
+.fixed-grid .card .close-btn:hover {
+  background: rgba(255, 112, 56, 0.8);
 }
-
-.card .btn-primary {
-  width: 100%;
-  padding: 10px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: #FF7038;
-  border: none;
-  border-radius: 7px;
-  text-align: center;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.card .btn-primary:hover {
-  background-color: #ff8959;
-}
-
-/* Center-align all cards within containers */
-.scrollable-row,
-.movieLibrary .row,
-.scrollableSection .row,
-.movieWatchlist .row {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 0 10px;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-.movieLibrary .movieWatchlist .btn-primary {
-  width: 200px;
-  padding: 10px;
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #ffffff;
-  background-color: #FF7038;
-  border: none;
-  border-radius: 7px;
-  text-align: center;
-  transition: background-color 0.3s ease;
-}
-
-.heroBannerInd img{
-  height: 100%;
-  object-fit: cover;
-}
-
-.movieLibrary .btn-primary:hover {
-  background-color: #ff8959;
-}
-
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .scrollable-row {

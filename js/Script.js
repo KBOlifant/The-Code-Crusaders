@@ -597,7 +597,7 @@ function LoadMovieList(){
     let watchList = "";
     movieItems = GetFromLocalStorage("watchList");
     for (let index = 0; index < movieItems.length; index++) {
-        let out =`
+        let out = `
         <div class="card" id="cardGap">
         
             <div class="close-btn" onclick="removeFromWatchlist(${movieItems[index].id})">
@@ -607,11 +607,12 @@ function LoadMovieList(){
             </div>
   
             <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${movieItems[index].id})">
-              <img src="https://image.tmdb.org/t/p/original/${movieItems[index].poster_path}" width="80%" class="cover">
+              <img src="https://image.tmdb.org/t/p/original/${movieItems[index].poster_path}" width="80%" class="card-img-top movieWatch_IMG" alt="Thumbnail">
             </a>
             <div class="body">
-              <h5 class="movieWatch_Title">${movieItems[index].original_title}</h5>
-              <h6 class="movieWatch_subTitle">${String(movieItems[index].release_date).substring(0, 4)}</h6>
+              <h6 class="title">${movieItems[index].original_title}</h6>
+              <p class="movieWatch_subTitle">${String(movieItems[index].release_date).substring(0, 4)}</p>
+              <div class="imdb-rating">${String(movieItems[index].vote_average).substring(0, 3)}</div>
             </div>
           </div>
         `;
@@ -620,4 +621,4 @@ function LoadMovieList(){
     }
   
     document.querySelector(".watchListDynamic").innerHTML = watchList;
-  }
+}
