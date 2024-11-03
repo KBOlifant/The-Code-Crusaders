@@ -19,7 +19,7 @@
 </head>
 
 
-<body onload="DiscoverMovies('library')">
+<body onload="DiscoverMovies('library'), SetGenres()">
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -119,14 +119,11 @@
         <div class="carousel-item active">
           <div class="row d-flex align-items-center flex-column-reverse flex-md-row">
             <!-- Text and CTA on the left -->
-            <div class="col-md-6">
-              <div class="carousel-caption text-start">
+            <div class="col-md-6 px-6">
+              <div class="carousel-caption text-wrap text-start">
                 <h1>Genre</h1>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  From thrilling action and heartfelt drama to spine-chilling horror and awe-inspiring fantasy, our collection of movies spans every genre to offer something for every taste. Whether you're in the mood for a laugh, an adventure, or a thought-provoking story, explore worlds beyond imagination and uncover narratives that captivate, entertain, and inspire.
                 </p>
                 <a href="#" class="btn btn-primary">Explore More</a>
               </div>
@@ -157,14 +154,6 @@
       </div>
     
       <div class="filter-option">
-        <label for="yearFilter">Year:</label>
-        <select id="yearFilter" class="form-select">
-          <option value="">All</option>
-          <!-- Dynamic Year Options -->
-        </select>
-      </div>
-    
-      <div class="filter-option">
         <label for="ratingFilter">IMDb Rating:</label>
         <select id="ratingFilter" class="form-select">
           <option value="">All</option>
@@ -175,8 +164,31 @@
           <option value="5">5+</option>
         </select>
       </div>
+
+      <div class="filter-option">
+        <label for="sortFilter">Sort:</label>
+        <select id="sortFilter" class="form-select">
+          <option value="0">None</option>
+          <option value="1">Popularity</option>
+          <option value="2">Year: Ascending</option>
+          <option value="3">Year: Descending</option>
+          <option value="4">Title: Ascending</option>
+          <option value="5">Title: Descending</option>
+          <option value="6">Rating: Low to High</option>
+          <option value="7">Rating: High to Low</option>
+        </select>
+      </div>
+
+      <div class="filter-option">
+        <label for="yearFilter">Year:</label>
+        <input class="form-control search-input" id="yearInput" type="number" min="1900" max="2024" step="1" placeholder="Year" aria-label="Search">
+          
+          <!-- Dynamic Year Options -->
+        </select>
+      </div>
     
-      <button type="button" class="filter-btn" onclick="applyFilters()">Filter</button>
+      <button type="button" class="filter-btn" onclick="resetPage(), ApplyFilters('library', 'genreFilter', 'yearInput', 'sortFilter', 'ratingFilter')">Filter</button>
+      
     </section>
 
     <div class="rowGap mb-4">
@@ -401,14 +413,15 @@
             </div>
           </div>
 
-          <div class="button-container">
-            <a href="#" class="btn btn-primary" onclick="PreviousPage()">Previous Page</a>
-            <a href="#" class="btn btn-primary" onclick="NextPage()">Next Page</a>
-          </div>
-            <a href="#" class="btn btn-primary" onclick="NextPage('library')">Next Page</a>
-          </div>
-          </div>
-          </section>
+        </div>
+
+        <div class="button-container">
+          <a href="#" class="btn btn-primary" onclick="PreviousPage('library')">Previous Page</a>
+          <a href="#" class="btn btn-primary" onclick="NextPage('library')">Next Page</a>
+        </div>
+    </div>
+  </div>        
+</section>
 
 
   <section class="carouselSection">
@@ -418,19 +431,16 @@
         <div class="carousel-item active">
           <div class="row d-flex align-items-center flex-column-reverse flex-md-row">
             <div class="col-md-6">
-              <img src="../assets/placeholder.jpg" class="d-block w-100" />
+              <img src="../assets/MovieList.jpg" class="d-block w-100" />
             </div>
 
 
             <div class="col-md-6">
               <div class="carousel-caption text-end">
                 <h1>Title</h1>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <h3>
+                  Keep track of your favourite movies! Navigate our website and store movies to your liking to the Watchlist.
+                </h3>
 
                 <a href="#" class="btn btn-primary">Watchlist</a>
 
@@ -498,5 +508,60 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
   <script src="../js/Script.js"></script>
 </body>
+        
+<footer class="footer bg-dark text-light py-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <!-- Footer Logo -->
+        <div class="footer-logo">
+            <img src="/assets/VELV Navbar logo.png" alt="Velv Movies Logo" height="50px">
+        </div>
 
+        <!-- Footer Navigation Links -->
+        <div class="d-flex justify-content-between align-items-center">
+            <ul class="navbar-nav me-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Privacy & Legal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ad Choices</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Accessibility</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav me-4">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Social Media</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Where to find us</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="moviewatchlist.html">Watchlist</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="movielibrary.html">Discover</a>
+                </li>
+            </ul>
+        </div>
+        <div class="legal">
+            <p> Copyright © 2024 Velv</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="../js/Script.js"></script>
+  </body>
 </html>

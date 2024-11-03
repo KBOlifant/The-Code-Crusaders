@@ -41,7 +41,7 @@ async function UpdateMovies(keyword){
         .then((response) => {
         console.log(response);
         movieList = response;
-        SortMovies(movieList, keyword);
+        SortMoviesHome(movieList, keyword);
             }).catch((err) => console.error(err));
         }
     }
@@ -73,6 +73,7 @@ async function ShowCurrentMovie(ID){
         //updating the hero section of individual movie
         UpdateHero(response);
         IndividualBanner(response);
+        showActors(ID);
         currentMovie_JSON = response;
     }).catch((err) => console.error(err));
 }
@@ -99,6 +100,163 @@ async function DiscoverMovies(Section) {
 
     }).catch((err) => console.error(err));
 }
+
+async function ApplyFilters(Section, genre_Filter, year_Filter, sort_Filter, rating_Filter){
+    //initializing needed values from the html values
+    let rating = parseInt(document.getElementById(rating_Filter).value);
+    let genre_string = document.getElementById(genre_Filter).value;
+    let rating_string = "";
+    let genreID = 0;
+    let sort_option = "";
+
+    //checking which genre has been chosen then storing its code
+    for (let index = 0; index < GenreList.length; index++) {
+        if(genre_string == GenreList[index][0]){
+            genreID = GenreList[index][1];
+        }
+    }
+
+    //if no rating option has been picked, then show all rating values
+    if(document.getElementById(rating_Filter).value == ""){
+        rating_string = `&vote_average.gte=${1}&vote_average.lte=${10}`;
+    } else{
+        rating_string = `&vote_average.gte=${rating}&vote_average.lte=${rating + 1}`;
+    }
+
+    //if no genre has been specified, then show all genres
+    if(document.getElementById(genre_Filter).value == ""){
+        genre_string = '';
+    } else{
+        genre_string = `&with_genres=${genreID}`;
+    }
+
+    switch(parseInt(document.getElementById(sort_Filter).value)){
+        case 0:
+            sort_option = "";
+            break;
+        case 1:
+            sort_option = "&sort_by=popularity.desc";
+            break;
+        case 2:
+            sort_option = "&sort_by=primary_release_date.asc"
+            break;
+        case 3:
+            sort_option = "&sort_by=primary_release_date.desc"
+            break;
+        case 4:
+            sort_option = "&sort_by=title.asc"
+            break;
+        case 5:
+            sort_option = "&sort_by=title.desc"
+            break;
+        case 6:
+            sort_option = "&sort_by=vote_average.asc"
+            break;
+        case 7:
+            sort_option = "&sort_by=vote_average.desc"
+            break;
+    }
+
+    //storing these values into session storage to filter again without applying it again
+    let params = [Section, genre_Filter, year_Filter, sort_Filter, rating_Filter];
+    params_JSON = JSON.stringify(params);
+    //console.log(JSON.parse(params_JSON));
+    sessionStorage.setItem("filter", params_JSON);
+
+    fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&primary_release_year=${document.getElementById(year_Filter).value}${sort_option}${rating_string}${genre_string}&with_original_language=en`, options)
+    .then((response) => response.json())
+    .then((response) => {
+    movieList = response;
+    console.log(movieList);
+    SortMovies(movieList, Section);
+    }).catch((err) => console.error(err));
+}
+
+async function IndividualBanner(tag_ID, ID)
+    {
+        for (let index = 0; index < tag_ID.length; index++) {
+            let _movie;
+            let out = "";
+            fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
+            .then((response) => response.json())
+            .then((response) => {
+                _movie = response;
+    
+                out = `
+                    <div class="centerFindMoreText">
+                        <div class="text-center middleText">
+                            <h2>${_movie.title}</h2>
+                            <p>${_movie.tagline}</p>
+                            <button type="button" class="btn btn-primary">Find out more</button>
+                        </div>
+                    </div>
+                `;
+    
+                document.getElementById(tag_ID[index]).innerHTML = out;
+                document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
+                
+    
+        }).catch((err) => console.error(err));
+        }
+}
+
+async function LoadByID(ID){
+    for (let index = 0; index < ID.length; index++) {
+        let _movie;
+        let out = "";
+        fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
+        .then((response) => response.json())
+        .then((response) => {
+            _movie = response;
+
+            out = `
+                <div class="centerFindMoreText">
+                    <div class="text-center middleText">
+                        <h2>${_movie.title}</h2>
+                        <p>${_movie.tagline}</p>
+                        <button type="button" class="btn btn-primary">Find out more</button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById(tag_ID[index]).innerHTML = out;
+            document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
+
+    }).catch((err) => console.error(err));
+    }
+}
+
+async function showActors(ID){
+    fetch(`https://api.themoviedb.org/3/movie/${ID}/credits?language=en-US`, options)
+    .then((response) => response.json())
+    .then((response) => {
+    cast = response.cast;
+    console.log(cast);
+    sortActors(cast);
+    }).catch((err) => console.error(err));
+}
+
+function sortActors(cast){
+    let out = "";
+    let temp = "";
+    for (let index = 0; index < cast.length; index++) {
+        if(cast[index].known_for_department == "Acting" && cast[index].profile_path != null){
+            temp = `
+            <div class="col team-member" backgroundImage="../assets/actor.png">
+              <img class="cast_pfp" src="https://image.tmdb.org/t/p/original/${cast[index].profile_path}" alt="Profile Picture" width='150px'>
+              <p class="mt-2 mb-0">${cast[index].original_name}</p>
+              <small>${cast[index].character}</small>
+            </div>
+            `;
+        }else{
+            temp = "";
+        }
+
+        out += temp;
+    }
+
+    document.getElementById("actors_section").innerHTML = out;
+}
 //change
 //calling the functions
 //GetNewMovies();
@@ -107,6 +265,38 @@ async function DiscoverMovies(Section) {
 function InitializeHomeGenres(){
     InitializeMovieGenres(GenreList);
 }
+
+async function InitializeLibraryGenres(_genreList){
+    fetch('https://api.themoviedb.org/3/genre/movie/list?language=en', options)
+    .then((response) => response.json())
+    .then((response) => {
+    SortGenres(response, _genreList);
+    console.log(GenreList);
+    let out = "";
+    let temp = "";
+    for (let index = 0; index < GenreList.length; index++) {
+        temp = `
+            <option value="${GenreList[index][0]}">${GenreList[index][0]}</option>
+        `
+        out += temp;
+    }
+
+    let init = `<option value="">All</option>`;
+
+    out = init + out;
+
+    document.getElementById("genreFilter").innerHTML = out;
+    }).catch((err) => console.error(err));
+}
+
+function SetGenres(){
+    InitializeLibraryGenres(GenreList)
+}
+
+function resetPage(){
+    pageNumber = 1;
+}
+
 
 function WatchMovie(_movie){
     if(ID != null){
@@ -120,40 +310,106 @@ function StoreMovieToWatchList(){
     AddToWatchList(currentMovie_JSON)
 }
 
+//getting movie in JSON format
+function GetFromLocalStorage(key) {
+    try{
+      return JSON.parse(localStorage.getItem(key));
+    }catch{
+      return null;
+    }
+}
+
+//clearing the local storage for empty watchlist
+function clearWatchList(){
+    localStorage.clear();
+    document.querySelector(".watchListDynamic").innerHTML = "";
+}
+
 //loads the next page
 function NextPage(_section){
     pageNumber++;
-    DiscoverMovies(_section);
+    let filter_params = sessionStorage.getItem("filter");
+    params_JSON = JSON.parse(filter_params);
+    if(params_JSON != null){
+        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3], params_JSON[4])
+    } else{
+        DiscoverMovies(_section);
+    }
 }
+
+function PreviousPage(_section){
+    if(pageNumber <= 1){
+        return;
+    }
+    pageNumber--;
+    let filter_params = sessionStorage.getItem("filter");
+    params_JSON = JSON.parse(filter_params);
+    if(params_JSON != null){
+        ApplyFilters(params_JSON[0], params_JSON[1], params_JSON[2], params_JSON[3], params_JSON[4])
+    } else{
+        DiscoverMovies(_section);
+    } 
+}
+
 
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
+    moviesToLoad = _movieList.results.length;
+
+    let out = '';
+    //DOM manipulation
+    let temp = '';
+    for (let index = 0; index < moviesToLoad; index++) {
+        if(_movieList.results[index].release_date != undefined){
+            _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+        }
+        
+        if(_movieList.results[index].poster_path != null){
+            temp =  `
+            <div class="card">
+                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
+                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                </a>
+                <div class="card-body">
+                    <h6 class="title">${_movieList.results[index].original_title}</h6>
+                    <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
+                    <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
+                </div>
+            </div>
+        `;
+        }else{
+            temp = '';
+        }
+
+        out += temp;
+    }
+    //setting the Row to expected results using DOM manipulation
+    document.getElementById(`${keyword}_Row`).innerHTML = out;
+}
+
+function SortMoviesHome(_movieList, keyword) {
     moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
 
     let out = '';
-    if(moviesToLoad <= _movieList.results.length){
-        //DOM manipulation
-        let temp = '';
-        for (let index = 0; index < moviesToLoad; index++) {
-            _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+    //DOM manipulation
+    let temp = '';
+    for (let index = 0; index < moviesToLoad; index++) {
+        _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
 
-            temp =  `
-                <div class="card">
-                    <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
-                        <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
-                    </a>
-                    <div class="card-body">
-                        <h6 class="title">${_movieList.results[index].original_title}</h6>
-                        <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]}</p>
-                    </div>
+        temp =  `
+            <div class="card">
+                <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
+                    <img class="card-img-top ${keyword}_IMG" alt="Thumbnail" src='https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}'>
+                </a>
+                <div class="card-body">
+                    <h6 class="title">${_movieList.results[index].original_title}</h6>
+                    <p>${String(_movieList.results[index].release_date).substring(0, 4)} ${months[_month]} </p>
+                    <p>${String(_movieList.results[index].vote_average).substring(0, 3)}</p>
                 </div>
-            `
-            out += temp;
-        }
-
-        console.log(moviesToLoad);
+            </div>
+        `
+        out += temp;
     }
-
     //setting the Row to expected results using DOM manipulation
     document.getElementById(`${keyword}_Row`).innerHTML = out;
 }
@@ -245,57 +501,20 @@ function AddToWatchList(movie){
     
 }
 
-async function IndividualBanner(tag_ID, ID)
-    {
-        for (let index = 0; index < tag_ID.length; index++) {
-            let _movie;
-            let out = "";
-            fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
-            .then((response) => response.json())
-            .then((response) => {
-                _movie = response;
-    
-                out = `
-                    <div class="centerFindMoreText">
-                        <div class="text-center middleText">
-                            <h2>${_movie.title}</h2>
-                            <p>${_movie.tagline}</p>
-                            <button type="button" class="btn btn-primary">Find out more</button>
-                        </div>
-                    </div>
-                `;
-    
-                document.getElementById(tag_ID[index]).innerHTML = out;
-                document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
-                
-    
-        }).catch((err) => console.error(err));
-        }
+function GenerateGenreCode(Genre){
+
 }
 
-async function LoadByID(ID){
-    for (let index = 0; index < ID.length; index++) {
-        let _movie;
-        let out = "";
-        fetch(`https://api.themoviedb.org/3/movie/${ID[index]}?language=en-US`, options)
-        .then((response) => response.json())
-        .then((response) => {
-            _movie = response;
-
-            out = `
-                <div class="centerFindMoreText">
-                    <div class="text-center middleText">
-                        <h2>${_movie.title}</h2>
-                        <p>${_movie.tagline}</p>
-                        <button type="button" class="btn btn-primary">Find out more</button>
-                    </div>
-                </div>
-            `;
-
-            document.getElementById(tag_ID[index]).innerHTML = out;
-            document.getElementById(tag_ID[index]).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
-
-    }).catch((err) => console.error(err));
+function removeFromWatchlist(movie_API_Id){
+    movieItems = GetFromLocalStorage("watchList");
+  
+    for (let index = 0; index < movieItems.length; index++) {
+      if(movie_API_Id == movieItems[index].id){
+        movieItems.splice(index, 1);
+        console.log(movieItems);
+        localStorage.setItem("watchList", JSON.stringify(movieItems));
+        LoadMovieList();
+      }
     }
 }
 
@@ -322,7 +541,7 @@ function UpdateHero(_movie){
 
     out = `
         <div class="col-md-4">
-            <a id="imdb_movie">
+            <a id="imdb_movie" href="https://www.imdb.com/title/${_movie.imdb_id}/">
               <img src="https://image.tmdb.org/t/p/original/${_movie.poster_path}" class="img-fluid cover" alt="Movie Poster" id="IndividualCover" href="https://www.imdb.com/title/${_movie.imdb_id}">
             </a>
         </div>
@@ -331,7 +550,7 @@ function UpdateHero(_movie){
             <h1 class="display-4" id="IndividualTitle">${_movie.title}</h1>
             
             <p class="lead" id="IndividualInfoLine">
-                ${_genre} | ${_year} | ${_duration} mins | ${_age_rating}
+                ${_genre} | ${_year} | ${_duration} mins | ${_movie.vote_average}
             </p>
 
             <p id="Individual_Desc">
@@ -339,11 +558,11 @@ function UpdateHero(_movie){
             </p>
 
             <div class="buttonContainerIndMovie">
-              <a id="watchButton" href="#">
+              <a id="watchButton" href="${_movie.homepage}">
                 <button type="button" class="btn-primary">Watch Now</button>
               </a>
               <a href="moviewatchlist.html" onclick="StoreMovieToWatchList()">
-                <button type="button" class="btn-primary">Add to Watchlist</button>
+                <button type="button" class="btn-primary" id="watchListBtn">Add to Watchlist</button>
               </a>
             </div>
         </div>
@@ -353,3 +572,32 @@ function UpdateHero(_movie){
     document.getElementById("heroBanID").style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${_movie.backdrop_path}')`;
     
 }
+
+function LoadMovieList(){
+    let watchList = "";
+    movieItems = GetFromLocalStorage("watchList");
+    for (let index = 0; index < movieItems.length; index++) {
+        let out =`
+        <div class="card" id="cardGap">
+        
+            <div class="close-btn" onclick="removeFromWatchlist(${movieItems[index].id})">
+              <img
+                src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXgiPjxwYXRoIGQ9Ik0xOCA2IDYgMTgiLz48cGF0aCBkPSJtNiA2IDEyIDEyIi8+PC9zdmc+"
+                alt="Close Icon">
+            </div>
+  
+            <a class="MovieRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${movieItems[index].id})">
+              <img src="https://image.tmdb.org/t/p/original/${movieItems[index].poster_path}" width="80%" class="cover">
+            </a>
+            <div class="body">
+              <h5 class="movieWatch_Title">${movieItems[index].original_title}</h5>
+              <h6 class="movieWatch_subTitle">${String(movieItems[index].release_date).substring(0, 4)}</h6>
+            </div>
+          </div>
+        `;
+  
+        watchList += out;
+    }
+  
+    document.querySelector(".watchListDynamic").innerHTML = watchList;
+  }

@@ -556,6 +556,7 @@ img.lucide-bookmark {
   margin-bottom: 15px;
   padding-left: 20px;
   text-align: left;
+  border-bottom: 2px solid #175F81;
 }
 
 /* Scrollable row for "What's New" */
@@ -1026,7 +1027,6 @@ background-color: #ff8959;
   border-bottom: none !important;
 }
 
-
 #IndividualCover {
   margin-left: 30px;
 }
@@ -1161,6 +1161,10 @@ body {
   color: #ffffff;
 }
 
+#watchListBtn{
+  background-color: #175F81;
+}
+
 /* Responsive Styling */
 @media (max-width: 768px) {
   .filter-bar {
@@ -1197,4 +1201,22 @@ body {
   .form-select {
     padding: 6px 10px;
   }
+}
+
+.actorsFeatured{
+  background-color: #1d1d1d;
+  height: auto;
+  border-radius: 50px;
+}
+
+.team-member{
+  border-radius: 50px;
+}
+
+.cast_pfp{
+  border-radius: 150px;
+}
+
+#yearInput{
+  width: 200px;
 }
