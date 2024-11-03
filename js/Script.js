@@ -653,25 +653,232 @@ window.onscroll = function() {
   }
 };
 
-// Function to display Individual Movie Banner
-async function IndividualMovieBanner(ID) {
-  try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${ID}?language=en-US`, options);
-    const movie = await response.json();
+// Function to display a random movie in the Individual Movie Banner from the Romance genre
+async function IndividualMovieBanner() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMTBkOGMzNWQ5YzI1NDA4MjI3YmY3MjI5ZGZmZTg3YiIsIm5iZiI6MTcyOTA3NzY2OC4wMjUzMTcsInN1YiI6IjY2ZTgyNDlkZGQyMjRkMWEzOTkxZDkzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LcrKnRRMJ_4Y4ahXNTcY3H3anUkGRA0W6D0kLR2-1Rs",
+    },
+  };
 
-    // Set the banner background image
+  try {
+    // Step 1: Fetch all genres to get the ID for the "Romance" genre
+    const genreResponse = await fetch(
+      "https://api.themoviedb.org/3/genre/movie/list?language=en",
+      options
+    );
+    const genres = await genreResponse.json();
+    const romanceGenre = genres.genres.find((genre) => genre.name === "Romance");
+
+    if (!romanceGenre) {
+      console.error("Romance genre not found");
+      return;
+    }
+
+    // Step 2: Fetch a list of movies in the "Romance" genre
+    const movieResponse = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${romanceGenre.id}&sort_by=popularity.desc&page=1`,
+      options
+    );
+    const movies = await movieResponse.json();
+
+    // Step 3: Select a random movie from the "Romance" genre
+    const movie = movies.results[Math.floor(Math.random() * movies.results.length)];
+
+    // Set the banner background image to the selected movie's backdrop
     document.getElementById("IndividualMovieBanner").style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}')`;
 
-    // Populate the title, subtitle, and Watch Now button
+    // Populate the title, subtitle (tagline), and Watch Now button
     document.getElementById("bannerTitle").textContent = movie.title;
-    document.getElementById("bannerSubtitle").textContent = movie.tagline || "Watch this movie now!";
-    document.getElementById("watchNowBtn").setAttribute("href", `../pages/individualmovie.html?id=${movie.id}`);
+    document.getElementById("bannerSubtitle").textContent = movie.tagline || "Discover this romantic movie!";
+    
+    // Set the Watch Now button to link to the individual movie page with the movie ID in the URL
+    document
+      .getElementById("watchNowBtn")
+      .setAttribute("href", `../pages/individualmovie.html?id=${movie.id}`);
   } catch (error) {
     console.error("Error fetching movie data:", error);
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const movieID = RetrieveMovieCode(); // Retrieve the movie ID stored in local storage
-  IndividualMovieBanner(movieID); // Call function to display the banner
-});
+// Call function to load a random romance movie banner when the page loads
+document.addEventListener("DOMContentLoaded", IndividualMovieBanner);
+
+// this is for the hero banner slider on the home page that displays the new movies 
+
+async function populateHeroBanner() {
+  try {
+    const response = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options);
+    const data = await response.json();
+    const movies = data.results.slice(0, 5); // Limiting to the first 5 new movies
+
+    let bannerContent = '';
+
+    for (let i = 0; i < movies.length; i++) {
+      const movie = movies[i];
+
+      // Fetching director's name (crew data)
+      const creditsResponse = await fetch(`https://api.themoviedb.org/3/movie/${movie.id}/credits?language=en-US`, options);
+      const creditsData = await creditsResponse.json();
+      const director = creditsData.crew.find(member => member.job === 'Director')?.name || 'Unknown Director';
+
+      bannerContent += `
+        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+          <div class="hero-banner-slide" style="background-image: url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}');">
+            <div class="movie-banner-overlay"></div>
+            <div class="movie-banner-content">
+              <h1 class="movie-title">${movie.title}</h1>
+              <p class="movie-subtitle">Directed by ${director} | IMDb Rating: ${movie.vote_average}</p>
+              <a href="../pages/individualmovie.html?id=${movie.id}" class="btn btn-primary movie-banner-btn">Watch Now</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    document.getElementById('heroBannerContent').innerHTML = bannerContent;
+  } catch (error) {
+    console.error("Error fetching new movies for Hero Banner:", error);
+  }
+}
+
+
+
+// Call function to populate the Hero Banner when the page loads
+document.addEventListener("DOMContentLoaded", populateHeroBanner);
+
+async function loadTrailerBanner() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer YOUR_API_KEY", // Replace with your actual API key
+    },
+  };
+
+  try {
+    // Fetch Adventure genre ID first, if not known, to get a random Adventure movie
+    const genreResponse = await fetch(
+      "https://api.themoviedb.org/3/genre/movie/list?language=en",
+      options
+    );
+    const genres = await genreResponse.json();
+    const adventureGenre = genres.genres.find(
+      (genre) => genre.name === "Adventure"
+    );
+
+    // Get a random Adventure movie
+    const movieResponse = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${adventureGenre.id}&sort_by=popularity.desc&page=1`,
+      options
+    );
+    const movies = await movieResponse.json();
+    const movie =
+      movies.results[Math.floor(Math.random() * movies.results.length)];
+
+    // Fetch trailer for the selected movie
+    const trailerResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`,
+      options
+    );
+    const trailerData = await trailerResponse.json();
+    const trailer = trailerData.results.find(
+      (video) => video.type === "Trailer"
+    );
+
+    // Populate banner content
+    document.getElementById("trailerBannerTitle").textContent = movie.title;
+    document.getElementById("trailerBannerDescription").textContent =
+      movie.overview;
+    document
+      .getElementById("watchTrailerBtn")
+      .setAttribute("href", `../pages/individualmovie.html?id=${movie.id}`);
+
+    // Set trailer video as background with autoplay
+    document.getElementById(
+      "TrailerBanner"
+    ).style.backgroundImage = `url('https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&loop=1&playlist=${trailer.key}')`;
+  } catch (error) {
+    console.error("Error loading trailer banner:", error);
+  }
+}
+
+// Call function on page load
+document.addEventListener("DOMContentLoaded", loadTrailerBanner);
+
+async function loadTrailerBanner() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMTBkOGMzNWQ5YzI1NDA4MjI3YmY3MjI5ZGZmZTg3YiIsIm5iZiI6MTcyOTA3NzY2OC4wMjUzMTcsInN1YiI6IjY2ZTgyNDlkZGQyMjRkMWEzOTkxZDkzOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LcrKnRRMJ_4Y4ahXNTcY3H3anUkGRA0W6D0kLR2-1Rs",
+    },
+  };
+
+//   this is for the hero banner that plays movie trailers
+  try {
+    // Fetch Adventure genre ID
+    const genreResponse = await fetch(
+      "https://api.themoviedb.org/3/genre/movie/list?language=en",
+      options
+    );
+    const genres = await genreResponse.json();
+    const adventureGenre = genres.genres.find(
+      (genre) => genre.name === "Adventure"
+    );
+
+    // Get a random Adventure movie
+    const movieResponse = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${adventureGenre.id}&sort_by=popularity.desc&page=1`,
+      options
+    );
+    const movies = await movieResponse.json();
+    const movie =
+      movies.results[Math.floor(Math.random() * movies.results.length)];
+
+    // Fetch trailer for the selected movie
+    const trailerResponse = await fetch(
+      `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`,
+      options
+    );
+    const trailerData = await trailerResponse.json();
+    const trailer = trailerData.results.find(
+      (video) => video.type === "Trailer"
+    );
+
+    // Populate banner content
+    document.getElementById("trailerBannerTitle").textContent = movie.title;
+    document.getElementById("trailerBannerDescription").textContent =
+      movie.overview;
+
+    // Set the Watch Trailer button URL if a trailer is available, otherwise link to the movie's individual page
+    const watchButton = document.getElementById("watchTrailerBtn");
+    if (trailer) {
+      watchButton.setAttribute(
+        "href",
+        `https://www.youtube.com/watch?v=${trailer.key}`
+      );
+      watchButton.textContent = "Watch Trailer";
+    } else {
+      watchButton.setAttribute(
+        "href",
+        `../pages/individualmovie.html?id=${movie.id}`
+      );
+      watchButton.textContent = "More Info";
+    }
+
+    // Set movie poster as background with black overlay
+    document.getElementById(
+      "TrailerBanner"
+    ).style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://image.tmdb.org/t/p/original/${movie.poster_path}')`;
+  } catch (error) {
+    console.error("Error loading trailer banner:", error);
+  }
+}
+
+// Call function on page load
+document.addEventListener("DOMContentLoaded", loadTrailerBanner);
