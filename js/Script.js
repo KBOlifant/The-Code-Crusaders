@@ -275,7 +275,7 @@ function PreviousPage(_section){
 
 //sorting the movies based on given list (and Keyword for the HTML)
 function SortMovies(_movieList, keyword) {
-    moviesToLoad = _movieList.results.length;
+    moviesToLoad = document.getElementsByClassName(keyword+"_IMG").length;
 
     let out = '';
     if(moviesToLoad <= _movieList.results.length){
