@@ -181,7 +181,7 @@
     </style>
 </head>
 
-<body>
+<body onload="ungreet()">
     <div class="signup-container">
         <div class="close-btn" onclick="window.location.href='home.html';">
             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS14Ij48cGF0aCBkPSJNMTggNiA2IDE4Ii8+PHBhdGggZD0ibTYgNiAxMiAxMiIvPjwvc3ZnPg=="
@@ -197,7 +197,7 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required placeholder="Enter your password">
 
-            <button type="submit" class="btn-primary">Log In</button>
+            <button type="submit" class="btn-primary"><a href="/pages/home.html">Log in</a></button>
 
             <p>Don't have an account? <a href="/pages/signin.html">Sign up here</a></p>
         </form>

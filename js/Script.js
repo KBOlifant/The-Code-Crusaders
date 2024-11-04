@@ -1089,14 +1089,18 @@ async function loadDiscoverMovieBanner() {
 document.addEventListener("DOMContentLoaded", loadDiscoverMovieBanner);
 
 
+function ungreet(){
+  sessionStorage.setItem("greeted", false);
+}
+
 function greetUser(popup){
 
   let greeted = sessionStorage.getItem("greeted");
   let out = "";
-  if(greeted){
-    console.log(sessionStorage.getItem('username'));
+  if(greeted == 'true'){
     closePopup();
   } else{
+    document.getElementById(popup).style.display = "block";
     out = `
     <div class="popup-content">
         <div class="close-btn" onclick="closePopup()">
@@ -1107,6 +1111,7 @@ function greetUser(popup){
         <button onclick="window.location.href='movielibrary.html'" class="btn-primary">Watch Now</button>
     </div>
     `;
+    
     console.log(sessionStorage.getItem('username'));
     sessionStorage.setItem('greeted', true);
     document.getElementById(popup).innerHTML = out;
