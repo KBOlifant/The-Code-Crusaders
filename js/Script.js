@@ -657,6 +657,11 @@ function scrollToTop() {
   });
 }
 
+function storeLogins(){
+  sessionStorage.setItem('username', document.getElementById("username").value);
+  
+}
+
 // Show or hide the button based on scroll position
 window.onscroll = function() {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
@@ -1019,9 +1024,9 @@ document.addEventListener("DOMContentLoaded", loadWatchlistBanner);
 //   document.getElementById("welcomePopup").style.display = "flex";
 // }
 
-// function closePopup() {
-//   document.getElementById("welcomePopup").style.display = "none";
-// }
+function closePopup() {
+   document.getElementById("welcomePopup").style.display = "none";
+ }
 
 // // Simulate a logged-in state and delay for 30 seconds
 // document.addEventListener("DOMContentLoaded", function () {
@@ -1082,3 +1087,31 @@ async function loadDiscoverMovieBanner() {
 
 // Call the function on page load
 document.addEventListener("DOMContentLoaded", loadDiscoverMovieBanner);
+
+
+function greetUser(popup){
+
+  let greeted = sessionStorage.getItem("greeted");
+  let out = "";
+  if(greeted){
+    console.log(sessionStorage.getItem('username'));
+    closePopup();
+  } else{
+    out = `
+    <div class="popup-content">
+        <div class="close-btn" onclick="closePopup()">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS14Ij48cGF0aCBkPSJNMTggNiA2IDE4Ii8+PHBhdGggZD0ibTYgNiAxMiAxMiIvPjwvc3ZnPg=="
+                alt="Close">
+        </div>
+        <h2>Welcome Back, <span id="usernamePlaceholder">${sessionStorage.getItem('username')}</span></h2>
+        <button onclick="window.location.href='movielibrary.html'" class="btn-primary">Watch Now</button>
+    </div>
+    `;
+    console.log(sessionStorage.getItem('username'));
+    sessionStorage.setItem('greeted', true);
+    document.getElementById(popup).innerHTML = out;
+    
+  }
+}
+
+//sessionStorage.clear();
