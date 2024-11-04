@@ -1,140 +1,195 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in</title>
+    <title>Sign In</title>
     <meta name="description" content="Your ultimate destination for cinematic experiences.">
     <meta name="keywords"
         content="movies, streaming, cinema, thrillers, comedies, documentaries, fantasy, action, drama, online movies, film collection">
-    <meta name="Code Crusaders" content="Movie Hub Team">
+    <meta name="author" content="Code Crusaders - Movie Hub Team">
 
-    <link rel="stylesheet" href=""> //internal css
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Nunito+Sans:wght@400;600&display=swap');
 
-       
         @keyframes scrollBackground {
             0% {
                 background-position: 0 0;
             }
+
             100% {
-                background-position: -2000px 0; 
+                background-position: -2000px 0;
             }
         }
 
         body {
-            background: url(../assets/BackgorundPls.png) repeat-x; 
+            background: url(../assets/BackgorundPls.png) repeat-x;
             background-size: cover;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #b3b3b3;
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            animation: scrollBackground 60s linear infinite; 
+            animation: scrollBackground 60s linear infinite;
+            padding: 1rem;
+            box-sizing: border-box;
         }
 
         .signup-container {
+            position: relative;
             background-color: #3e3e41;
-            width: 700px;
-            padding: 3rem;
+            width: 100%;
+            max-width: 700px;
+            padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 6px 40px rgba(0, 0, 0, 0.9);
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-        }
-
-        .signup-info {
-            flex: 1;
-            margin-right: 2rem;
+            gap: 1rem;
+            box-sizing: border-box;
         }
 
         .signup-info h2 {
-            font-size: 2.5rem;
-            font-family: 'Poppins', sans-serif;
-            background: url('../assets/Golden-Galaxy-Breeze-Marble-Wallpaper-Mural.webp');
-            background-size: cover;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem;
+            font-size: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #FF7038;
+            margin-bottom: 1.5rem;
+            margin-right: 20px;
+            word-wrap: break-word;
+            margin-left: 20px;
         }
 
         .signup-form {
             display: flex;
             flex-direction: column;
             flex: 1;
+            max-width: 300px;
+            padding-right: 1.6rem;
         }
 
-        label {
-            margin: 0.5rem 0 0.2rem;
-            text-align: left;
+        .signup-form label {
+            margin: 0.4rem 0 0.1rem;
             color: #b3b3b3;
             font-size: 1.1rem;
+            font-family: 'Nunito Sans', sans-serif;
         }
 
-        input {
+        .signup-form input,
+        .btn-primary {
             padding: 0.75rem;
-            margin-bottom: 1rem;
+            margin-bottom: 10px;
             border: none;
-            border-radius: 8px;
+            border-radius: 30px;
             background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            transition: background 0.3s;
+            color: #ffffff;
+            font-size: 1rem;
             width: 100%;
+            max-width: 300px;
+            font-family: 'Nunito Sans', sans-serif;
+            box-sizing: border-box;
         }
 
-        input:focus {
-            background: rgb(0, 0, 0);
+        .signup-form input:focus {
+            background: #000000;
             outline: none;
         }
-/* 
-        button {
-            padding: 1rem;
-            border: none;
-            border-radius: 8px;
-            background: rgb(0, 0, 0);
+
+        .btn-primary {
+            background-color: #FF7038;
             color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            height: 50px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-wrap: nowrap;
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            margin-top: 10px;
         }
 
-        button:hover {
-            background: #a64924;
-            transform: scale(1.05);
-        } */
+        .btn-primary:hover {
+            background-color: #ff8959;
+            color: #ffffff;
+        }
 
-        p {
+        .btn-primary:active {
+            background-color: #ffffff5e !important;
+            color: #ffffff !important;
+        }
+
+        .signup-form p {
             margin-top: 1.5rem;
             color: #b3b3b3;
             font-size: 1.1rem;
+            font-family: 'Nunito Sans', sans-serif;
         }
 
-        a {
+        .signup-form p a {
             color: #FF7038;
             text-decoration: none;
         }
 
-        a:hover {
+        .signup-form p a:hover {
             text-decoration: underline;
         }
-        
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .close-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        @media (max-width: 600px) {
+            .signup-container {
+                flex-direction: column;
+                padding: 2rem 1.5rem;
+            }
+
+            .signup-info h2 {
+                font-size: 1.8rem;
+                margin-right: 0;
+                text-align: center;
+            }
+
+            .btn-primary,
+            .signup-form input {
+                max-width: 100%;
+            }
+
+            .signup-form {
+                padding-right: 0;
+            }
+        }
     </style>
 </head>
+
 <body>
     <div class="signup-container">
-        <div class="signup-info">
-            <h2>Create Your Account</h2>
-            
+        <div class="close-btn" onclick="window.location.href='home.html';">
+            <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS14Ij48cGF0aCBkPSJNMTggNiA2IDE4Ii8+PHBhdGggZD0ibTYgNiAxMiAxMiIvPjwvc3ZnPg=="
+                alt="Close">
         </div>
-
+        <div class="signup-info">
+            <h2>Create <br> Your <br> Account</h2>
+        </div>
         <form class="signup-form">
             <label for="username">Username</label>
             <input type="text" id="username" name="username" required placeholder="Enter your username">
@@ -145,12 +200,11 @@
             <label for="password">Password</label>
             <input type="password" id="password" name="password" required placeholder="Create a password">
 
-<button type="submit"
-    style="padding: 1rem; border: none; border-radius: 7px; background: #FF7038; color: #ffffff; cursor: pointer; transition: background 0.3s, transform 0.2s; font-size: 16px; width: 100%; margin-top: 10px;"
-    onmouseover="this.style.background='#ff8959';" onmouseout="this.style.background='#FF7038';">Sign Up</button>
-    
+            <button type="submit" class="btn-primary">Sign Up</button>
+
             <p>Already have an account? <a href="home.html">Log in here</a></p>
         </form>
     </div>
 </body>
+
 </html>
