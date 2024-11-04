@@ -147,7 +147,8 @@ img.lucide-bookmark {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 30px;
+  margin-top: 50px;
+  margin-bottom: 80px;
 }
 
 .movieLibrary .btn-primary {
@@ -1428,4 +1429,62 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 .close-btn img {
   width: 24px;
   height: 24px;
+}
+
+/* discover page movie banner  */
+#DiscoverMovieBanner {
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  color: #ffffff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#DiscoverMovieBanner .movie-banner-overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Overlay effect */
+}
+
+#discoverBannerTitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+#discoverBannerDetails {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 370px;
+  margin-right: 370px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+#Recommended_Row .card {
+  background-color: #272727;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 280px;
+  width: 100%;
+  margin: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+#Recommended_Row .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+}
+
+#Recommended_Row .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 2px solid #FF7038;
 }

@@ -448,30 +448,45 @@ function LoadToNextPage(movie_API_Id){
 }
 
 //uses result from API to show reccommended movies accordingly
-function RecommendMovies(_movieList){
-    let out = '';
-    let temp = '';
-    for (let index = 0; index < document.getElementsByClassName("Recommended_IMG").length; index++) {
-        _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
+function RecommendMovies(_movieList) {
+  let out = "";
+  let temp = "";
+  for (
+    let index = 0;
+    index < document.getElementsByClassName("Recommended_IMG").length;
+    index++
+  ) {
+    _month = parseInt(_movieList.results[index].release_date.substring(6, 7));
 
-        temp = `
+    temp = `
             <div class="card">
-              <a class="recommendedRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${_movieList.results[index].id})">
+              <a class="recommendedRowAnchor" href='../pages/individualmovie.html' onclick="LoadToNextPage(${
+                _movieList.results[index].id
+              })">
                 <img
                   class="card-img-top Recommended_IMG"
-                  src="https://image.tmdb.org/t/p/original/${_movieList.results[index].poster_path}"
+                  src="https://image.tmdb.org/t/p/original/${
+                    _movieList.results[index].poster_path
+                  }"
                   alt="Thumbnail"
                 />
               </a>
               <div class="body">
-                <h6 class="title Recommended_Title">${_movieList.results[index].title}</h6>
-                <p class="Recommended_subTitle">${_movieList.results[index].release_date.substring(0, 4)}</p>
+                <h6 class="title Recommended_Title">${
+                  _movieList.results[index].title
+                }</h6>
+                <p class="Recommended_subTitle">${_movieList.results[
+                  index
+                ].release_date.substring(0, 4)}</p>
+                <div class="imdb-rating">${_movieList.results[
+                  index
+                ].vote_average.toFixed(1)}</div> <!-- Added IMDb rating -->
               </div>
             </div>
-        `
-        out += temp;
-    }
-    document.getElementById("Recommended_Row").innerHTML = out;
+        `;
+    out += temp;
+  }
+  document.getElementById("Recommended_Row").innerHTML = out;
 }
 
 //retrieving the move code
@@ -945,7 +960,7 @@ async function loadWatchlistBanner() {
     );
     const movies = await response.json();
 
-    // Select a random movie (not the first one)
+    // Select a random movie (not the first one) for variety
     const movie =
       movies.results[
         Math.floor(Math.random() * (movies.results.length - 1)) + 1
@@ -996,6 +1011,7 @@ async function loadWatchlistBanner() {
 // Call function on page load
 document.addEventListener("DOMContentLoaded", loadWatchlistBanner);
 
+
 // // This is for the pop up on home screen that displays username of logged in profile
 
 // function showPopup(username) {
@@ -1018,4 +1034,51 @@ document.addEventListener("DOMContentLoaded", loadWatchlistBanner);
 //   }, 30000); // 30000 milliseconds = 30 seconds
 // });
 
+async function loadDiscoverMovieBanner() {
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization: "Bearer YOUR_API_KEY", // Replace with your actual API key
+    },
+  };
 
+  try {
+    // Fetch popular movies from the API
+    const response = await fetch(
+      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      options
+    );
+    const movies = await response.json();
+
+    // Select a random movie
+    const movie =
+      movies.results[Math.floor(Math.random() * movies.results.length)];
+
+    // Set the background to the movie's backdrop image
+    document.getElementById(
+      "DiscoverMovieBanner"
+    ).style.backgroundImage = `url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}')`;
+
+    // Populate the title, subtitle, and button
+    document.getElementById("discoverBannerTitle").textContent = "DISCOVER MORE";
+    document.getElementById("discoverBannerDetails").textContent =
+      "From action and drama to horror and fantasy, our collection offers something for every taste. Whether you seek laughter, adventure, or a story that inspires, explore worlds beyond imagination.";
+
+    // Set up the button to scroll to the library row
+    document.getElementById("discoverWatchNowBtn").textContent = "See more";
+    document
+      .getElementById("discoverWatchNowBtn")
+      .addEventListener("click", (e) => {
+        e.preventDefault();
+        document
+          .querySelector("#library_Row")
+          .scrollIntoView({ behavior: "smooth" });
+      });
+  } catch (error) {
+    console.error("Error loading Discover Movie Banner:", error);
+  }
+}
+
+// Call the function on page load
+document.addEventListener("DOMContentLoaded", loadDiscoverMovieBanner);
