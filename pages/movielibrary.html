@@ -21,7 +21,13 @@
 
   <script>
     $(document).ready(function(){
-      $("#3").fadeIn(3000);
+      $("#slideCarousel").slideDown(2000);
+      $("#cardTap").on({
+        mouseenter: function(){
+          console.log("hover");
+          $(this).css("background-color", "yellow");
+        }
+      });
     });
     </script>
 </head>
@@ -119,7 +125,7 @@
   </header>
 
 
-  <section class="carouselSection">
+  <section class="carouselSection" id="slideCarousel" style="display: none;">
     <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <!-- Slide 1 -->
@@ -198,7 +204,7 @@
       
     </section>
 
-    <div class="rowGap mb-4" id="fader">
+    <div class="rowGap mb-4">
         <div class="scrollable-row pt-2 row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" id="library_Row">
 
           <div class="card" id="cardGap">

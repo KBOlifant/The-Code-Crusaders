@@ -366,7 +366,7 @@ function SortMovies(_movieList, keyword) {
 
     if (_movieList.results[index].poster_path != null) {
       temp = `
-            <div class="card">
+            <div class="card" id="cardTap">
                 <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${
                   _movieList.results[index].id
                 })">
@@ -646,7 +646,7 @@ function scrollToTop() {
 window.onscroll = function() {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
   
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+  if (document.body.scrollTop > 1300 || document.documentElement.scrollTop > 100) {
     scrollToTopBtn.classList.add("show");
   } else {
     scrollToTopBtn.classList.remove("show");
