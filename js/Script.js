@@ -1119,4 +1119,8 @@ function greetUser(popup){
   }
 }
 
+$(document).ready(function () {
+  $("#discoverMoreBanner").slideDown(2000);
+});
+
 //sessionStorage.clear();
