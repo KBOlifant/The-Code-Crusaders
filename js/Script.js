@@ -995,3 +995,27 @@ async function loadWatchlistBanner() {
 
 // Call function on page load
 document.addEventListener("DOMContentLoaded", loadWatchlistBanner);
+
+// // This is for the pop up on home screen that displays username of logged in profile
+
+// function showPopup(username) {
+//   document.getElementById("usernamePlaceholder").textContent = username;
+//   document.getElementById("welcomePopup").style.display = "flex";
+// }
+
+// function closePopup() {
+//   document.getElementById("welcomePopup").style.display = "none";
+// }
+
+// // Simulate a logged-in state and delay for 30 seconds
+// document.addEventListener("DOMContentLoaded", function () {
+//   const username = "JohnDoe"; // Replace with actual username variable
+
+//   setTimeout(() => {
+//     if (username) {
+//       showPopup(username);
+//     }
+//   }, 30000); // 30000 milliseconds = 30 seconds
+// });
+
+

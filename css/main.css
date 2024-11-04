@@ -1366,4 +1366,66 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   height: auto;
 }
 
+/* Pop up on home screen */
 
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3e3e41;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 6px 40px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content h2 {
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #FF7038;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: #FF7038;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  height: 50px;
+  width: 100%;
+  max-width: 180px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.btn-primary:hover {
+  background-color: #ff8959;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.close-btn img {
+  width: 24px;
+  height: 24px;
+}
