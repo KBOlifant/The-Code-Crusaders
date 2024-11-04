@@ -751,7 +751,7 @@ async function populateHeroBanner() {
             <div class="movie-banner-overlay" id="discoverMoreBanner"></div>
             <div class="movie-banner-content">
               <h1 class="movie-title">${movie.title}</h1>
-              <p class="movie-subtitle">Directed by ${director} | IMDb Rating: ${movie.vote_average}</p>
+              <p class="movie-subtitle">Directed by ${director} | IMDb Rating: ${String(movie.vote_average).substring(0, 3)}</p>
               <a href="../pages/individualmovie.html?id=${movie.id}" class="btn btn-primary movie-banner-btn">Watch Now</a>
             </div>
           </div>
@@ -993,7 +993,7 @@ async function loadWatchlistBanner() {
     const rating = movieDetails.vote_average
       ? movieDetails.vote_average.toFixed(1)
       : "N/A";
-
+    
     // Display the formatted movie details in .moviesubtitles style
     document.getElementById(
       "watchlistBannerDetails"
