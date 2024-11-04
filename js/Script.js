@@ -748,7 +748,7 @@ async function populateHeroBanner() {
       bannerContent += `
         <div class="carousel-item ${i === 0 ? 'active' : ''}">
           <div class="hero-banner-slide" style="background-image: url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}');">
-            <div class="movie-banner-overlay"></div>
+            <div class="movie-banner-overlay" id="discoverMoreBanner"></div>
             <div class="movie-banner-content">
               <h1 class="movie-title">${movie.title}</h1>
               <p class="movie-subtitle">Directed by ${director} | IMDb Rating: ${movie.vote_average}</p>
