@@ -200,6 +200,22 @@ async function IndividualBanner(tag_ID, ID)
         }
 }
 
+async function movie_ban(banner){
+  let out = '';
+  fetch('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1', options)
+    .then((response) => response.json())
+    .then((response) => {
+    console.log(response);
+
+    let out = `
+      <img src='https://image.tmdb.org/t/p/original/${response.results[0].poster_path}' class="d-block w-100">
+    `;
+    
+    document.getElementById('Discover_banner').innerHTML = out;
+
+    }).catch((err) => console.error(err));
+}
+
 async function LoadByID(ID){
     for (let index = 0; index < ID.length; index++) {
         let _movie;
@@ -366,7 +382,7 @@ function SortMovies(_movieList, keyword) {
 
     if (_movieList.results[index].poster_path != null) {
       temp = `
-            <div class="card" id="cardTap">
+            <div class="card">
                 <a href='../pages/individualmovie.html' onclick="LoadToNextPage(${
                   _movieList.results[index].id
                 })">
@@ -646,7 +662,7 @@ function scrollToTop() {
 window.onscroll = function() {
   const scrollToTopBtn = document.getElementById("scrollToTopBtn");
   
-  if (document.body.scrollTop > 1300 || document.documentElement.scrollTop > 100) {
+  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
     scrollToTopBtn.classList.add("show");
   } else {
     scrollToTopBtn.classList.remove("show");

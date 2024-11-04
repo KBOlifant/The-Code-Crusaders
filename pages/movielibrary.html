@@ -32,7 +32,7 @@
     </script>
 </head>
 
-<body onload="DiscoverMovies('library'), SetGenres()">
+<body onload="DiscoverMovies('library'), SetGenres(), movie_ban('Discover_banner')">
   <header>
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
@@ -134,7 +134,7 @@
             <!-- Text and CTA on the left -->
             <div class="col-md-6 px-6">
               <div class="carousel-caption text-wrap text-start">
-                <h1>Genre</h1>
+                <h1>Discover Movies</h1>
                 <p>
                   From thrilling action and heartfelt drama to spine-chilling horror and awe-inspiring fantasy, our collection of movies spans every genre to offer something for every taste. Whether you're in the mood for a laugh, an adventure, or a thought-provoking story, explore worlds beyond imagination and uncover narratives that captivate, entertain, and inspire.
                 </p>
@@ -142,8 +142,8 @@
               </div>
             </div>
             <!-- Image on the right for larger screens, above for small screens -->
-            <div class="col-md-6">
-              <img src="../assets/placeholder.jpg" class="d-block w-100" />
+            <div class="col-md-6" id="Discover_banner">
+              <img src="../assets/placeholder.jpg" class="d-block w-100" >
             </div>
           </div>
         </div>
