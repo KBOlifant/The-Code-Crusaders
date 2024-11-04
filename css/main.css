@@ -998,24 +998,6 @@ img.lucide-bookmark {
   }
 }
 
-.actorsFeatured{
-  background-color: #1d1d1d;
-  height: auto;
-  border-radius: 50px;
-}
-
-.team-member{
-  border-radius: 50px;
-}
-
-.cast_pfp{
-  border-radius: 150px;
-}
-
-#yearInput{
-  width: 200px;
-}
-
 /* discovery page hero banner at bottom   */
 
 /* Carousel Section Styling */
@@ -1487,4 +1469,63 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   height: 100%;
   object-fit: cover;
   border-bottom: 2px solid #FF7038;
+}
+
+/* movie cast members styling on ind movie page */
+
+#actors_section {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding-left: 20px;
+  scroll-behavior: smooth;
+  overflow-y: visible;
+}
+
+#actors_section .team-member {
+  transition: transform 0.3s ease;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#actors_section .team-member:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+#actors_section .team-member p {
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+#actors_section .team-member small {
+  color: #FF7038;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  margin-top: 10px;
+  white-space: normal;
+}
+
+.actorsFeatured {
+  background-color: #1d1d1d;
+  height: auto;
+  border-radius: 50px;
+  padding-top: 90px;
+  padding-bottom: 20px;
+}
+
+.team-member {
+  border-radius: 50px;
+}
+
+.cast_pfp {
+  border-radius: 150px;
+}
+
+#yearInput {
+  width: 200px;
 }
