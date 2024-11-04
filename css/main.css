@@ -1207,17 +1207,17 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   background-position: center;
 }
 
-.movie-banner-overlay {
+/* .movie-banner-overlay {
 position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   width: 100%;
-  height: 500px; 
+  /* height: 500px; */
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 1;
-}
+} */
 
 .movie-banner-content {
   position: relative;
@@ -1319,10 +1319,9 @@ position: absolute;
   height: 600px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  overflow: hidden;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
 .trailer-banner-overlay {
@@ -1335,44 +1334,46 @@ position: absolute;
   z-index: 1;
 }
 
-.trailer-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  object-fit: cover;
-  pointer-events: none;
-}
-
 .trailer-banner-content {
   position: relative;
   z-index: 2;
   color: #ffffff;
-  text-align: left;
   max-width: 750px;
-  padding-left: 40px;
-  margin-left: 90px;
+  padding-left: 80px;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .trailer-banner-content h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
   margin-bottom: 15px;
+  line-height: 1.2;
+  text-align: left;
 }
 
 .trailer-banner-content p {
-  margin-bottom: 25px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
   line-height: 1.5;
+  margin-bottom: 25px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: left;
 }
 
 .trailer-banner-content .btn-primary {
-  margin-top: 15px;
-  display: inline-flex;
-  align-items: center;
+  font-size: 16px;
   padding: 12px 24px;
   text-transform: uppercase;
+  margin-top: 15px;
+  align-self: flex-start;
+  /* Ensures button aligns with left-aligned text */
 }
 
+/* Responsive adjustments */
 @media (max-width: 992px) {
   .trailer-banner {
     height: 500px;
@@ -1384,7 +1385,7 @@ position: absolute;
   }
 
   .trailer-banner-content h1 {
-    font-size: 28px;
+    font-size: 36px;
   }
 
   .trailer-banner-content p {
@@ -1396,23 +1397,19 @@ position: absolute;
 @media (max-width: 768px) {
   .trailer-banner {
     height: 400px;
-    justify-content: center;
   }
 
   .trailer-banner-content {
-    text-align: center;
-    padding-left: 0;
-    padding-right: 20px;
+    padding-left: 20px;
     max-width: 500px;
   }
 
   .trailer-banner-content h1 {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .trailer-banner-content p {
     font-size: 14px;
-    max-width: 450px;
   }
 
   .trailer-banner-content .btn-primary {
@@ -1426,7 +1423,7 @@ position: absolute;
   }
 
   .trailer-banner-content h1 {
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .trailer-banner-content p {
@@ -1435,8 +1432,78 @@ position: absolute;
   }
 
   .trailer-banner-content .btn-primary {
-    padding: 8px 16px;
     font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 992px) {
+  .trailer-banner {
+    height: 500px;
+  }
+
+  .trailer-banner-content {
+    padding-left: 20px;
+    max-width: 600px;
+    margin-left: 20px;
+  }
+
+  .trailer-banner-content h1 {
+    font-size: 36px;
+    text-align: left;
+  }
+
+  .trailer-banner-content p {
+    font-size: 16px;
+    max-width: 550px;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .trailer-banner {
+    height: 400px;
+    justify-content: flex-start;
+  }
+
+  .trailer-banner-content {
+    text-align: left;
+    padding-left: 20px;
+    max-width: 500px;
+    margin-left: 20px;
+  }
+
+  .trailer-banner-content h1 {
+    font-size: 28px;
+  }
+
+  .trailer-banner-content p {
+    font-size: 14px;
+  }
+
+  .trailer-banner-content .btn-primary {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .trailer-banner {
+    height: 300px;
+  }
+
+  .trailer-banner-content h1 {
+    font-size: 24px;
+  }
+
+  .trailer-banner-content p {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .trailer-banner-content .btn-primary {
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }
 
