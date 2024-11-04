@@ -1354,8 +1354,6 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
     margin-top: 5px;
 }
 
-
-
 .scrollable-row::-webkit-scrollbar {
   display: none;             
 }
@@ -1367,3 +1365,5 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 #carouselExample1{
   height: auto;
 }
+
+
