@@ -883,10 +883,6 @@ img.lucide-bookmark {
   margin-bottom: 30px;
 }
 
-body {
-  padding-top: 60px;
-}
-
 .filter-option {
   color: #ffffff;
   font-weight: 500;
@@ -1360,3 +1356,14 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 
 
 
+.scrollable-row::-webkit-scrollbar {
+  display: none;             
+}
+
+#favouriteSection{
+  width: 80%;
+}
+
+#carouselExample1{
+  height: auto;
+}
