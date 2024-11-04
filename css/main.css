@@ -423,11 +423,9 @@ img.lucide-bookmark {
   flex-flow: row wrap;
   padding: 30px 30px 20px;
   color: #9A9A9A;
-  /* Text color aligned with navbar */
   background-color: #000000;
-  /* Background color to match navbar */
   border-top: 1px solid #333;
-  /* Adjusted for darker theme */
+  margin-top: 20px;
 }
 
 .footer__addr,
@@ -898,7 +896,7 @@ img.lucide-bookmark {
       padding-right: 15px;
       flex-direction: row;
       align-content: center;
-      margin-top: 30px;
+      margin-top: 20px;
       margin-bottom: 15px;
 }
 
@@ -1881,4 +1879,8 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
     max-width: 150px;
     min-width: 150px;
   }
+}
+
+#relatedMovies {
+  margin-top: -80px;
 }
