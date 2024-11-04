@@ -82,7 +82,7 @@ img.lucide-bookmark {
   object-fit: cover;
 }
 
-/* General Button Styles */
+/* Base button style */
 .btn-primary {
   background-color: #FF7038;
   color: #fff;
@@ -101,6 +101,25 @@ img.lucide-bookmark {
   padding: 10px 24px;
   transition: all 0.3s ease;
   text-decoration: none !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .btn-primary {
+    font-size: 14px !important;
+    padding: 8px 18px !important;
+    max-width: 160px !important;
+    height: 45px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-primary {
+    font-size: 12px !important;
+    padding: 6px 16px !important;
+    max-width: 140px !important;
+    height: 40px !important;
+  }
 }
 
 .btn-primary:hover {
@@ -128,6 +147,36 @@ img.lucide-bookmark {
   text-wrap: nowrap;
   padding: 10px 24px;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+
+  .btn-primary,
+  .filter-btn,
+  .carouselWatchlist-btn,
+  .movie-banner-btn,
+  .btn-sign-up,
+  .trailer-banner-content .btn-primary {
+    font-size: 14px;
+    padding: 8px 18px;
+    max-width: 160px;
+    height: 45px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  .btn-primary,
+  .filter-btn,
+  .carouselWatchlist-btn,
+  .movie-banner-btn,
+  .btn-sign-up,
+  .trailer-banner-content .btn-primary {
+    font-size: 12px;
+    padding: 6px 16px;
+    max-width: 140px;
+    height: 40px;
+  }
 }
 
 /* Hover Effect for Carousel Button */
@@ -567,6 +616,20 @@ img.lucide-bookmark {
   background-color: #1E1E1E;
   height: auto;
   padding-left: 10px;
+}
+
+.card {
+  display: inline-block;
+  background-color: #272727;
+  border-radius: 8px;
+  padding: 10px;
+  max-width: 280px;
+  width: 100%;
+  margin: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  white-space: normal;
+  /* Allows text to wrap */
 }
 
 /* Cards styling */
@@ -1250,7 +1313,6 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   background-color: #ff8959;
 }
 
-/* TrailerBanner Styles */
 .trailer-banner {
   position: relative;
   height: 600px;
@@ -1258,6 +1320,8 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   align-items: center;
   justify-content: flex-start;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
 .trailer-banner-overlay {
@@ -1267,7 +1331,6 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  /* 60% black overlay */
   z-index: 1;
 }
 
@@ -1278,8 +1341,8 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   width: 100%;
   height: 100%;
   z-index: 0;
-  pointer-events: none;
   object-fit: cover;
+  pointer-events: none;
 }
 
 .trailer-banner-content {
@@ -1287,21 +1350,17 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   z-index: 2;
   color: #ffffff;
   text-align: left;
-  padding-left: 40px;
   max-width: 750px;
-  padding-left: 100px;
+  padding-left: 40px;
 }
 
 .trailer-banner-content h1 {
   margin-bottom: 15px;
-  padding-left: 8px;
 }
 
 .trailer-banner-content p {
   margin-bottom: 25px;
   line-height: 1.5;
-  max-width: 700px;
-  padding-left: 8px;
 }
 
 .trailer-banner-content .btn-primary {
@@ -1310,6 +1369,73 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   align-items: center;
   padding: 12px 24px;
   text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  .trailer-banner {
+    height: 500px;
+  }
+
+  .trailer-banner-content {
+    padding-left: 20px;
+    max-width: 600px;
+  }
+
+  .trailer-banner-content h1 {
+    font-size: 28px;
+  }
+
+  .trailer-banner-content p {
+    font-size: 16px;
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .trailer-banner {
+    height: 400px;
+    justify-content: center;
+  }
+
+  .trailer-banner-content {
+    text-align: center;
+    padding-left: 0;
+    padding-right: 20px;
+    max-width: 500px;
+  }
+
+  .trailer-banner-content h1 {
+    font-size: 24px;
+  }
+
+  .trailer-banner-content p {
+    font-size: 14px;
+    max-width: 450px;
+  }
+
+  .trailer-banner-content .btn-primary {
+    padding: 10px 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .trailer-banner {
+    height: 300px;
+  }
+
+  .trailer-banner-content h1 {
+    font-size: 20px;
+  }
+
+  .trailer-banner-content p {
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+
+  .trailer-banner-content .btn-primary {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 }
 
 #WatchlistBanner {
@@ -1414,6 +1540,7 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 }
 
 /* discover page movie banner  */
+/* Discover Movie Banner Styling */
 #DiscoverMovieBanner {
   background-size: cover;
   background-position: center;
@@ -1424,29 +1551,88 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  padding: 20px;
 }
 
+/* Overlay effect */
 #DiscoverMovieBanner .movie-banner-overlay {
   background-color: rgba(0, 0, 0, 0.6);
-  /* Overlay effect */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 #discoverBannerTitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: 36px;
+  font-size: 2.25rem;
   font-weight: 700;
   color: #ffffff;
+  text-align: center;
+  z-index: 2;
+  margin-bottom: 20px;
 }
 
 #discoverBannerDetails {
   font-family: 'Nunito Sans', sans-serif;
-  font-size: 18px;
+  font-size: 1.125rem;
   color: rgba(255, 255, 255, 0.8);
-  margin-left: 370px;
-  margin-right: 370px;
-  margin-bottom: 40px;
-  margin-top: 10px;
+  text-align: center;
+  z-index: 2;
+  max-width: 800px;
+  margin: 10px auto;
 }
+
+@media (max-width: 992px) {
+  #DiscoverMovieBanner {
+    height: 600px;
+  }
+
+  #discoverBannerTitle {
+    font-size: 2rem;
+  }
+
+  #discoverBannerDetails {
+    font-size: 1rem;
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  #DiscoverMovieBanner {
+    height: 500px;
+    padding: 15px;
+  }
+
+  #discoverBannerTitle {
+    font-size: 1.75rem;
+    margin-bottom: 15px;
+  }
+
+  #discoverBannerDetails {
+    font-size: 0.9rem;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  #DiscoverMovieBanner {
+    height: 400px;
+    padding: 10px;
+  }
+
+  #discoverBannerTitle {
+    font-size: 1.5rem;
+  }
+
+  #discoverBannerDetails {
+    font-size: 0.85rem;
+    max-width: 90%;
+  }
+}
+
 
 #Recommended_Row .card {
   background-color: #272727;
@@ -1528,4 +1714,171 @@ background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy5
 
 #yearInput {
   width: 200px;
+}
+
+/* Individual Movie Page Responsive Styles */
+
+/* Hero Section */
+@media (max-width: 992px) {
+  .heroBannerInd {
+    padding: 30px 0;
+  }
+
+  #Hero_Info .col-md-4 {
+    text-align: center;
+    padding: 0;
+  }
+
+  #Hero_Info .col-md-8 {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  #IndividualTitle {
+    font-size: 32px;
+  }
+
+  .movieDescription {
+    padding-right: 0;
+  }
+
+  .buttonContainerIndMovie {
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  #Hero_Info {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #Hero_Info .col-md-4 {
+    margin-bottom: 20px;
+  }
+
+  #Hero_Info .col-md-8 {
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center;
+  }
+
+  #IndividualTitle {
+    font-size: 28px;
+    margin-top: 10px;
+  }
+
+  .lead {
+    font-size: 16px;
+  }
+
+  .movieDescription {
+    font-size: 14px;
+    padding-top: 20px;
+    padding-right: 0;
+  }
+
+  .buttonContainerIndMovie {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30px;
+  }
+
+  #IndividualCover {
+    margin-left: 0;
+    max-width: 250px;
+    width: 100%;
+  }
+}
+
+/* Actors Featured Section */
+@media (max-width: 992px) {
+  #actors_section {
+    gap: 20px;
+    padding-left: 10px;
+  }
+
+  #actors_section .team-member p,
+  #actors_section .team-member small {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .actorsFeatured {
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    padding-left: 10px;
+  }
+
+  #actors_section {
+    gap: 15px;
+  }
+}
+
+/* Related Movies Section */
+@media (max-width: 992px) {
+  .scrollableSection {
+    padding: 20px 0;
+  }
+
+  .scrollable-row {
+    padding-left: 10px;
+    padding-right: 10px;
+    gap: 15px;
+  }
+
+  #Recommended_Row .card {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollableSection .section-title {
+    font-size: 20px;
+    padding-left: 10px;
+  }
+
+  .scrollable-row {
+    padding: 10px 0;
+    gap: 10px;
+  }
+
+  #Recommended_Row .card {
+    max-width: 180px;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  #IndividualTitle {
+    font-size: 24px;
+  }
+
+  .heroBannerInd {
+    padding: 20px 0;
+  }
+
+  .buttonContainerIndMovie {
+    margin-top: 20px;
+  }
+
+  .section-title {
+    font-size: 18px;
+  }
+
+  #actors_section {
+    gap: 10px;
+  }
+
+  #Recommended_Row .card {
+    max-width: 150px;
+    min-width: 150px;
+  }
 }
