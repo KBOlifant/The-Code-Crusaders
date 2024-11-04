@@ -746,7 +746,7 @@ async function populateHeroBanner() {
       const director = creditsData.crew.find(member => member.job === 'Director')?.name || 'Unknown Director';
 
       bannerContent += `
-        <div class="carousel-item ${i === 0 ? 'active' : ''}">
+        <div class="carousel-item ${i === 0 ? 'active' : ''} id='discoverMoreBanner' style='display: none'">
           <div class="hero-banner-slide" style="background-image: url('https://image.tmdb.org/t/p/original/${movie.backdrop_path}');">
             <div class="movie-banner-overlay" id="discoverMoreBanner"></div>
             <div class="movie-banner-content">
